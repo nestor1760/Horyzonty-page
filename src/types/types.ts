@@ -11,6 +11,14 @@ export interface IContainerProps {
   justify?: string,
   direction?: string,
   width?: string,
+  height?: string,
   margin?: string,
   padding?: string,
+  background?: string,
+}
+
+export interface IDataIntroItems {
+  id: number;
+  image: string;
+  title: string;
 }
