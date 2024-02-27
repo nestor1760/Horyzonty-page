@@ -1,9 +1,10 @@
 import styled, { keyframes, css } from 'styled-components'
 import { Container } from '../styled-components/Container'
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
+import { useScroll } from '../hooks/useScroll'
 
-const StyledHeader = styled.div<{scrolled: boolean}>`
-  width: ${({ scrolled }) => scrolled ? '100%' : '1112px'};
+const StyledHeader = styled.div<{ scrolled: number}>`
+  width: 1112px;
   position: fixed;
   top: 0;
   left: 50%;
@@ -15,28 +16,35 @@ const StyledHeader = styled.div<{scrolled: boolean}>`
   z-index: 1000;
   justify-content: space-between;
   border-bottom: 1px solid black;
-  animation: ${({ scrolled }) => scrolled ? css`${maxWidth} 0.3s forwards` : css`${defaultWidth} 0.3s forwards`};
-`
+  padding-top: 41px;
+  padding-bottom: 41px;
+  animation: ${({ scrolled }) => scrolled > 95 ? css`${maxWidth} 0.3s forwards` : css`${defaultWidth} 0.3s forwards`};
+  `
+  // animation: ${({ scrolled }) => scrolled ? css`${maxWidth} 0.3s forwards` : css`${defaultWidth} 0.3s forwards`};
 
 const maxWidth = keyframes`
   from {
     width: 1112px;
-    padding: 41px 0;
+    padding-left: 0px;
+    padding-right: 0px;
   }
   to {
     width: 100%;
-    padding: 41px 10%;
+    padding-left: 10%;
+    padding-right: 10%;
   }
 `
 
 const defaultWidth = keyframes`
   from {
     width: 100%;
-    padding: 41px 10%;
+    padding-left: 10%;
+    padding-right: 10%;
   }
   to {
     width: 1112px;
-    padding: 41px 0;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 `
 
@@ -70,23 +78,24 @@ const NavItem = styled.button`
 `
 
 const Header: FC = () => {
-  const [scrolled, setScrolled] = useState<boolean>(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled: boolean = window.scrollY > 95;
-      setScrolled(isScrolled);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  // const [scrolled, setScrolled] = useState<boolean | null>(null)
+  const scroll = useScroll()
+  
+  
+  // useEffect(() => {
+  //     const handleScroll = () => {
+  //     (window.scrollY > 95) ? setScrolled(true) : setScrolled(false);  
+  //     };
+    
+  //     window.addEventListener('scroll', handleScroll);
+  //     return () => {
+  //       window.removeEventListener('scroll', handleScroll);
+  //     };
+  // }, []);
 
   return (
     <Container width='100%' background='rgba(255, 255, 255, 0.9)'>
-      <StyledHeader scrolled={scrolled}>
+      <StyledHeader scrolled={scroll}>
         <HeaderTitle>horyzonty</HeaderTitle>
         <Container width='771px' justify='space-between' align='center'>
           <NavItem>o nas</NavItem>

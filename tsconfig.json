@@ -21,5 +21,11 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "allowJs": true,
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true,
+  "forceConsistentCasingInFileNames": true,
+  "types": ["vite/client", "vite-plugin-svgr/client"],
+  "plugins": [{ "name": "typescript-plugin-css-modules" }]
 }

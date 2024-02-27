@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { Container } from "../styled-components/Container"
 import { GoArrowUpRight } from "react-icons/go";
 import IntroImageSlider from "../UI/IntroImageSlider";
+import { dataIntro } from "../data/dataIntro";
 
 const StyledIntro = styled.div`
   width: 1110px;
@@ -65,7 +66,7 @@ const IntroPart = () => {
             <Button>rezerwacja <CustomIcon/></Button>
           </Container>
           <Container>
-            <IntroImageSlider />
+            <IntroImageSlider data={dataIntro}/>
           </Container>
         </Container>
       </StyledIntro>
