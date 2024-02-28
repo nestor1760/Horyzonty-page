@@ -9,9 +9,10 @@ const StyledContainer = styled.div<IContainerProps>`
   align-items: ${props => props.align || 'flex-start'};
   justify-content: ${props => props.justify || 'flex-start'};
   flex-direction: ${props => props.direction || 'row'};
-  padding: ${props => props.padding || '0px'};
-  margin: ${props => props.margin || '0px'};
-  background: ${props => props.background || 'tranparent'};
+  padding: ${props => props.padding || 'auto'};
+  margin: ${props => props.margin || 'auto'};
+  flex-wrap: ${props => props.wrap || 'no-wrap'};
+  background: ${props => props.background || 'transparent'};
 `
 
 

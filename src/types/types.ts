@@ -1,9 +1,10 @@
 import { ReactNode } from "react";
 
+//for Wrapper.tsx
 export interface IWrapperProps {
-  children: ReactNode
+  children: ReactNode;
 }
-
+//for Container.tsx
 export interface IContainerProps {
   children: ReactNode,
   display?: string,
@@ -15,10 +16,38 @@ export interface IContainerProps {
   margin?: string,
   padding?: string,
   background?: string,
+  wrap?: string,
 }
-
-export interface IDataIntroItems {
+//for dataIntro.ts
+export interface IDataIntroItem {
   id: number;
   image: string;
   title: string;
+}
+
+// for IntroImageSlider.tsx
+export interface ISliderProps {
+  data: IDataIntroItem[],
+}
+
+//for dataAbout.ts
+export interface IAboutItem {
+  id: number;
+  data: number;
+  title: string;
+}
+
+//for Button.jsx
+export interface IButtonProps {
+  children: ReactNode;
+}
+
+//for dataTours.ts
+export interface ITourItem {
+  id: number;
+  title: string;
+  description: string;
+  duration: number;
+  distance: number;
+  people: number;
 }

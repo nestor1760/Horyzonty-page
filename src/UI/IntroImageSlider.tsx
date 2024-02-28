@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { Container } from "../styled-components/Container";
 import { HiOutlineArrowLongLeft } from "react-icons/hi2";
 import { FC, useEffect, useState } from "react";
-import { IDataIntroItems } from "../types/types";
+import { ISliderProps } from "../types/types";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 
 const StyledSlider = styled.div`
@@ -36,17 +36,13 @@ const Count = styled.p`
   margin: 
 `
 
-interface ISliderProps {
-  data: IDataIntroItems[],
-}
-
 const IntroImageSlider: FC<ISliderProps> = ({data}) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % data.length);
-    }, 3000);
+    }, 10000);
 
     return () => clearInterval(intervalId);
   }, [data.length]);

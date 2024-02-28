@@ -1,6 +1,6 @@
-import { IDataIntroItems } from "../types/types";
+import { IDataIntroItem } from "../types/types";
 
-export const dataIntro:IDataIntroItems[] = [
+export const dataIntro:IDataIntroItem[] = [
   {
     id: 1,
     image: '/media/intro-photo1.png',

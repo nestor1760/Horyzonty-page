@@ -12,7 +12,7 @@ const StyledFooter = styled.div`
   overflow: hidden;
 `
 
-const Title = styled.p`
+const NavigationItem = styled.p`
   width: 570px;
   font-size: 24px;
   font-weight: 400;
@@ -27,8 +27,8 @@ const Text = styled.p`
   text-transform: uppercase;
 `
 const FooterImg = styled.img`
-  max-width: 1110px;
-  object-fit: contain;
+  width: 100%;
+  object-fit: cover;
 `
 
 const ContactItem = styled.div`
@@ -74,7 +74,7 @@ const Footer = () => {
     <Container width='100%'>
       <StyledFooter>
         <Container padding='58px 0 63px 0' width='1110px' justify='space-between'>
-          <Title>kontakty</Title>
+          <NavigationItem>kontakty</NavigationItem>
           <Text>Jeśli masz pytania dotyczące naszych wycieczek górskich, bonów podarunkowych lub chciałbyś dowiedzieć się więcej o trasach, wrażeniach i możliwościach, skontaktuj się z nami.</Text>
         </Container>
         <FooterImg src='/media/footer.png' alt='forest landscape'/>
