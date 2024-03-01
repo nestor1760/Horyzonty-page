@@ -1,14 +1,8 @@
 import styled, { keyframes } from 'styled-components'
 import { Container } from '../styled-components/Container'
 import { dataAbout } from '../data/dataAbout'
-
-const NavigationItem = styled.p`
-  width: 570px;
-  font-size: 24px;
-  font-weight: 400;
-  color: #B1B1B1;
-  text-transform: uppercase;
-`
+import { ItemHeader } from '../styled-components/ItemHeader'
+import { NavigationItem } from '../styled-components/NavigationItem'
 
 const slideRight = keyframes`
   from {
@@ -106,8 +100,8 @@ const StrongText = styled.p`
 const AboutPart = () => {
   return (
     <Container width='100%' direction='column'>
-        <Container width='1110px' justify='space-between' padding='107px 0 26px 0'>
-          <NavigationItem>o nas</NavigationItem>
+        <ItemHeader width='1110px' padding='107px 0 26px 0' margin='0 auto'>
+          <NavigationItem width='570px' fontSize='24px' margin='0'>o nas</NavigationItem>
           <Container direction='column' width='540px'>
             <TitleHeader>Witamy w firmie Horyzonty - wiodącym touroperatorem specjalizującym się w organizowaniu wycieczek na najwyższy szczyt Polski, górę Rysy!</TitleHeader>
             <Container width='540px'>
@@ -115,7 +109,7 @@ const AboutPart = () => {
               <TitleText>Nasza misja polega na zapewnieniu klientom niezapomnianych przygód i najwyższego poziomu obsługi, pozwalając im cieszyć się wrażeniami z unikalnych krajobrazów i naturalnych piękności Tatr. Wybierz naszą firmę i spełnij swoje marzenie o podróży na Rysy.</TitleText>
             </Container>
           </Container>
-        </Container>
+        </ItemHeader>
         <StyledImage src='/media/about-us-photo.png' alt='the girl looks at the landscape'/>
         <Container width='1110px' display='flex' justify='space-between'>
           {dataAbout.map(item => 

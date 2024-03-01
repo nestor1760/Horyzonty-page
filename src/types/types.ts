@@ -18,6 +18,29 @@ export interface IContainerProps {
   background?: string,
   wrap?: string,
 }
+
+//for ItemHeader.tsx
+export interface IHeaderProps {
+  children: ReactNode,
+  display?: string,
+  align?: string,
+  justify?: string,
+  width?: string,
+  margin?: string,
+  padding?: string,
+}
+
+//for NavigationItem.tsx
+export interface INavItemProps {
+  children: ReactNode,
+  width?: string,
+  margin?: string,
+  color?: string,
+  textTransform?: string,
+  fontWeight?: string,
+  fontSize?: string,
+}
+
 //for dataIntro.ts
 export interface IDataIntroItem {
   id: number;
@@ -28,6 +51,34 @@ export interface IDataIntroItem {
 // for IntroImageSlider.tsx
 export interface ISliderProps {
   data: IDataIntroItem[],
+}
+
+//for dataGuides.ts
+export interface IDataGuides {
+  id: number,
+  name: string,
+  title: string,
+  description: string,
+  image: string,
+}
+
+//for GuideItem.tsx
+export interface IGuideItemProps {
+  guide: IDataGuides,
+}
+
+//for dataVouchers.ts
+export interface IVoucherItem {
+  id: number;
+  image: string;
+  title: string;
+  description: string;
+}
+
+//for VoucherItem.tsx
+export interface IVoucherItemProps {
+  voucher: IVoucherItem;
+  index: number;
 }
 
 //for dataAbout.ts
@@ -58,5 +109,19 @@ export interface ITourItem {
 //for TourItem.tsx
 export interface ITourItemProps {
   tour: ITourItem;
+  index: number;
+}
+
+//for dataFood.ts
+export interface IFoodItem {
+  id: number;
+  image: string;
+  title: string;
+  description: string;
+}
+
+//for FoodItem.tsx
+export interface IFoodItemProps {
+  food: IFoodItem;
   index: number;
 }

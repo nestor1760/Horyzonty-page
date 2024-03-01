@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { dataTours } from "../../data/dataTours"
 import TourItem from "./TourItem"
+import { NavigationItem } from "../../styled-components/NavigationItem"
 
 const StyledContainer = styled.div`
   width: 1110px;
@@ -10,24 +11,14 @@ const StyledContainer = styled.div`
   flex-direction: column;
 `
 
-const NavigationItem = styled.p`
-  width: 100%;
-  font-size: 24px;
-  font-weight: 400;
-  color: #B1B1B1;
-  text-transform: uppercase;
-  margin-bottom: 51px;
-`
-
 const TourListBlock = styled.div`
   width: 1110px;
 `
 
-
 const TourPart = () => {
   return (
     <StyledContainer>
-      <NavigationItem>tury</NavigationItem>
+      <NavigationItem margin="0 0 51px 0" fontSize="24px">tury</NavigationItem>
       <TourListBlock>
         {dataTours.map((tour, index) => 
           <TourItem index={index} tour={tour} key={tour.id}/>  

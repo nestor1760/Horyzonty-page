@@ -24,6 +24,9 @@ const Button = styled.button<IButtonProps>`
   &:hover {
     box-shadow: none;
   }
+  &:active {
+    box-shadow:inset 3px 10px 26px -11px rgba(0,0,0,0.78);
+  }
 `
 
 const CustomIcon = styled(GoArrowUpRight)`

@@ -2,6 +2,8 @@ import styled, { keyframes } from 'styled-components'
 import { Container } from '../styled-components/Container'
 import { IoLogoInstagram } from "react-icons/io5";
 import { FaSquareFacebook } from "react-icons/fa6";
+import { ItemHeader } from '../styled-components/ItemHeader';
+import { NavigationItem } from '../styled-components/NavigationItem';
 
 const StyledFooter = styled.div`
   width: 1110px;
@@ -12,13 +14,6 @@ const StyledFooter = styled.div`
   overflow: hidden;
 `
 
-const NavigationItem = styled.p`
-  width: 570px;
-  font-size: 24px;
-  font-weight: 400;
-  color: #B1B1B1;
-  text-transform: uppercase;
-`
 const slideLeft = keyframes`
   from {
     transform: translateX(30px);
@@ -31,7 +26,7 @@ const slideLeft = keyframes`
 `
 
 const Text = styled.p`
-  max-width: 540px;
+  width: 540px;
   font-size: 32px;
   font-weight: 400;
   text-transform: uppercase;
@@ -86,10 +81,10 @@ const Footer = () => {
   return (
     <Container width='100%'>
       <StyledFooter>
-        <Container padding='58px 0 63px 0' width='1110px' justify='space-between'>
-          <NavigationItem>kontakty</NavigationItem>
+        <ItemHeader padding='58px 0 63px 0' width='1110px'>
+          <NavigationItem width='570px' fontSize='24px'>kontakty</NavigationItem>
           <Text>Jeśli masz pytania dotyczące naszych wycieczek górskich, bonów podarunkowych lub chciałbyś dowiedzieć się więcej o trasach, wrażeniach i możliwościach, skontaktuj się z nami.</Text>
-        </Container>
+        </ItemHeader>
         <FooterImg src='/media/footer.png' alt='forest landscape'/>
         <Container direction='column' margin='78px 0 0 0'>
           <ContactItem>
