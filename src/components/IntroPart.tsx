@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { Container } from "../styled-components/Container"
 import IntroImageSlider from "../UI/IntroImageSlider";
 import { dataIntro } from "../data/dataIntro";
@@ -11,6 +11,26 @@ const StyledIntro = styled.div`
   justify-content: flex-start;
   flex-direction: column;
 `
+const slideDown = keyframes`
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`
+const slideRight = keyframes`
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`
 
 const Title = styled.p`
   width: 826px;
@@ -18,6 +38,7 @@ const Title = styled.p`
   font-weight: 400;
   text-transform: uppercase;
   margin: 65px 0 41px 0;
+  animation: ${slideDown} 0.5s ease-in-out forwards;
 `
 
 const Text = styled.p`
@@ -27,6 +48,7 @@ const Text = styled.p`
   color: #2D2C2C;
   margin: 61px 0 54px 0;
   text-align: start;
+  animation: ${slideRight} 0.5s ease-in-out forwards;
 `
 
 const IntroPart = () => {

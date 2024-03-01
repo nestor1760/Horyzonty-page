@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { Container } from '../styled-components/Container'
 import { IoLogoInstagram } from "react-icons/io5";
 import { FaSquareFacebook } from "react-icons/fa6";
@@ -19,12 +19,23 @@ const NavigationItem = styled.p`
   color: #B1B1B1;
   text-transform: uppercase;
 `
+const slideLeft = keyframes`
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`
 
 const Text = styled.p`
   max-width: 540px;
   font-size: 32px;
   font-weight: 400;
   text-transform: uppercase;
+  animation: ${slideLeft} 0.5s ease-in-out forwards;
 `
 const FooterImg = styled.img`
   width: 100%;
@@ -49,6 +60,7 @@ const ItemText = styled.p`
   font-size: 24px;
   font-weight: 400;
   margin-bottom: 40px;
+  animation: ${slideLeft} 0.5s ease-in-out forwards;
 `
 
 const SocialItem = styled.div`
@@ -56,6 +68,7 @@ const SocialItem = styled.div`
   align-items: flex-start;
   justify-content: center;
   margin-bottom: 33px;
+  animation: ${slideLeft} 0.5s ease-in-out forwards;
 `
 
 const SocialLink = styled.a`

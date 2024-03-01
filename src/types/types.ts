@@ -40,6 +40,8 @@ export interface IAboutItem {
 //for Button.jsx
 export interface IButtonProps {
   children: ReactNode;
+  padding?: string;
+  margin?: string;
 }
 
 //for dataTours.ts
@@ -47,7 +49,14 @@ export interface ITourItem {
   id: number;
   title: string;
   description: string;
+  image: string;
   duration: number;
   distance: number;
   people: number;
+}
+
+//for TourItem.tsx
+export interface ITourItemProps {
+  tour: ITourItem;
+  index: number;
 }

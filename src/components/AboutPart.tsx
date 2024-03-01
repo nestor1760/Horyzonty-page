@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { Container } from '../styled-components/Container'
 import { dataAbout } from '../data/dataAbout'
 
@@ -10,6 +10,28 @@ const NavigationItem = styled.p`
   text-transform: uppercase;
 `
 
+const slideRight = keyframes`
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`
+
+const slideLeft = keyframes`
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`
+
 const TitleHeader = styled.h1`
   font-weight: 400;
   width: 539px;
@@ -17,6 +39,7 @@ const TitleHeader = styled.h1`
   color: black;
   margin-bottom: 27px;
   text-transform: uppercase;
+  animation: ${slideRight} 0.5s ease-in-out forwards;
 `
 
 const TitleText = styled.p`
@@ -24,6 +47,7 @@ const TitleText = styled.p`
   font-size: 14px;
   font-weight: 400;
   color: #5A5A5A;
+  animation: ${slideLeft} 0.5s ease-in-out forwards;
   &:first-child {
     margin-right: 30px;
   }
@@ -33,6 +57,17 @@ const StyledImage = styled.img`
   width: 100%;
   object-fit: cover;
   margin-bottom: 99px;
+`
+
+const slideDown = keyframes`
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 `
 
 const StyledItem = styled.div`
@@ -46,6 +81,7 @@ const StyledItem = styled.div`
   flex-direction: column;
   margin-right: 30px;
   margin-bottom: 47px;
+  animation: ${slideDown} 0.6s ease-in-out forwards;
   &:last-child {
     margin-right: 0px;
   }

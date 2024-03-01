@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { IButtonProps } from '../types/types';
 
 
-const Button = styled.button`
+const Button = styled.button<IButtonProps>`
   width: 255px;
   height: 54px;
   display: flex;
@@ -17,6 +17,8 @@ const Button = styled.button`
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+  padding: ${props => props.padding || '0'};
+  margin: ${props => props.margin || '0'};
   box-shadow: 3px 10px 26px -11px rgba(0,0,0,0.78);
   transition: 0.4s;
   &:hover {
@@ -31,5 +33,5 @@ const CustomIcon = styled(GoArrowUpRight)`
 `
 
 
-export const StyledButton: FC<IButtonProps> = ({children}) => <Button>{children} <CustomIcon/></Button>
+export const StyledButton: FC<IButtonProps> = ({children, ...props}) => <Button {...props}>{children} <CustomIcon/></Button>
 
