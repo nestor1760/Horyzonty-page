@@ -41,6 +41,18 @@ export interface INavItemProps {
   fontSize?: string,
 }
 
+//for dataNightStay.ts
+export interface IDataNightStayItem {
+  id: number;
+  title: string;
+  description: string;
+}
+
+//for NightItem.tsx
+export interface INightStayProps {
+  item: IDataNightStayItem
+}
+
 //for dataIntro.ts
 export interface IDataIntroItem {
   id: number;
@@ -60,6 +72,11 @@ export interface IDataGuides {
   title: string,
   description: string,
   image: string,
+}
+
+//for GuidesPart.tsx
+export interface IGuideSliderProps {
+  data: IDataGuides[]
 }
 
 //for GuideItem.tsx
@@ -124,4 +141,18 @@ export interface IFoodItem {
 export interface IFoodItemProps {
   food: IFoodItem;
   index: number;
+}
+
+//for dataGalleryItem 
+export interface IGalleryItem {
+  id: number,
+  name: string,
+  image: string,
+  date: string,
+}
+
+//for GalleryItem.tsx
+export interface IGalleryProps {
+  item: IGalleryItem,
+  index: number,
 }

@@ -5,6 +5,9 @@ import { NavigationItem } from "../../styled-components/NavigationItem"
 import { StyledButton } from "../../UI/Button"
 import { dataGuides } from "../../data/dataGuides"
 import GuideItem from "./GuideItem"
+import { FC, useState } from "react"
+import { HiOutlineArrowLongLeft, HiOutlineArrowLongRight } from "react-icons/hi2"
+
 
 const StyledContainer = styled.div`
   width: 1110px;
@@ -31,14 +34,35 @@ const Text = styled.p`
 `
 
 const SliderContainer = styled.div`
-  width: 1110px;
+  width: 100%;
   display: flex;
   align-items: center;
-  // overflow: hidden;
+  overflow: hidden;
   justify-content: flex-start;
+  margin-bottom: 25px;
 `
 
-const GuidesPart = () => {
+const Button = styled.button`
+  width: 35px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  &:last-child {
+    margin-left: 34px;
+  }
+`
+
+const GuidesPart:FC= () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const Increment = () => {
+    setCurrentIndex(currentIndex + 1)
+  }
+
+  const Decrement = () => {
+    setCurrentIndex(currentIndex - 1)
+  }
+
   return (
     <Container width="100%" margin="0 0 73px 0">
       <StyledContainer>
@@ -50,10 +74,19 @@ const GuidesPart = () => {
           </Container>
         </ItemHeader>
         <SliderContainer>
-          {dataGuides.map(guide => 
-            <GuideItem guide={guide} key={guide.id}/>
-          )}
+            <GuideItem guide={dataGuides[currentIndex]}/>
+            <GuideItem guide={dataGuides[currentIndex + 1]}/>
         </SliderContainer>
+        <Container width="100%" justify="flex-end">
+          {(currentIndex <= 0)
+            ? <Button><HiOutlineArrowLongLeft size={35} color="gray"/></Button>
+            : <Button onClick={Decrement}><HiOutlineArrowLongLeft size={35}/></Button>
+          }
+          {(currentIndex < dataGuides.length - 2)
+            ? <Button onClick={Increment}><HiOutlineArrowLongRight size={35}/></Button>
+            : <Button><HiOutlineArrowLongRight size={35} color="gray"/></Button>
+          }
+        </Container>
       </StyledContainer>
     </Container>
   )

@@ -2,12 +2,21 @@ import { FC, useState } from "react"
 import styled, { keyframes } from "styled-components"
 import { IGuideItemProps } from "../../types/types"
 
+const fadeIn = keyframes`
+from {
+  opacity: 0;
+}
+to {
+  opacity: 1;
+}
+`
+
 const SliderItem = styled.div`
-  width: 555px;
+  width: 50%;
   height: 600px;
   position: relative;
   cursor: pointer;
-  overflow: hidden;
+  animation: ${fadeIn} 0.5s ease-in-out forwards;
 `
 
 const Image = styled.img`
@@ -68,19 +77,17 @@ const GuideItem:FC<IGuideItemProps> = ({guide}) => {
 
   return (
       <SliderItem
-      onMouseEnter={() => setShowInfo(true)}
-      onMouseLeave={() => setShowInfo(false)}
+        onMouseEnter={() => setShowInfo(true)}
+        onMouseLeave={() => setShowInfo(false)}
       >
-          <Image 
-            src={image}
-            
-          />
-          {showInfo && (
-            <InfoContainer showInfo={showInfo}>
-              <Name>{name}</Name>
-              <Title>{title}</Title>
-              <Description>{description}</Description>
-            </InfoContainer>)}
+        <Image src={image} alt={name}/>
+        {showInfo && (
+          <InfoContainer showInfo={showInfo}>
+            <Name>{name}</Name>
+            <Title>{title}</Title>
+            <Description>{description}</Description>
+          </InfoContainer>)
+        }
       </SliderItem>
   )
 }
