@@ -43,9 +43,9 @@ export interface INavItemProps {
 
 //for dataNightStay.ts
 export interface IDataNightStayItem {
-  id: number;
-  title: string;
-  description: string;
+  id: number,
+  title: string,
+  description: string,
 }
 
 //for NightItem.tsx
