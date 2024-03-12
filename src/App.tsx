@@ -11,10 +11,7 @@ import NightStayPart from './components/NightStayPart/NightStayPart'
 import TourPart from './components/TourPart/TourPart'
 import { Wrapper } from './styled-components/Wrapper'
 
-function App() {
-
-  console.log(Date.now());
-  
+function App() {  
   return (
       <Wrapper>
         <Header />

@@ -43,9 +43,9 @@ export interface INavItemProps {
 
 //for dataNightStay.ts
 export interface IDataNightStayItem {
-  id: number;
-  title: string;
-  description: string;
+  id: number,
+  title: string,
+  description: string,
 }
 
 //for NightItem.tsx
@@ -156,8 +156,11 @@ export interface IGalleryProps {
   item: IGalleryItem,
   index: number,
 }
+<<<<<<< HEAD
 
 //for GalleryNavigation.tsx
 export interface IGalleryNavProps {
   item: IGalleryItem,
 }
+=======
+>>>>>>> bb47a0db94ded1603dc5231628cb50d48f5e7a5c
