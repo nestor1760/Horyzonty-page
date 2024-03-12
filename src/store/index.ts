@@ -1,9 +1,21 @@
 import { configureStore } from "@reduxjs/toolkit";
-import introSlice from "./introSlice";
+import gallerySlice from "./gallerySlice";
+import foodSlice from "./foodSlice";
+import vouchersSlice from "./vouchersSlice";
+import guideSlice from "./guideSlice";
+import nightStaySlice from "./nightStaySlice";
+import tourSlice from "./tourSlice";
+import aboutSlice from "./aboutSlice";
 
 const store =  configureStore({
   reducer: {
-    intro: introSlice,
+    gallery: gallerySlice,
+    food: foodSlice,
+    voucher: vouchersSlice,
+    guide: guideSlice,
+    night: nightStaySlice,
+    tour: tourSlice,
+    about: aboutSlice,
   }
 })
 

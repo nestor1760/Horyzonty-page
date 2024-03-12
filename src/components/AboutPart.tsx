@@ -3,6 +3,9 @@ import { Container } from '../styled-components/Container'
 import { dataAbout } from '../data/dataAbout'
 import { ItemHeader } from '../styled-components/ItemHeader'
 import { NavigationItem } from '../styled-components/NavigationItem'
+import { useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '../hook'
+import { aboutDataRest } from '../dataAPI/aboutRest'
 
 const slideRight = keyframes`
   from {
@@ -98,6 +101,16 @@ const StrongText = styled.p`
 `
 
 const AboutPart = () => {
+  const dispatch = useAppDispatch()
+  const {array} = useAppSelector(state => state.about)  
+
+  console.log(array);
+  
+
+  useEffect(() => {
+    dispatch(aboutDataRest(dataAbout))
+  }, [])
+
   return (
     <Container width='100%' direction='column'>
         <ItemHeader width='1110px' padding='107px 0 26px 0' margin='0 auto'>
@@ -112,7 +125,7 @@ const AboutPart = () => {
         </ItemHeader>
         <StyledImage src='/media/about-us-photo.png' alt='the girl looks at the landscape'/>
         <Container width='1110px' display='flex' justify='space-between'>
-          {dataAbout.map(item => 
+          {array.map(item => 
             <StyledItem key={item.id}>
               <ItemText>więcej</ItemText>
               <StrongText>{item.data}</StrongText>

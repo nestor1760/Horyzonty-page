@@ -2,6 +2,9 @@ import styled from "styled-components"
 import { dataTours } from "../../data/dataTours"
 import TourItem from "./TourItem"
 import { NavigationItem } from "../../styled-components/NavigationItem"
+import { useAppDispatch, useAppSelector } from "../../hook"
+import { useEffect } from "react"
+import { tourDataRest } from "../../dataAPI/tourRest"
 
 const StyledContainer = styled.div`
   width: 1110px;
@@ -16,11 +19,18 @@ const TourListBlock = styled.div`
 `
 
 const TourPart = () => {
+  const dispatch = useAppDispatch()
+  const {array} = useAppSelector(state => state.tour)    
+
+  useEffect(() => {
+    dispatch(tourDataRest(dataTours))
+  }, [])
+
   return (
     <StyledContainer>
       <NavigationItem margin="0 0 51px 0" fontSize="24px">tury</NavigationItem>
       <TourListBlock>
-        {dataTours.map((tour, index) => 
+        {array.map((tour, index) => 
           <TourItem index={index} tour={tour} key={tour.id}/>  
         )}
       </TourListBlock>

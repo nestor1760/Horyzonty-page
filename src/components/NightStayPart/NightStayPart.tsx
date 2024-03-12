@@ -4,6 +4,9 @@ import { NavigationItem } from "../../styled-components/NavigationItem"
 import { Container } from "../../styled-components/Container"
 import { dataNightStay } from "../../data/dataNightStay"
 import NightItem from "./NightItem"
+import { useAppDispatch, useAppSelector } from "../../hook"
+import { useEffect } from "react"
+import { nightStayDataRest } from "../../dataAPI/nightStayRest"
 
 const StyledContainer = styled.div`
   width: 1110px;
@@ -89,6 +92,13 @@ const Title = styled.p`
 `
 
 const NightStayPart = () => {
+  const dispatch = useAppDispatch()
+  const {array} = useAppSelector(state => state.guide)  
+
+  useEffect(() => {
+    dispatch(nightStayDataRest(dataNightStay))
+  }, [])
+
   return (
     <StyledContainer>
       <ItemHeader margin="100px 0 157px 0">
@@ -98,17 +108,27 @@ const NightStayPart = () => {
         <Container width="1110px" display="flex" justify="flex-start">
           <StyledItem>
             <Image src="/media/stay1image.png" alt="adad" top='0' right="0"/>
-            <Container width="100%" justify="space-between" align="flex-start" margin="0">
-              <NightItem item={dataNightStay[2]}/>              
-              <NightItem item={dataNightStay[3]}/>              
-            </Container>
+            {(array.length > 0)
+              ?
+                <Container width="100%" justify="space-between" align="flex-start" margin="0">
+                  <NightItem item={array[2]}/>              
+                  <NightItem item={array[3]}/>              
+                </Container>
+              :
+                null
+            }
           </StyledItem>
           <StyledItem>
             <Title>Podczas noclegu w namiotach otrzymasz:</Title>
-            <Container width="100%" justify="space-between" align="flex-start" margin="0">
-              <NightItem item={dataNightStay[0]}/>              
-              <NightItem item={dataNightStay[1]}/>              
-            </Container>
+            {(array.length > 0)
+              ?
+                <Container width="100%" justify="space-between" align="flex-start" margin="0">
+                  <NightItem item={array[0]}/>              
+                  <NightItem item={array[1]}/>              
+                </Container>
+              :
+                null
+            }
             <Image src="/media/stay2image.png" alt="adad" bottom='0' left="0" />
           </StyledItem>
         </Container>

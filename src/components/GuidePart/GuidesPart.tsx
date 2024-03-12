@@ -5,8 +5,10 @@ import { NavigationItem } from "../../styled-components/NavigationItem"
 import { StyledButton } from "../../UI/Button"
 import { dataGuides } from "../../data/dataGuides"
 import GuideItem from "./GuideItem"
-import { FC, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import { HiOutlineArrowLongLeft, HiOutlineArrowLongRight } from "react-icons/hi2"
+import { useAppDispatch, useAppSelector } from "../../hook"
+import { guideDataRest } from "../../dataAPI/guideRest"
 
 
 const StyledContainer = styled.div`
@@ -54,6 +56,13 @@ const Button = styled.button`
 
 const GuidesPart:FC= () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const dispatch = useAppDispatch()
+  
+  const {array} = useAppSelector(state => state.guide)  
+
+  useEffect(() => {
+    dispatch(guideDataRest(dataGuides))
+  }, [])
 
   const Increment = () => {
     setCurrentIndex(currentIndex + 1)
@@ -73,16 +82,21 @@ const GuidesPart:FC= () => {
               <StyledButton>rezerwacja</StyledButton>
           </Container>
         </ItemHeader>
-        <SliderContainer>
-            <GuideItem guide={dataGuides[currentIndex]}/>
-            <GuideItem guide={dataGuides[currentIndex + 1]}/>
-        </SliderContainer>
+        {(array.length > 0)
+          ?
+            <SliderContainer>
+                <GuideItem guide={array[currentIndex]}/>
+                <GuideItem guide={array[currentIndex + 1]}/>
+            </SliderContainer>
+          :
+            null
+        }
         <Container width="100%" justify="flex-end">
           {(currentIndex <= 0)
             ? <Button><HiOutlineArrowLongLeft size={35} color="gray"/></Button>
             : <Button onClick={Decrement}><HiOutlineArrowLongLeft size={35}/></Button>
           }
-          {(currentIndex < dataGuides.length - 2)
+          {(currentIndex < array.length - 2)
             ? <Button onClick={Increment}><HiOutlineArrowLongRight size={35}/></Button>
             : <Button><HiOutlineArrowLongRight size={35} color="gray"/></Button>
           }

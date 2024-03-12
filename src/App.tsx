@@ -12,6 +12,10 @@ import TourPart from './components/TourPart/TourPart'
 import { Wrapper } from './styled-components/Wrapper'
 
 function App() {
+
+  console.log(Date.now());
+  
+
   return (
       <Wrapper>
         <Header />

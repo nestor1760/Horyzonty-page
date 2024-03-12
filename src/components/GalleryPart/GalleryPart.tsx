@@ -1,8 +1,12 @@
 import styled, { keyframes } from "styled-components"
 import { ItemHeader } from "../../styled-components/ItemHeader"
 import { NavigationItem } from "../../styled-components/NavigationItem"
-import { dataGallery } from "../../data/dataGallery"
 import GalleryItem from "./GalleryItem"
+import { useAppDispatch, useAppSelector } from "../../hook"
+import { useEffect } from "react"
+import { dataGallery } from "../../data/dataGallery"
+import { galleryDataRest } from "../../dataAPI/galleryRest"
+import GalleryNavItem from "./GalleryNavigation"
 
 const StyledContainer = styled.div`
   width: 1110px;
@@ -41,18 +45,71 @@ const GridContainer = styled.div`
   align-items: end;
 `
 
+const GalleryNavigation = styled.div`
+  position: absolute;
+  top: 0;
+  right: 341px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 200px;
+`
+
+const ShowAllButton = styled.button`
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  align-text: start;
+  background: transparent;
+  border: none;
+  color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    font-weight: 600;
+    text-decoration: underline;
+    color: black;
+  }
+`
+
+const Loader = styled.div`
+  width: 100%;
+  font-size: 32px;
+  text-align: center;
+`
+
 const GalleryPart = () => {
+  const dispatch = useAppDispatch()
+  const {array, loading} = useAppSelector(state => state.gallery)
+  
+  useEffect(() => {
+      dispatch(galleryDataRest(dataGallery))
+  }, [])
+
   return (
     <StyledContainer>
       <ItemHeader margin="64px 0 80px 0">
         <NavigationItem fontSize="24px">galeria podróży</NavigationItem>
         <Text>Galeria podróży firmy Horyzonty - wiodącego touroperatora specjalizującego się w organizacji wycieczek na najwyższy szczyt Polski, górę Rysy!</Text>
       </ItemHeader>
-      <GridContainer>
-        {dataGallery.map((item, index) => 
-          <GalleryItem index={index} item={item} key={item.id}/>
-        )}
-      </GridContainer>
+      {(loading)
+        ?
+          <Loader>Loading...</Loader>
+        :
+          <GridContainer>
+            <GalleryNavigation>
+              {array.map(item => 
+                <GalleryNavItem item={item} key={item.id}/>
+              )}
+              <ShowAllButton>zobaczyć wszystkie</ShowAllButton>
+            </GalleryNavigation>
+            {array.map((item, index) => 
+              <GalleryItem index={index} item={item} key={item.id}/>
+            )}
+          </GridContainer>
+      } 
     </StyledContainer>
   )
 }

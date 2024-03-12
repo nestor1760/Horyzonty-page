@@ -3,6 +3,9 @@ import { ItemHeader } from "../../styled-components/ItemHeader"
 import { NavigationItem } from "../../styled-components/NavigationItem"
 import { dataVoucher } from "../../data/dataVoucher"
 import VouchersItem from "./VoucherItem"
+import { useEffect } from "react"
+import { useAppDispatch, useAppSelector } from "../../hook"
+import { vouchersDataRest } from "../../dataAPI/vouchersRest"
 
 const StyledContainer = styled.div`
   width: 1110px;
@@ -40,6 +43,13 @@ const VoucherList = styled.div`
 
 
 const VouchersPart = () => {
+  const dispatch = useAppDispatch()
+  const {array} = useAppSelector(state => state.voucher)
+
+  useEffect(() => {
+    dispatch(vouchersDataRest(dataVoucher))
+  }, [])
+
   return (
     <StyledContainer>
       <ItemHeader margin="56px 0 127px 0">
@@ -47,7 +57,7 @@ const VouchersPart = () => {
         <Text>Certyfikat podarunkowy na wycieczkę w góry to wspaniały sposób, aby obdarować kogoś niezapomnianymi wrażeniami i relaksem na łonie natury.</Text>
       </ItemHeader>
       <VoucherList>
-        {dataVoucher.map((voucher, index) => 
+        {array.map((voucher, index) => 
           <VouchersItem index={index} key={voucher.id} voucher={voucher}/>
         )}
       </VoucherList>

@@ -156,3 +156,8 @@ export interface IGalleryProps {
   item: IGalleryItem,
   index: number,
 }
+
+//for GalleryNavigation.tsx
+export interface IGalleryNavProps {
+  item: IGalleryItem,
+}

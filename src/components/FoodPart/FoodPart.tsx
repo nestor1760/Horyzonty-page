@@ -3,6 +3,9 @@ import { dataFood } from "../../data/dataFood"
 import FoodItem from "./FoodItem"
 import { ItemHeader } from "../../styled-components/ItemHeader"
 import { NavigationItem } from "../../styled-components/NavigationItem"
+import { useAppDispatch, useAppSelector } from "../../hook"
+import { useEffect } from "react"
+import { foodDataRest } from "../../dataAPI/foodRest"
 
 const StyledFoodContainer = styled.div`
   width: 1110px;
@@ -40,6 +43,13 @@ const FoodList = styled.div`
 `
 
 const FoodPart = () => {
+  const dispatch = useAppDispatch()
+  const {array} = useAppSelector(state => state.food)  
+
+  useEffect(() => {
+    dispatch(foodDataRest(dataFood))
+  }, [])
+
   return (
     <StyledFoodContainer>
       <ItemHeader margin="0 0 64px 0">
@@ -47,7 +57,7 @@ const FoodPart = () => {
         <Text>Gotowanie potraw na łonie natury to nie tylko wspaniała okazja do delektowania się lokalnymi smakami, ale również część niezapomnianego doświadczenia podczas wędrówek w Tatry.</Text>
       </ItemHeader>
       <FoodList>
-        {dataFood.map((item, index) => 
+        {array.map((item, index) => 
           <FoodItem index={index} food={item} key={item.id}/>
         )}
       </FoodList>

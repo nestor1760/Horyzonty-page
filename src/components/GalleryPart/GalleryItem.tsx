@@ -72,6 +72,7 @@ const Button = styled.button`
   }
 `
 
+
 const GalleryItem:FC<IGalleryProps> = ({item, index}) => {
   const {date, image, name} = item
   const isEven = useEvenItem(index)    
