@@ -104,9 +104,6 @@ const AboutPart = () => {
   const dispatch = useAppDispatch()
   const {array} = useAppSelector(state => state.about)  
 
-  console.log(array);
-  
-
   useEffect(() => {
     dispatch(aboutDataRest(dataAbout))
   }, [])
