@@ -64,7 +64,7 @@ const ReservationForm = () => {
       </Header>
       <GridContainer>
         <Input type="text" placeholder="Nazwisko"/>
-        <Input type="text" placeholder="Imie"/>
+        <Input type="text" placeholder="Imię"/>
         <Input type="text" placeholder="Email"/>
         <Input type="text" placeholder="Liczba dni wycieczki"/>
         <Input type="text" placeholder="Komentarz"/>
