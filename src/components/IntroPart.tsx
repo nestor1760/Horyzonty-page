@@ -1,8 +1,8 @@
-import styled, { keyframes } from "styled-components"
-import { Container } from "../styled-components/Container"
+import styled, { keyframes } from "styled-components";
+import { Container } from "../styled-components/Container";
 import IntroImageSlider from "../UI/IntroImageSlider";
 import { dataIntro } from "../data/dataIntro";
-import {StyledButton} from "../UI/Button";
+import { StyledButton } from "../UI/Button";
 
 const StyledIntro = styled.div`
   width: 1110px;
@@ -51,10 +51,11 @@ const Text = styled.p`
   animation: ${slideRight} 0.5s ease-in-out forwards;
 `
 
-const IntroPart = () => {
+const IntroPart = ({ id }: { id: string }) => {
+
   return (
     <Container width="100%" margin="105px 0 0 0">
-      <StyledIntro> 
+      <StyledIntro id={id}> 
         <Title>zdobywaj szczyty razem z nami</Title>
         <Container width="100%">
           <Container width="350px" height="480px" margin="0 220px 0 0" direction="column" align="flex-start">

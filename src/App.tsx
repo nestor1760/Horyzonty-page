@@ -11,19 +11,19 @@ import NightStayPart from './components/NightStayPart/NightStayPart'
 import TourPart from './components/TourPart/TourPart'
 import { Wrapper } from './styled-components/Wrapper'
 
-function App() {  
+function App() { 
   return (
       <Wrapper>
-        <Header />
-        <IntroPart />
-        <AboutPart />
-        <GalleryPart />
-        <TourPart/>
-        <GuidesPart />
-        <FoodPart />
-        <NightStayPart />
-        <VouchersPart />
-        <Footer />
+          <Header />
+          <IntroPart id='intro'/>
+          <AboutPart id='about'/>
+          <GalleryPart id='gallery'/>
+          <TourPart id='tour'/>
+          <GuidesPart id='guides'/>
+          <FoodPart id='food'/>
+          <NightStayPart id='nightstay'/>
+          <VouchersPart id='vouchers'/>
+          <Footer id='contact'/>
       </Wrapper>
   )
 }

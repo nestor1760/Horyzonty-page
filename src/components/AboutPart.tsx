@@ -29,6 +29,14 @@ const slideLeft = keyframes`
   }
 `
 
+const StyledContainer = styled.div`
+  width: 1110px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+`
+
 const TitleHeader = styled.h1`
   font-weight: 400;
   width: 539px;
@@ -100,12 +108,9 @@ const StrongText = styled.p`
   text-transform: uppercase;
 `
 
-const AboutPart = () => {
+const AboutPart = ({ id }: { id: string }) => {
   const dispatch = useAppDispatch()
   const {array} = useAppSelector(state => state.about)  
-
-  console.log(array);
-  
 
   useEffect(() => {
     dispatch(aboutDataRest(dataAbout))
@@ -113,8 +118,9 @@ const AboutPart = () => {
 
   return (
     <Container width='100%' direction='column'>
+      <StyledContainer>
         <ItemHeader width='1110px' padding='107px 0 26px 0' margin='0 auto'>
-          <NavigationItem width='570px' fontSize='24px' margin='0'>o nas</NavigationItem>
+          <NavigationItem width='570px' fontSize='24px' margin='0' id={id}>o nas</NavigationItem>
           <Container direction='column' width='540px'>
             <TitleHeader>Witamy w firmie Horyzonty - wiodącym touroperatorem specjalizującym się w organizowaniu wycieczek na najwyższy szczyt Polski, górę Rysy!</TitleHeader>
             <Container width='540px'>
@@ -133,6 +139,7 @@ const AboutPart = () => {
             </StyledItem>
           )}
         </Container>
+        </StyledContainer>
     </Container>
   )
 }

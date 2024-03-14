@@ -42,7 +42,7 @@ const FoodList = styled.div`
   justify-content: flex-start;
 `
 
-const FoodPart = () => {
+const FoodPart = ({ id }: { id: string }) => {
   const dispatch = useAppDispatch()
   const {array} = useAppSelector(state => state.food)  
 
@@ -53,7 +53,7 @@ const FoodPart = () => {
   return (
     <StyledFoodContainer>
       <ItemHeader margin="0 0 64px 0">
-        <NavigationItem fontSize="24px">jedzenie</NavigationItem>
+        <NavigationItem fontSize="24px" id={id}>jedzenie</NavigationItem>
         <Text>Gotowanie potraw na łonie natury to nie tylko wspaniała okazja do delektowania się lokalnymi smakami, ale również część niezapomnianego doświadczenia podczas wędrówek w Tatry.</Text>
       </ItemHeader>
       <FoodList>

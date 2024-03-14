@@ -5,7 +5,7 @@ import { NavigationItem } from "../../styled-components/NavigationItem"
 import { StyledButton } from "../../UI/Button"
 import { dataGuides } from "../../data/dataGuides"
 import GuideItem from "./GuideItem"
-import { FC, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { HiOutlineArrowLongLeft, HiOutlineArrowLongRight } from "react-icons/hi2"
 import { useAppDispatch, useAppSelector } from "../../hook"
 import { guideDataRest } from "../../dataAPI/guideRest"
@@ -54,7 +54,7 @@ const Button = styled.button`
   }
 `
 
-const GuidesPart:FC= () => {
+const GuidesPart= ({ id }: { id: string }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const dispatch = useAppDispatch()
   
@@ -76,7 +76,7 @@ const GuidesPart:FC= () => {
     <Container width="100%" margin="0 0 73px 0">
       <StyledContainer>
         <ItemHeader margin="0 0 50px 0">
-          <NavigationItem fontSize="24px">przewodnicy</NavigationItem>
+          <NavigationItem fontSize="24px" id={id}>przewodnicy</NavigationItem>
           <Container direction="column">
               <Text>Przewodnicy wspólnie stworzą unikalną wycieczkę na Rysy, gdzie bezpieczeństwo, doświadczenie i wrażenia będą głównym priorytetem.</Text>
               <StyledButton>rezerwacja</StyledButton>

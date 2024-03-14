@@ -42,7 +42,7 @@ const VoucherList = styled.div`
 `
 
 
-const VouchersPart = () => {
+const VouchersPart = ({ id }: { id: string }) => {
   const dispatch = useAppDispatch()
   const {array} = useAppSelector(state => state.voucher)
 
@@ -53,7 +53,7 @@ const VouchersPart = () => {
   return (
     <StyledContainer>
       <ItemHeader margin="56px 0 127px 0">
-        <NavigationItem fontSize="24px">karty podarunkowe</NavigationItem>
+        <NavigationItem fontSize="24px" id={id}>karty podarunkowe</NavigationItem>
         <Text>Certyfikat podarunkowy na wycieczkę w góry to wspaniały sposób, aby obdarować kogoś niezapomnianymi wrażeniami i relaksem na łonie natury.</Text>
       </ItemHeader>
       <VoucherList>

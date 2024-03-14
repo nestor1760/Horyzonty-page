@@ -18,7 +18,7 @@ const TourListBlock = styled.div`
   width: 1110px;
 `
 
-const TourPart = () => {
+const TourPart = ({ id }: { id: string }) => {
   const dispatch = useAppDispatch()
   const {array} = useAppSelector(state => state.tour)    
 
@@ -28,7 +28,7 @@ const TourPart = () => {
 
   return (
     <StyledContainer>
-      <NavigationItem margin="0 0 51px 0" fontSize="24px">tury</NavigationItem>
+      <NavigationItem margin="0 0 51px 0" fontSize="24px" id={id}>tury</NavigationItem>
       <TourListBlock>
         {array.map((tour, index) => 
           <TourItem index={index} tour={tour} key={tour.id}/>  

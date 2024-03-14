@@ -39,6 +39,7 @@ export interface INavItemProps {
   textTransform?: string,
   fontWeight?: string,
   fontSize?: string,
+  id?: string,
 }
 
 //for dataNightStay.ts
@@ -156,11 +157,8 @@ export interface IGalleryProps {
   item: IGalleryItem,
   index: number,
 }
-<<<<<<< HEAD
 
 //for GalleryNavigation.tsx
 export interface IGalleryNavProps {
   item: IGalleryItem,
 }
-=======
->>>>>>> bb47a0db94ded1603dc5231628cb50d48f5e7a5c

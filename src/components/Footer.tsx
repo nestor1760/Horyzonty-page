@@ -77,12 +77,12 @@ const SocialLink = styled.a`
   }
 `
 
-const Footer = () => {
+const Footer = ({ id }: { id: string }) => {
   return (
     <Container width='100%'>
       <StyledFooter>
         <ItemHeader padding='58px 0 63px 0' width='1110px'>
-          <NavigationItem width='570px' fontSize='24px'>kontakty</NavigationItem>
+          <NavigationItem width='570px' fontSize='24px' id={id}>kontakty</NavigationItem>
           <Text>Jeśli masz pytania dotyczące naszych wycieczek górskich, bonów podarunkowych lub chciałbyś dowiedzieć się więcej o trasach, wrażeniach i możliwościach, skontaktuj się z nami.</Text>
         </ItemHeader>
         <FooterImg src='/media/footer.png' alt='forest landscape'/>

@@ -91,7 +91,7 @@ const Title = styled.p`
   animation: ${slideLeft} 0.5s ease-in-out forwards;
 `
 
-const NightStayPart = () => {
+const NightStayPart = ({ id }: { id: string }) => {
   const dispatch = useAppDispatch()
   const {array} = useAppSelector(state => state.guide)  
 
@@ -102,7 +102,7 @@ const NightStayPart = () => {
   return (
     <StyledContainer>
       <ItemHeader margin="100px 0 157px 0">
-        <NavigationItem fontSize="24px">nocleg pod gołym niebem</NavigationItem>
+        <NavigationItem fontSize="24px" id={id}>nocleg pod gołym niebem</NavigationItem>
         <Text>Wyruszając na trzydniową wycieczkę na Rysy, nocowanie w namiotach stanowi niezapomniany element zbliżenia się do natury i poczucia prawdziwej przygody.</Text>
       </ItemHeader>
         <Container width="1110px" display="flex" justify="flex-start">

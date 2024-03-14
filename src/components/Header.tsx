@@ -38,7 +38,7 @@ const HeaderTitle = styled.button`
   cursor: pointer;
 `
 
-const NavItem = styled.button`
+const NavItem = styled.a`
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 400;
@@ -55,22 +55,38 @@ const NavItem = styled.button`
   }
 `
 
+
 const Header: FC = () => {
   const scroll = useScroll()
+
+  const scrollToPart = (id: string) => {
+    const navItem = document.getElementById(id);
+    if (navItem) {
+      navItem.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+  };
+
+  const scrollToStart = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+  
   
   return (
     <Container width='100%' background='rgba(255, 255, 255, 0.9)'>
       <StyledHeader scrolled={scroll} className={(scroll > 95) ? 'bigger' : 'default'}>
-        <HeaderTitle>horyzonty</HeaderTitle>
+        <HeaderTitle onClick={() => scrollToStart()}>horyzonty</HeaderTitle>
         <Container width='771px' justify='space-between' align='flex-end' margin='0'>
-          <NavItem>o nas</NavItem>
-          <NavItem>galeria</NavItem>
-          <NavItem>tury</NavItem>
-          <NavItem>przewodnicy</NavItem>
-          <NavItem>jedzenie</NavItem>
-          <NavItem>nocleg</NavItem>
-          <NavItem>karty podarunkowe</NavItem>
-          <NavItem>kontakty</NavItem>
+          <NavItem onClick={() => scrollToPart('about')}>o nas</NavItem>
+          <NavItem onClick={() => scrollToPart('gallery')}>galeria</NavItem>
+          <NavItem onClick={() => scrollToPart('tour')}>tury</NavItem>
+          <NavItem onClick={() => scrollToPart('guides')}>przewodnicy</NavItem>
+          <NavItem onClick={() => scrollToPart('food')}>jedzenie</NavItem>
+          <NavItem onClick={() => scrollToPart('nightstay')}>nocleg</NavItem>
+          <NavItem onClick={() => scrollToPart('vouchers')}>karty podarunkowe</NavItem>
+          <NavItem onClick={() => scrollToPart('contact')}>kontakty</NavItem>
         </Container>
       </StyledHeader>
     </Container>

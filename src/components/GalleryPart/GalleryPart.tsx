@@ -18,14 +18,14 @@ const StyledContainer = styled.div`
 `
 
 const slideLeft = keyframes`
-  from {
-    transform: translateX(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+from {
+  transform: translateX(30px);
+  opacity: 0;
+}
+to {
+  transform: translateX(0);
+  opacity: 1;
+}
 `
 
 const Text = styled.p`
@@ -80,7 +80,7 @@ const Loader = styled.div`
   text-align: center;
 `
 
-const GalleryPart = () => {
+const GalleryPart = ({ id }: { id: string }) => {
   const dispatch = useAppDispatch()
   const {array, loading} = useAppSelector(state => state.gallery)
   
@@ -91,7 +91,7 @@ const GalleryPart = () => {
   return (
     <StyledContainer>
       <ItemHeader margin="64px 0 80px 0">
-        <NavigationItem fontSize="24px">galeria podróży</NavigationItem>
+        <NavigationItem fontSize="24px" id={id}>galeria podróży</NavigationItem>
         <Text>Galeria podróży firmy Horyzonty - wiodącego touroperatora specjalizującego się w organizacji wycieczek na najwyższy szczyt Polski, górę Rysy!</Text>
       </ItemHeader>
       {(loading)
