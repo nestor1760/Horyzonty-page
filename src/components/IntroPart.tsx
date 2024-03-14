@@ -14,6 +14,7 @@ const StyledIntro = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+  z-index: 1;
 `
 const slideDown = keyframes`
   from {
