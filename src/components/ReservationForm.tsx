@@ -47,7 +47,6 @@ const Input = styled.input`
     grid-row: 3;
     height: 144px;
   }
-  ////
 `
 
 
