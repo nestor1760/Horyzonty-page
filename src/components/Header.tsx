@@ -14,7 +14,7 @@ const StyledHeader = styled.div<{ scrolled: number}>`
   justify-content: space-between;
   background: rgba(255, 255, 255, 0.9);
   overflow: hidden;
-  z-index: 1000;
+  z-index: 2;
   border-bottom: 1px solid black;
   padding-top: 41px;
   padding-bottom: 41px;
@@ -55,7 +55,6 @@ const NavItem = styled.a`
   }
 `
 
-
 const Header: FC = () => {
   const scroll = useScroll()
 
@@ -76,7 +75,7 @@ const Header: FC = () => {
   
   return (
     <Container width='100%' background='rgba(255, 255, 255, 0.9)'>
-      <StyledHeader scrolled={scroll} className={(scroll > 95) ? 'bigger' : 'default'}>
+      <StyledHeader scrolled={scroll} className={(scroll > 95) ? 'bigger' : ''}>
         <HeaderTitle onClick={() => scrollToStart()}>horyzonty</HeaderTitle>
         <Container width='771px' justify='space-between' align='flex-end' margin='0'>
           <NavItem onClick={() => scrollToPart('about')}>o nas</NavItem>

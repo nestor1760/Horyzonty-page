@@ -6,6 +6,7 @@ import guideSlice from "./guideSlice";
 import nightStaySlice from "./nightStaySlice";
 import tourSlice from "./tourSlice";
 import aboutSlice from "./aboutSlice";
+import modalSlice from "./modalSlice";
 
 const store =  configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store =  configureStore({
     night: nightStaySlice,
     tour: tourSlice,
     about: aboutSlice,
+    modal: modalSlice,
   }
 })
 

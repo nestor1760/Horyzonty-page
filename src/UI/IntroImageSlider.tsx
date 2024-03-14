@@ -25,6 +25,7 @@ const Button = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
+  z-index: 1;
   &:last-child {
     margin-left: 34px;
   }

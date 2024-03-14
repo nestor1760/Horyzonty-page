@@ -5,18 +5,20 @@ import { IButtonProps } from '../types/types';
 
 
 const Button = styled.button<IButtonProps>`
-  width: 255px;
-  height: 54px;
+  width: ${props => props.width || '255px'};
+  height: ${props => props.height || '54px'};
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50px;
+  border-radius: ${props => props.radius || '50px'};
   border: 1px solid rgba(0, 0, 0, 0.6);
-  background: transparent;
-  text-transform: uppercase;
-  font-size: 16px;
+  background: ${props => props.background || 'transparent'};
+  color: ${props => props.color || 'black'};
+  text-transform: ${props => props.transform || 'uppercase'};
+  font-size: ${props => props.size || '16px'};
   font-weight: 600;
   cursor: pointer;
+  z-index: 1;
   padding: ${props => props.padding || '0'};
   margin: ${props => props.margin || '0'};
   box-shadow: 3px 10px 26px -11px rgba(0,0,0,0.78);
@@ -36,5 +38,5 @@ const CustomIcon = styled(GoArrowUpRight)`
 `
 
 
-export const StyledButton: FC<IButtonProps> = ({children, ...props}) => <Button {...props}>{children} <CustomIcon/></Button>
+export const StyledButton: FC<IButtonProps> = ({children, ...props}) => <Button {...props}>{children} <CustomIcon color={props.color}/></Button>
 

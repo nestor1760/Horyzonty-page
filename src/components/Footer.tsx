@@ -78,6 +78,7 @@ const SocialLink = styled.a`
 `
 
 const Footer = ({ id }: { id: string }) => {
+  
   return (
     <Container width='100%'>
       <StyledFooter>

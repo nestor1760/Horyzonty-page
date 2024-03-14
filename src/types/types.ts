@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 export interface IWrapperProps {
   children: ReactNode;
 }
+
 //for Container.tsx
 export interface IContainerProps {
   children: ReactNode,
@@ -111,6 +112,14 @@ export interface IButtonProps {
   children: ReactNode;
   padding?: string;
   margin?: string;
+  width?: string,
+  height?: string,
+  background?: string,
+  color?: string,
+  radius?: string,
+  transform?: string,
+  size?: string,
+  onClick?: () => void;
 }
 
 //for dataTours.ts
@@ -161,4 +170,15 @@ export interface IGalleryProps {
 //for GalleryNavigation.tsx
 export interface IGalleryNavProps {
   item: IGalleryItem,
+}
+
+//for Modal.tsx
+export interface IModal {
+  children: ReactNode,
+}
+
+//for modalSlice.ts
+export interface IModalState {
+  show: boolean,
+  scroll: boolean,
 }

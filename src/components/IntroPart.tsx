@@ -3,6 +3,10 @@ import { Container } from "../styled-components/Container";
 import IntroImageSlider from "../UI/IntroImageSlider";
 import { dataIntro } from "../data/dataIntro";
 import { StyledButton } from "../UI/Button";
+import Modal from "../UI/Modal";
+import { useAppDispatch } from "../hook";
+import { setShow } from "../store/modalSlice";
+import ReservationForm from "./ReservationForm";
 
 const StyledIntro = styled.div`
   width: 1110px;
@@ -52,6 +56,11 @@ const Text = styled.p`
 `
 
 const IntroPart = ({ id }: { id: string }) => {
+  const dispatch = useAppDispatch()
+
+  const showModal = (): void => {
+    dispatch(setShow({show: true, scroll: true}))
+  }  
 
   return (
     <Container width="100%" margin="105px 0 0 0">
@@ -60,13 +69,16 @@ const IntroPart = ({ id }: { id: string }) => {
         <Container width="100%">
           <Container width="350px" height="480px" margin="0 220px 0 0" direction="column" align="flex-start">
             <Text>Najlepszym partnerem dla tych, którzy pragną zdobyć Rysy, najwyższy szczyt Polski. Komfort, bezpieczeństwo i niezapomniane emocje - to nasze główne priorytety.</Text>
-            <StyledButton>rezerwacja</StyledButton>
+            <StyledButton onClick={() => showModal()}>rezerwacja</StyledButton>
           </Container>
           <Container>
             <IntroImageSlider data={dataIntro}/>
           </Container>
         </Container>
       </StyledIntro>
+      <Modal>
+        <ReservationForm />
+      </Modal>
     </Container>
   )
 }
