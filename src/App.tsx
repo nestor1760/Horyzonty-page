@@ -12,6 +12,8 @@ import TourPart from './components/TourPart/TourPart'
 import { Wrapper } from './styled-components/Wrapper'
 
 function App() { 
+
+  //123132
   return (
       <Wrapper>
           <Header />
