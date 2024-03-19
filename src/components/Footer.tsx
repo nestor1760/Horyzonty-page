@@ -102,8 +102,6 @@ type FooterProps = {
 }
 
 const Footer = (props: FooterProps) => {  
-  console.log('footer');
-  
   const {ref: footerRef, inView: footerIsVisible} = useInView()
 
   return (
