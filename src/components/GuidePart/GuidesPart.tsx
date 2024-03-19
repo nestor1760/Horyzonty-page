@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components"
+import styled, { css, keyframes } from "styled-components"
 import { Container } from "../../styled-components/Container"
 import { ItemHeader } from "../../styled-components/ItemHeader"
 import { NavigationItem } from "../../styled-components/NavigationItem"
@@ -9,13 +9,18 @@ import { useEffect, useState } from "react"
 import { HiOutlineArrowLongLeft, HiOutlineArrowLongRight } from "react-icons/hi2"
 import { useAppDispatch, useAppSelector } from "../../hook"
 import { guideDataRest } from "../../dataAPI/guideRest"
+import ReservationForm from "../ReservationForm"
+import Modal from "../../UI/Modal"
+import { setShow } from "../../store/modalSlice"
+import { useInView } from "react-intersection-observer"
 
 
 const StyledContainer = styled.div`
   width: 1110px;
+  z-index: 1;
 `
 
-const slideLeft = keyframes`
+const slideLeftAnimation = keyframes`
   from {
     transform: translateX(30px);
     opacity: 0;
@@ -26,13 +31,15 @@ const slideLeft = keyframes`
   }
 `
 
-const Text = styled.p`
+const Text = styled.p<{ inView: boolean}>`
   width: 540px;
   font-size: 32px;
   font-weight: 400;
   text-transform: uppercase;
   margin: 0 0 22px 0;
-  animation: ${slideLeft} 0.5s ease-in-out forwards;
+  ${({ inView }) => inView && css`
+    animation: ${slideLeftAnimation} 0.5s ease-in-out forwards;
+  `};
 `
 
 const SliderContainer = styled.div`
@@ -56,9 +63,15 @@ const Button = styled.button`
 
 const GuidesPart= ({ id }: { id: string }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const dispatch = useAppDispatch()
-  
   const {array} = useAppSelector(state => state.guide)  
+  const dispatch = useAppDispatch()
+
+  const {ref: guidesRef, inView: guidesIsVisible} = useInView()
+
+  
+  const showModal = (): void => {
+    dispatch(setShow({show: true, scroll: true}))
+  }  
 
   useEffect(() => {
     dispatch(guideDataRest(dataGuides))
@@ -73,13 +86,13 @@ const GuidesPart= ({ id }: { id: string }) => {
   }
 
   return (
-    <Container width="100%" margin="0 0 73px 0">
-      <StyledContainer>
+    <>
+      <StyledContainer ref={guidesRef}>
         <ItemHeader margin="0 0 50px 0">
           <NavigationItem fontSize="24px" id={id}>przewodnicy</NavigationItem>
           <Container direction="column">
-              <Text>Przewodnicy wspólnie stworzą unikalną wycieczkę na Rysy, gdzie bezpieczeństwo, doświadczenie i wrażenia będą głównym priorytetem.</Text>
-              <StyledButton>rezerwacja</StyledButton>
+              <Text inView={guidesIsVisible}>Przewodnicy wspólnie stworzą unikalną wycieczkę na Rysy, gdzie bezpieczeństwo, doświadczenie i wrażenia będą głównym priorytetem.</Text>
+              <StyledButton onClick={() => showModal()}>rezerwacja</StyledButton>
           </Container>
         </ItemHeader>
         {(array.length > 0)
@@ -102,7 +115,10 @@ const GuidesPart= ({ id }: { id: string }) => {
           }
         </Container>
       </StyledContainer>
-    </Container>
+      <Modal>
+        <ReservationForm />
+      </Modal>
+    </>
   )
 }
 

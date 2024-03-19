@@ -1,15 +1,17 @@
 import { FC } from "react"
 import { IGalleryProps } from "../../types/types"
-import styled, { keyframes } from "styled-components"
+import styled, { css, keyframes } from "styled-components"
 import { useEvenItem } from "../../hooks/useEvenItem"
 
-const ItemConteiner = styled.div<{ element: boolean | undefined}>`
+const ItemConteiner = styled.div<{ element: boolean | undefined, inView: boolean}>`
   width: 540px;
   height: ${({ element }) => (element ? '678px' : '')};
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  animation: ${({ element }) => (element ? slideLeft : slideRight)} 0.5s ease-in-out forwards;
+  ${({ inView, element }) => inView && css`
+    animation: ${(element ? slideLeft : slideRight)} 0.5s ease-in-out forwards;
+  `};
 `
 
 const slideLeft = keyframes`
@@ -73,12 +75,12 @@ const Button = styled.button`
 `
 
 
-const GalleryItem:FC<IGalleryProps> = ({item, index}) => {
+const GalleryItem:FC<IGalleryProps> = ({item, index, inView}) => {
   const {date, image, name} = item
   const isEven = useEvenItem(index)    
 
   return (
-    <ItemConteiner element={isEven}>
+    <ItemConteiner element={isEven} inView={inView}>
       <Image src={image} alt={name}/>
       <InfoContainer>
         <Name>{name}</Name>

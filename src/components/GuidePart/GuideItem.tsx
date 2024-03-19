@@ -3,12 +3,12 @@ import styled, { keyframes } from "styled-components"
 import { IGuideItemProps } from "../../types/types"
 
 const fadeIn = keyframes`
-from {
-  opacity: 0;
-}
-to {
-  opacity: 1;
-}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 `
 
 const SliderItem = styled.div`

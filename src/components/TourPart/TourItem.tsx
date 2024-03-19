@@ -1,18 +1,22 @@
-import styled, { keyframes } from "styled-components"
+import styled, { css, keyframes } from "styled-components"
 import { FC } from "react"
 import { ITourItemProps } from "../../types/types"
 import { StyledButton } from "../../UI/Button"
 import { useEvenItem } from "../../hooks/useEvenItem"
 import { Container } from "../../styled-components/Container"
+import { useAppDispatch } from "../../hook"
+import { setShow } from "../../store/modalSlice"
 
-const StyledItemBlock = styled.div<{ element: boolean | undefined}>`
+const StyledItemBlock = styled.div<{ element: boolean | undefined, inView: boolean}>`
   width: 100%:
   height: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: ${({ element }) => element ? 'row' : 'row-reverse'};
-  animation: ${({ element }) => (element ? slideLeft : slideRight)} 0.5s ease-in-out forwards;
+  ${({ inView, element }) => inView && css`
+    animation: ${(element ? slideLeftAnimation : slideRightAnimation)} 0.5s ease-in-out forwards;
+  `};
   margin-bottom: 80px;
   &:last-child {
     margin-top: 56px;
@@ -21,7 +25,7 @@ const StyledItemBlock = styled.div<{ element: boolean | undefined}>`
     flex-direction: row;
   };
 `
-const slideLeft = keyframes`
+const slideLeftAnimation = keyframes`
   from {
     transform: translateX(-10%);
     opacity: 0;
@@ -32,7 +36,7 @@ const slideLeft = keyframes`
   }
 `;
 
-const slideRight = keyframes`
+const slideRightAnimation = keyframes`
   from {
     transform: translateX(10%);
     opacity: 0;
@@ -88,8 +92,13 @@ const Image = styled.img<{ element: boolean | undefined}>`
 `
 
 
-const TourItem:FC<ITourItemProps> = ({tour, index}) => {
+const TourItem:FC<ITourItemProps> = ({tour, index, inView}) => {
   const {description, distance, duration, image, people, title} = tour;
+  const dispatch = useAppDispatch()
+
+  const showModal = (): void => {
+    dispatch(setShow({show: true, scroll: true}))
+  } 
   
   const day = duration > 1 ? 'dni' : 'dzień';
   const person = people > 1 ? 'osób' : 'osoba';
@@ -97,14 +106,14 @@ const TourItem:FC<ITourItemProps> = ({tour, index}) => {
   const isEven = useEvenItem(index)  
   
   return (
-      <StyledItemBlock element={isEven}>
+      <StyledItemBlock element={isEven} inView={inView}>
         <InfoPart>
           <Title>{title}</Title>
           <Description>{description}</Description>
           <InfoPartItem>Odległość<Span>{distance} km</Span></InfoPartItem>
           <InfoPartItem>Czas trwania<Span>{duration} {day}</Span></InfoPartItem>
           <InfoPartItem>Ilość osób<Span>{people} {person}</Span></InfoPartItem>
-          <StyledButton margin="44px 0 0 0">Rezerwacja</StyledButton>
+          <StyledButton onClick={() => showModal()} margin="44px 0 0 0">Rezerwacja</StyledButton>
         </InfoPart>
         <Container>
           <Image element={isEven} src={image} alt={title}/>

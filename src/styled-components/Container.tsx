@@ -12,7 +12,7 @@ const StyledContainer = styled.div<IContainerProps>`
   padding: ${props => props.padding || 'auto'};
   margin: ${props => props.margin || 'auto'};
   flex-wrap: ${props => props.wrap || 'no-wrap'};
-  background: ${props => props.background || 'transparent'};
+  background: ${props => props.background || 'transparent'}; 
 `
 
 

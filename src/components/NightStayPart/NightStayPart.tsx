@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components"
+import styled, { css, keyframes } from "styled-components"
 import { ItemHeader } from "../../styled-components/ItemHeader"
 import { NavigationItem } from "../../styled-components/NavigationItem"
 import { Container } from "../../styled-components/Container"
@@ -7,6 +7,7 @@ import NightItem from "./NightItem"
 import { useAppDispatch, useAppSelector } from "../../hook"
 import { useEffect } from "react"
 import { nightStayDataRest } from "../../dataAPI/nightStayRest"
+import { useInView } from "react-intersection-observer"
 
 const StyledContainer = styled.div`
   width: 1110px;
@@ -15,9 +16,10 @@ const StyledContainer = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   margin: 0 0 126px 0;
+  z-index: 1;
 `
 
-const slideLeft = keyframes`
+const slideLeftAnimation = keyframes`
   from {
     transform: translateX(30px);
     opacity: 0;
@@ -37,12 +39,14 @@ to {
 }
 `
 
-const Text = styled.p`
+const Text = styled.p<{ inView: boolean}>`
   width: 100%;
   font-size: 32px;
   text-transform: uppercase;
   font-weight: 400;
-  animation: ${slideLeft} 0.5s ease-in-out forwards;
+  ${({ inView }) => inView && css`
+    animation: ${slideLeftAnimation} 0.5s ease-in-out forwards;
+  `};
 `
 
 type TImage = {
@@ -51,6 +55,7 @@ type TImage = {
   left?: string,
   bottom?: string,
   margin?: string,
+  inView: boolean,
 }
 
 const Image = styled.img<TImage>`
@@ -60,7 +65,9 @@ const Image = styled.img<TImage>`
   height: 425px;
   object-fit: cover; 
   position: absolute;
-  animation: ${fadeIn} 0.5s ease-in-out forwards;
+  ${({ inView }) => inView && css`
+    animation: ${fadeIn} 0.5s ease-in-out forwards;
+  `};
   margin: ${props => props.margin || ''};
   top: ${props => props.top || ''};
   right: ${props => props.right || ''};
@@ -82,54 +89,59 @@ const StyledItem = styled.div`
   }
 `
 
-const Title = styled.p`
+const Title = styled.p<{ inView: boolean}>`
   width: 540px;
   font-size: 24px;
   font-weight: 400;
   text-transform: uppercase;
   margin-bottom: 68px;
-  animation: ${slideLeft} 0.5s ease-in-out forwards;
+  ${({ inView }) => inView && css`
+    animation: ${slideLeftAnimation} 0.5s ease-in-out forwards;
+  `};
 `
 
 const NightStayPart = ({ id }: { id: string }) => {
   const dispatch = useAppDispatch()
   const {array} = useAppSelector(state => state.guide)  
 
+  const {ref: nightStayRef, inView: nightStayIsVisible} = useInView()
+
+
   useEffect(() => {
     dispatch(nightStayDataRest(dataNightStay))
   }, [])
 
   return (
-    <StyledContainer>
+    <StyledContainer ref={nightStayRef}>
       <ItemHeader margin="100px 0 157px 0">
         <NavigationItem fontSize="24px" id={id}>nocleg pod gołym niebem</NavigationItem>
-        <Text>Wyruszając na trzydniową wycieczkę na Rysy, nocowanie w namiotach stanowi niezapomniany element zbliżenia się do natury i poczucia prawdziwej przygody.</Text>
+        <Text inView={nightStayIsVisible}>Wyruszając na trzydniową wycieczkę na Rysy, nocowanie w namiotach stanowi niezapomniany element zbliżenia się do natury i poczucia prawdziwej przygody.</Text>
       </ItemHeader>
         <Container width="1110px" display="flex" justify="flex-start">
           <StyledItem>
-            <Image src="/media/stay1image.png" alt="adad" top='0' right="0"/>
+            <Image inView={nightStayIsVisible} src="/media/stay1image.png" alt="adad" top='0' right="0"/>
             {(array.length > 0)
               ?
                 <Container width="100%" justify="space-between" align="flex-start" margin="0">
-                  <NightItem item={array[2]}/>              
-                  <NightItem item={array[3]}/>              
+                  <NightItem inView={nightStayIsVisible} item={array[2]}/>              
+                  <NightItem inView={nightStayIsVisible} item={array[3]}/>              
                 </Container>
               :
                 null
             }
           </StyledItem>
           <StyledItem>
-            <Title>Podczas noclegu w namiotach otrzymasz:</Title>
+            <Title inView={nightStayIsVisible}>Podczas noclegu w namiotach otrzymasz:</Title>
             {(array.length > 0)
               ?
                 <Container width="100%" justify="space-between" align="flex-start" margin="0">
-                  <NightItem item={array[0]}/>              
-                  <NightItem item={array[1]}/>              
+                  <NightItem inView={nightStayIsVisible} item={array[0]}/>              
+                  <NightItem inView={nightStayIsVisible} item={array[1]}/>              
                 </Container>
               :
                 null
             }
-            <Image src="/media/stay2image.png" alt="adad" bottom='0' left="0" />
+            <Image inView={nightStayIsVisible} src="/media/stay2image.png" alt="adad" bottom='0' left="0" />
           </StyledItem>
         </Container>
     </StyledContainer>

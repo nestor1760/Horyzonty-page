@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 //for Wrapper.tsx
 export interface IWrapperProps {
   children: ReactNode;
+  zIndex?: string,
 }
 
 //for Container.tsx
@@ -52,7 +53,8 @@ export interface IDataNightStayItem {
 
 //for NightItem.tsx
 export interface INightStayProps {
-  item: IDataNightStayItem
+  item: IDataNightStayItem,
+  inView: boolean,
 }
 
 //for dataIntro.ts
@@ -98,6 +100,7 @@ export interface IVoucherItem {
 export interface IVoucherItemProps {
   voucher: IVoucherItem;
   index: number;
+  inView: boolean;
 }
 
 //for dataAbout.ts
@@ -137,6 +140,7 @@ export interface ITourItem {
 export interface ITourItemProps {
   tour: ITourItem;
   index: number;
+  inView: boolean;
 }
 
 //for dataFood.ts
@@ -151,6 +155,7 @@ export interface IFoodItem {
 export interface IFoodItemProps {
   food: IFoodItem;
   index: number;
+  inView: boolean;
 }
 
 //for dataGalleryItem 
@@ -165,6 +170,7 @@ export interface IGalleryItem {
 export interface IGalleryProps {
   item: IGalleryItem,
   index: number,
+  inView: boolean;
 }
 
 //for GalleryNavigation.tsx
@@ -181,4 +187,16 @@ export interface IModal {
 export interface IModalState {
   show: boolean,
   scroll: boolean,
+}
+
+//for Select.tsx
+export interface IOptionItem {
+  value: string;
+  name: string;
+}
+
+export interface ISelectProps {
+  id?: string,
+  options: IOptionItem[],
+  defaultValue: string,
 }

@@ -1,16 +1,20 @@
 import { FC } from "react"
-import styled, { keyframes } from "styled-components"
+import styled, { css, keyframes } from "styled-components"
 import { IVoucherItemProps } from "../../types/types"
 import { StyledButton } from "../../UI/Button"
 import { useEvenItem } from "../../hooks/useEvenItem"
+import { useAppDispatch } from "../../hook"
+import { setShow } from "../../store/modalSlice"
 
-const VoucherItemContainer = styled.div<{ element: boolean | undefined}>`
+const VoucherItemContainer = styled.div<{ element: boolean | undefined, inView: boolean}>`
   width: 350px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
   flex-direction: column;
-  animation: ${({ element }) => (element ? slideUp : slideDown)} 0.5s ease-in-out forwards;
+  ${({ inView, element }) => inView && css`
+    animation: ${(element ? slideUp : slideDown)} 0.5s ease-in-out forwards;
+  `};
 `
 
 const slideUp = keyframes`
@@ -56,17 +60,22 @@ const Title = styled.p`
   margin: 30px 0 20px 0;
 `
 
-const VouchersItem:FC<IVoucherItemProps> = ({voucher, index}) => {
+const VouchersItem:FC<IVoucherItemProps> = ({voucher, index, inView}) => {
   const {description, image, title} = voucher
   const isEven = useEvenItem(index)  
 
+  const dispatch = useAppDispatch()
+
+  const showModal = (): void => {
+    dispatch(setShow({show: true, scroll: true}))
+  }  
 
   return (
-    <VoucherItemContainer element={isEven}>
+    <VoucherItemContainer element={isEven} inView={inView}>
       <Description>{description}</Description>
       <Image src={image} alt={title}/>
       <Title>{title}</Title>
-      <StyledButton>rezerwacja</StyledButton>
+      <StyledButton onClick={() => showModal()}>rezerwacja</StyledButton>
     </VoucherItemContainer>
   )
 }

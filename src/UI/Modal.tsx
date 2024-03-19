@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components"
 import { IModal } from "../types/types"
 import { useAppDispatch, useAppSelector } from "../hook"
 import { setShow } from "../store/modalSlice"
+import { setResponce } from "../store/formSlice"
 
 const slideDown = keyframes`
   from {
@@ -35,8 +36,8 @@ const fadeIn = keyframes`
   }
   to {
     opacity: 1;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(3px);
     z-index: 10;
   }
 `
@@ -44,8 +45,8 @@ const fadeIn = keyframes`
 const fadeOut = keyframes`
   from {
     opacity: 1;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(3px);
     z-index: 10;
   }
   to {
@@ -65,6 +66,7 @@ const StyledModal = styled.div<{ show: boolean | undefined}>`
   height: 100%;
   justify-content: center;
   align-items: center;
+  z-index: 0;
   animation: ${({ show }) => show === undefined ? null : (show ? fadeIn : fadeOut)} 250ms ease-in-out forwards;
 `
 
@@ -81,6 +83,9 @@ const Modal:FC<IModal> = ({children}) => {
 
   const closeModal = () => {
     dispatch(setShow({show: false, scroll: false}))
+    setTimeout(() => {
+      dispatch(setResponce(false))
+    }, 300)
   }
 
   useEffect(() => {

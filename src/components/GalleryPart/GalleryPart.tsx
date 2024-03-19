@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components"
+import styled, { css, keyframes } from "styled-components"
 import { ItemHeader } from "../../styled-components/ItemHeader"
 import { NavigationItem } from "../../styled-components/NavigationItem"
 import GalleryItem from "./GalleryItem"
@@ -7,6 +7,7 @@ import { useEffect } from "react"
 import { dataGallery } from "../../data/dataGallery"
 import { galleryDataRest } from "../../dataAPI/galleryRest"
 import GalleryNavItem from "./GalleryNavigation"
+import { useInView } from "react-intersection-observer"
 
 const StyledContainer = styled.div`
   width: 1110px;
@@ -15,9 +16,10 @@ const StyledContainer = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   margin: 63px 0 46px 0;
+  z-index: 1;
 `
 
-const slideLeft = keyframes`
+const slideLeftAnimation = keyframes`
 from {
   transform: translateX(30px);
   opacity: 0;
@@ -28,12 +30,14 @@ to {
 }
 `
 
-const Text = styled.p`
+const Text = styled.p<{ inView: boolean}>`
   width: 100%;
   font-size: 32px;
   text-transform: uppercase;
   font-weight: 400;
-  animation: ${slideLeft} 0.5s ease-in-out forwards;
+  ${({ inView }) => inView && css`
+    animation: ${slideLeftAnimation} 0.5s ease-in-out forwards;
+  `};
 `
 const GridContainer = styled.div`
   position: relative;
@@ -83,16 +87,19 @@ const Loader = styled.div`
 const GalleryPart = ({ id }: { id: string }) => {
   const dispatch = useAppDispatch()
   const {array, loading} = useAppSelector(state => state.gallery)
+
+  const {ref: galleryRef, inView: galleryIsVisible} = useInView()
+
   
   useEffect(() => {
       dispatch(galleryDataRest(dataGallery))
   }, [])
 
   return (
-    <StyledContainer>
+    <StyledContainer ref={galleryRef}>
       <ItemHeader margin="64px 0 80px 0">
         <NavigationItem fontSize="24px" id={id}>galeria podróży</NavigationItem>
-        <Text>Galeria podróży firmy Horyzonty - wiodącego touroperatora specjalizującego się w organizacji wycieczek na najwyższy szczyt Polski, górę Rysy!</Text>
+        <Text inView={galleryIsVisible}>Galeria podróży firmy Horyzonty - wiodącego touroperatora specjalizującego się w organizacji wycieczek na najwyższy szczyt Polski, górę Rysy!</Text>
       </ItemHeader>
       {(loading)
         ?
@@ -106,7 +113,7 @@ const GalleryPart = ({ id }: { id: string }) => {
               <ShowAllButton>zobaczyć wszystkie</ShowAllButton>
             </GalleryNavigation>
             {array.map((item, index) => 
-              <GalleryItem index={index} item={item} key={item.id}/>
+              <GalleryItem index={index} item={item} key={item.id} inView={galleryIsVisible}/>
             )}
           </GridContainer>
       } 

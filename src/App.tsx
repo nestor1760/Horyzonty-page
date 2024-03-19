@@ -12,9 +12,8 @@ import TourPart from './components/TourPart/TourPart'
 import { Wrapper } from './styled-components/Wrapper'
 
 function App() { 
-
-  return (
-      <Wrapper>
+    return (
+      <Wrapper zIndex='1'>
           <Header />
           <IntroPart id='intro'/>
           <AboutPart id='about'/>
@@ -23,7 +22,7 @@ function App() {
           <GuidesPart id='guides'/>
           <FoodPart id='food'/>
           <NightStayPart id='nightstay'/>
-          <VouchersPart id='vouchers'/>
+          <VouchersPart id='vouchers' />
           <Footer id='contact'/>
       </Wrapper>
   )

@@ -7,6 +7,8 @@ import nightStaySlice from "./nightStaySlice";
 import tourSlice from "./tourSlice";
 import aboutSlice from "./aboutSlice";
 import modalSlice from "./modalSlice";
+import formSlice from "./formSlice";
+import selectSlice from "./selectSlice";
 
 const store =  configureStore({
   reducer: {
@@ -18,6 +20,8 @@ const store =  configureStore({
     tour: tourSlice,
     about: aboutSlice,
     modal: modalSlice,
+    form: formSlice,
+    select: selectSlice,
   }
 })
 

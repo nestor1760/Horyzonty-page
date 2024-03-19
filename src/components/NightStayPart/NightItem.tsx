@@ -1,9 +1,9 @@
 import { FC } from "react"
-import styled, { keyframes } from "styled-components"
+import styled, { css, keyframes } from "styled-components"
 import { INightStayProps } from "../../types/types"
 
 
-const slideDown = keyframes`
+const slideDownAnimation = keyframes`
   from {
     transform: translateY(-30px);
     opacity: 0;
@@ -14,14 +14,16 @@ const slideDown = keyframes`
   }
 `
 
-const DataItemContainer = styled.div`
+const DataItemContainer = styled.div<{inView: boolean}>`
   width: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
   margin-bottom: 24px;
-  animation: ${slideDown} 0.5s ease-in-out forwards;
+  ${({ inView }) => inView && css`
+    animation: ${slideDownAnimation} 0.5s ease-in-out forwards;
+  `};
   &:nth-child(odd) {
     margin-right: 30px
   }
@@ -39,11 +41,11 @@ const ItemText = styled.p`
   color: rgba(0, 0, 0, 0.6)
 `
 
-const NightItem:FC<INightStayProps> = ({item}) => {
+const NightItem:FC<INightStayProps> = ({item, inView}) => {
   const {title, description} = item
 
   return (
-    <DataItemContainer>
+    <DataItemContainer inView={inView}>
       <ItemTitle>{title}</ItemTitle>
       <ItemText>{description}</ItemText>
     </DataItemContainer>
