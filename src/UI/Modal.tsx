@@ -67,12 +67,12 @@ const StyledModal = styled.div<{ show: boolean | undefined}>`
   justify-content: center;
   align-items: center;
   z-index: 0;
-  animation: ${({ show }) => show === undefined ? null : (show ? fadeIn : fadeOut)} 250ms ease-in-out forwards;
+  animation: ${({ show }) => show === undefined ? null : (show ? fadeIn : fadeOut)} 0.3s ease-in-out forwards;
 `
 
 const ModalContent = styled.div<{show: boolean | undefined}>`
     background-color: #fff;
-    animation: ${({ show }) => show === undefined ? null : (show ? slideDown : slideUp)} 250ms ease-in-out forwards;
+    animation: ${({ show }) => show === undefined ? null : (show ? slideDown : slideUp)} 0.3s ease-in-out forwards;
     opacity: ${({ show }) => show ? '1' : '0'};
     pointer-events: ${({ show }) => show ? 'auto' : 'none'};
 `
