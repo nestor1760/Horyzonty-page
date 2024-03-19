@@ -76,7 +76,6 @@ const TextResponce = styled.p`
 
 `
 
-
 const ReservationForm = () => {
   const dispatch = useAppDispatch()
   const {firstName, lastName, comment, email, responce} = useAppSelector(state => state.form)  
