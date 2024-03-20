@@ -106,7 +106,6 @@ const NightStayPart = ({ id }: { id: string }) => {
 
   const {ref: nightStayRef, inView: nightStayIsVisible} = useInView()
 
-
   useEffect(() => {
     dispatch(nightStayDataRest(dataNightStay))
   }, [])

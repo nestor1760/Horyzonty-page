@@ -25,6 +25,7 @@ const TourListBlock = styled.div`
 const TourPart = ({ id }: { id: string }) => {
   const dispatch = useAppDispatch()
   const {array} = useAppSelector(state => state.tour)  
+  const {show} = useAppSelector(state => state.modal)
   
   const {ref: tourRef, inView: tourIsVisible} = useInView()
 
@@ -42,7 +43,7 @@ const TourPart = ({ id }: { id: string }) => {
           )}
         </TourListBlock>
       </StyledContainer>
-      <Modal>
+      <Modal show={show}>
         <ReservationForm />
       </Modal>
     </>

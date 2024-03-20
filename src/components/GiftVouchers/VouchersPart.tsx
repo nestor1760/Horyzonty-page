@@ -51,6 +51,7 @@ const VoucherList = styled.div`
 const VouchersPart = ({ id }: { id: string }) => {
   const dispatch = useAppDispatch()
   const {array} = useAppSelector(state => state.voucher)
+  const {show} = useAppSelector(state => state.modal)
 
   const {ref: voucherRef, inView: voucherIsVisible} = useInView()
 
@@ -71,7 +72,7 @@ const VouchersPart = ({ id }: { id: string }) => {
           )}
         </VoucherList>
       </StyledContainer>
-      <Modal>
+      <Modal show={show}>
         <ReservationForm />
       </Modal>
     </>

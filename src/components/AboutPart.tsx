@@ -139,28 +139,28 @@ const AboutPart = ({ id }: { id: string }) => {
   }, [])
 
   return (
-      <StyledContainer ref={aboutRef}>
-        <ItemHeader width='1110px' padding='107px 0 26px 0' margin='0 auto'>
-          <NavigationItem width='570px' fontSize='24px' margin='0' id={id}>o nas</NavigationItem>
-          <Container direction='column' width='540px'>
-            <TitleHeader inView={aboutIsVisible}>Witamy w firmie Horyzonty - wiodącym touroperatorem specjalizującym się w organizowaniu wycieczek na najwyższy szczyt Polski, górę Rysy!</TitleHeader>
-            <Container width='540px'>
-              <TitleText inView={aboutIsVisible}>Horyzonty to wysoko wykwalifikowana firma turystyczna z wieloletnim doświadczeniem w organizacji wycieczek i podróży na szczyt Rysy. Zadowolenie klientów jest naszym głównym priorytetem, dlatego oferujemy spersonalizowane podejście do każdej wycieczki. Nasza reputacja opiera się na tysiącach zadowolonych klientów.</TitleText>
-              <TitleText inView={aboutIsVisible}>Nasza misja polega na zapewnieniu klientom niezapomnianych przygód i najwyższego poziomu obsługi, pozwalając im cieszyć się wrażeniami z unikalnych krajobrazów i naturalnych piękności Tatr. Wybierz naszą firmę i spełnij swoje marzenie o podróży na Rysy.</TitleText>
-            </Container>
+    <StyledContainer ref={aboutRef}>
+      <ItemHeader width='1110px' padding='107px 0 26px 0' margin='0 auto'>
+        <NavigationItem width='570px' fontSize='24px' margin='0' id={id}>o nas</NavigationItem>
+        <Container direction='column' width='540px'>
+          <TitleHeader inView={aboutIsVisible}>Witamy w firmie Horyzonty - wiodącym touroperatorem specjalizującym się w organizowaniu wycieczek na najwyższy szczyt Polski, górę Rysy!</TitleHeader>
+          <Container width='540px'>
+            <TitleText inView={aboutIsVisible}>Horyzonty to wysoko wykwalifikowana firma turystyczna z wieloletnim doświadczeniem w organizacji wycieczek i podróży na szczyt Rysy. Zadowolenie klientów jest naszym głównym priorytetem, dlatego oferujemy spersonalizowane podejście do każdej wycieczki. Nasza reputacja opiera się na tysiącach zadowolonych klientów.</TitleText>
+            <TitleText inView={aboutIsVisible}>Nasza misja polega na zapewnieniu klientom niezapomnianych przygód i najwyższego poziomu obsługi, pozwalając im cieszyć się wrażeniami z unikalnych krajobrazów i naturalnych piękności Tatr. Wybierz naszą firmę i spełnij swoje marzenie o podróży na Rysy.</TitleText>
           </Container>
-        </ItemHeader>
-        <StyledImage inView={aboutIsVisible} src='/media/about-us-photo.png' alt='the girl looks at the landscape'/>
-        <Container width='1110px' display='flex' justify='space-between'>
-          {array.map(item => 
-            <StyledItem inView={aboutIsVisible} key={item.id}>
-              <ItemText>więcej</ItemText>
-              <StrongText>{item.data}</StrongText>
-              <ItemText>{item.title}</ItemText>
-            </StyledItem>
-          )}
         </Container>
-        </StyledContainer>
+      </ItemHeader>
+      <StyledImage inView={aboutIsVisible} src='/media/about-us-photo.png' alt='the girl looks at the landscape'/>
+      <Container width='1110px' display='flex' justify='space-between'>
+        {array.map(item => 
+          <StyledItem inView={aboutIsVisible} key={item.id}>
+            <ItemText>więcej</ItemText>
+            <StrongText>{item.data}</StrongText>
+            <ItemText>{item.title}</ItemText>
+          </StyledItem>
+        )}
+      </Container>
+    </StyledContainer>
   )
 }
 

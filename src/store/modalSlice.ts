@@ -1,13 +1,15 @@
-import { IModalState } from './../types/types';
+import { IModalGalleryState, IModalState } from './../types/types';
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 type ModalState = {
-  show: boolean | undefined,
+  show: boolean,
+  showGallery: boolean,
   scroll: boolean,
 }
 
 const initialState: ModalState = {
-  show: undefined,
+  show: false,
+  showGallery: false,
   scroll: false,
 }
 
@@ -19,8 +21,12 @@ const modalSlice = createSlice({
       state.show = action.payload.show;
       state.scroll = action.payload.scroll;
     },
+    setShowGallery: (state, action: PayloadAction<IModalGalleryState>) => {
+      state.showGallery = action.payload.showGallery;
+      state.scroll = action.payload.scroll;
+    },
   },
 });
 
-export const {setShow} = modalSlice.actions;
+export const {setShow, setShowGallery} = modalSlice.actions;
 export default modalSlice.reducer;

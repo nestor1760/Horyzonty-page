@@ -101,43 +101,41 @@ type FooterProps = {
   id: string,
 }
 
-const Footer = (props: FooterProps) => {  
-  console.log('footer');
-  
+const Footer = (props: FooterProps) => {    
   const {ref: footerRef, inView: footerIsVisible} = useInView()
 
   return (
-      <StyledFooter ref={footerRef}>
-        <ItemHeader padding='58px 0 63px 0' width='1110px'>
-          <NavigationItem width='570px' fontSize='24px' id={props.id}>kontakty</NavigationItem>
-          <Text inView={footerIsVisible}>Jeśli masz pytania dotyczące naszych wycieczek górskich, bonów podarunkowych lub chciałbyś dowiedzieć się więcej o trasach, wrażeniach i możliwościach, skontaktuj się z nami.</Text>
-        </ItemHeader>
-        <FooterImg inView={footerIsVisible} src='/media/footer.png' alt='forest landscape'/>
-        <Container direction='column' margin='78px 0 0 0'>
-          <ContactItem>
-            <ItemTitle>numer telefonu</ItemTitle>
-            <ItemText inView={footerIsVisible}>+48123456789</ItemText>
-          </ContactItem>
-          <ContactItem>
-            <ItemTitle>grafik pracy</ItemTitle>
-            <Container  width='354px' justify='space-between'>
-              <ItemText inView={footerIsVisible} style={{marginRight: '123px'}}>Pn-Sob</ItemText>
-              <ItemText inView={footerIsVisible}>9:00-17:00</ItemText>
-            </Container>
-          </ContactItem>
-          <ContactItem>
-            <ItemTitle>sieci społecznościowe</ItemTitle>
-            <SocialItem inView={footerIsVisible}>
-              <IoLogoInstagram size={30} style={{marginRight: '49px'}}/>
-              <SocialLink href='https://www.instagram.com/' target='_blank'>instagram</SocialLink>
-            </SocialItem>
-            <SocialItem inView={footerIsVisible}>
-              <FaSquareFacebook size={30} style={{marginRight: '49px'}}/>
-              <SocialLink href='https://www.facebook.com/' target='_blank'>facebook</SocialLink>
-            </SocialItem>
-          </ContactItem>
-        </Container>
-      </StyledFooter>
+    <StyledFooter ref={footerRef}>
+      <ItemHeader padding='58px 0 63px 0' width='1110px'>
+        <NavigationItem width='570px' fontSize='24px' id={props.id}>kontakty</NavigationItem>
+        <Text inView={footerIsVisible}>Jeśli masz pytania dotyczące naszych wycieczek górskich, bonów podarunkowych lub chciałbyś dowiedzieć się więcej o trasach, wrażeniach i możliwościach, skontaktuj się z nami.</Text>
+      </ItemHeader>
+      <FooterImg inView={footerIsVisible} src='/media/footer.png' alt='forest landscape'/>
+      <Container direction='column' margin='78px 0 0 0'>
+        <ContactItem>
+          <ItemTitle>numer telefonu</ItemTitle>
+          <ItemText inView={footerIsVisible}>+48123456789</ItemText>
+        </ContactItem>
+        <ContactItem>
+          <ItemTitle>grafik pracy</ItemTitle>
+          <Container  width='354px' justify='space-between'>
+            <ItemText inView={footerIsVisible} style={{marginRight: '123px'}}>Pn-Sob</ItemText>
+            <ItemText inView={footerIsVisible}>9:00-17:00</ItemText>
+          </Container>
+        </ContactItem>
+        <ContactItem>
+          <ItemTitle>sieci społecznościowe</ItemTitle>
+          <SocialItem inView={footerIsVisible}>
+            <IoLogoInstagram size={30} style={{marginRight: '49px'}}/>
+            <SocialLink href='https://www.instagram.com/' target='_blank'>instagram</SocialLink>
+          </SocialItem>
+          <SocialItem inView={footerIsVisible}>
+            <FaSquareFacebook size={30} style={{marginRight: '49px'}}/>
+            <SocialLink href='https://www.facebook.com/' target='_blank'>facebook</SocialLink>
+          </SocialItem>
+        </ContactItem>
+      </Container>
+    </StyledFooter>
   )
 }
 

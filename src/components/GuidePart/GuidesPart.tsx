@@ -64,11 +64,11 @@ const Button = styled.button`
 const GuidesPart= ({ id }: { id: string }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const {array} = useAppSelector(state => state.guide)  
+  const {show} = useAppSelector(state => state.modal)
   const dispatch = useAppDispatch()
 
   const {ref: guidesRef, inView: guidesIsVisible} = useInView()
 
-  
   const showModal = (): void => {
     dispatch(setShow({show: true, scroll: true}))
   }  
@@ -115,7 +115,7 @@ const GuidesPart= ({ id }: { id: string }) => {
           }
         </Container>
       </StyledContainer>
-      <Modal>
+      <Modal show={show}>
         <ReservationForm />
       </Modal>
     </>

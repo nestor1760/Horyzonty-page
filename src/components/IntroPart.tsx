@@ -4,7 +4,7 @@ import IntroImageSlider from "../UI/IntroImageSlider";
 import { dataIntro } from "../data/dataIntro";
 import { StyledButton } from "../UI/Button";
 import Modal from "../UI/Modal";
-import { useAppDispatch } from "../hook";
+import { useAppDispatch, useAppSelector } from "../hook";
 import { setShow } from "../store/modalSlice";
 import ReservationForm from "./ReservationForm";
 import { useInView } from "react-intersection-observer";
@@ -63,6 +63,7 @@ const Text = styled.p<{ inView: boolean}>`
 `
 
 const IntroPart = ({ id }: { id: string }) => {
+  const {show} = useAppSelector(state => state.modal)
   const dispatch = useAppDispatch()
 
   const showModal = (): void => {
@@ -70,7 +71,6 @@ const IntroPart = ({ id }: { id: string }) => {
   }  
 
   const {ref: introRef, inView: introIsVisible} = useInView()
-
 
   return (
     <>
@@ -86,7 +86,7 @@ const IntroPart = ({ id }: { id: string }) => {
           </Container>
         </Container>
       </StyledIntro>
-      <Modal>
+      <Modal show={show}>
         <ReservationForm />
       </Modal>
     </>

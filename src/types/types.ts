@@ -158,12 +158,25 @@ export interface IFoodItemProps {
   inView: boolean;
 }
 
+
 //for dataGalleryItem 
+export interface IGalleryImages {
+  id: number,
+  title: string,
+  image: string,
+}
+
 export interface IGalleryItem {
   id: number,
   name: string,
   image: string,
   date: string,
+  images: IGalleryImages[];
+}
+
+//for gallerySlider.tsx
+export interface IGallerySliderProps {
+  item: IGalleryItem,
 }
 
 //for GalleryItem.tsx
@@ -181,12 +194,18 @@ export interface IGalleryNavProps {
 //for Modal.tsx
 export interface IModal {
   children: ReactNode,
+  show: boolean,
 }
 
 //for modalSlice.ts
 export interface IModalState {
   show: boolean,
   scroll: boolean,
+}
+
+export interface IModalGalleryState {
+  scroll: boolean,
+  showGallery: boolean,
 }
 
 //for Select.tsx
