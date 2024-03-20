@@ -101,11 +101,7 @@ type FooterProps = {
   id: string,
 }
 
-<<<<<<< HEAD
 const Footer = (props: FooterProps) => {    
-=======
-const Footer = (props: FooterProps) => {  
->>>>>>> 9a832cba483138b9174f3005cf7a09e96e33679b
   const {ref: footerRef, inView: footerIsVisible} = useInView()
 
   return (

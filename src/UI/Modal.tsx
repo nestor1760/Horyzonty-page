@@ -36,7 +36,6 @@ const ModalOverlay = styled.div`
   height: 100%;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
   z-index: -1;
   transition: 0.2s;
   opacity: 0;
@@ -60,17 +59,6 @@ const ModalContent = styled.div`
     opacity: 1;
     pointer-events: auto;
   }
-=======
-  z-index: 0;
-  animation: ${({ show }) => show === undefined ? null : (show ? fadeIn : fadeOut)} 0.3s ease-in-out forwards;
-`
-
-const ModalContent = styled.div<{show: boolean | undefined}>`
-    background-color: #fff;
-    animation: ${({ show }) => show === undefined ? null : (show ? slideDown : slideUp)} 0.3s ease-in-out forwards;
-    opacity: ${({ show }) => show ? '1' : '0'};
-    pointer-events: ${({ show }) => show ? 'auto' : 'none'};
->>>>>>> 9a832cba483138b9174f3005cf7a09e96e33679b
 `
 
 const Modal:FC<IModal> = ({children, show}) => {
