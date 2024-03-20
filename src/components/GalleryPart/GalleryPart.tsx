@@ -9,7 +9,7 @@ import { galleryDataRest } from "../../dataAPI/galleryRest"
 import GalleryNavItem from "./GalleryNavigation"
 import { useInView } from "react-intersection-observer"
 import Modal from "../../UI/Modal"
-import GallerySlider from "../../UI/GallerySlider"
+// import GallerySlider from "../../UI/GallerySlider"
 
 const StyledContainer = styled.div`
   width: 1110px;
