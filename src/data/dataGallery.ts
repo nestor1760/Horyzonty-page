@@ -9,18 +9,18 @@ export const dataGallery:IGalleryItem[] = [
     images: [
       {
         id: 1,
-        title: 'may1',
-        image: '123',
+        title: 'first tour in may',
+        image: '/media/galleryMay1.jpg',
       },
       {
         id: 2,
-        title: 'may2',
-        image: '234',
+        title: 'second tour in may',
+        image: '/media/galleryMay2.jpg',
       },
       {
         id: 3,
-        title: 'may3',
-        image: '345',
+        title: 'third tour in may',
+        image: '/media/galleryMay3.jpg',
       }
     ]
   },
@@ -32,18 +32,18 @@ export const dataGallery:IGalleryItem[] = [
     images: [
       {
         id: 1,
-        title: 'czerwiec1',
-        image: '123',
+        title: 'first tour in june',
+        image: '/media/galleryJune1.jpg',
       },
       {
         id: 2,
-        title: 'czerwiec2',
-        image: '234',
+        title: 'second tour in june',
+        image: '/media/galleryJune2.jpg',
       },
       {
         id: 3,
-        title: 'czerwiec3',
-        image: '345',
+        title: 'third tour in june',
+        image: '/media/galleryJune3.jpg',
       }
     ]
   },
@@ -55,18 +55,18 @@ export const dataGallery:IGalleryItem[] = [
     images: [
       {
         id: 1,
-        title: 'lipiec1',
-        image: '123',
+        title: 'first tour in july',
+        image: '/media/galleryJuly1.jpg',
       },
       {
         id: 2,
-        title: 'lipiec2',
-        image: '234',
+        title: 'second tour in july',
+        image: '/media/galleryJuly2.jpg',
       },
       {
         id: 3,
-        title: 'lipiec3',
-        image: '345',
+        title: 'third tour in july',
+        image: '/media/galleryJuly3.jpg',
       }
     ]
   },
@@ -78,18 +78,18 @@ export const dataGallery:IGalleryItem[] = [
     images: [
       {
         id: 1,
-        title: 'sierpień1',
-        image: '123',
+        title: 'first tour in august',
+        image: '/media/galleryAugust1.jpg',
       },
       {
         id: 2,
-        title: 'sierpień2',
-        image: '234',
+        title: 'second tour in august',
+        image: '/media/galleryAugust2.jpg',
       },
       {
         id: 3,
-        title: 'sierpień3',
-        image: '345',
+        title: 'third tour in august',
+        image: '/media/galleryAugust3.jpg',
       }
     ]
   },

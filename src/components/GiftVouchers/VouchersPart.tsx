@@ -30,7 +30,7 @@ const slideLeftAnimation = keyframes`
 `
 
 const Text = styled.p<{ inView: boolean}>`
-  width: 100%;
+  width: 540px;
   font-size: 32px;
   text-transform: uppercase;
   font-weight: 400;
@@ -63,8 +63,10 @@ const VouchersPart = ({ id }: { id: string }) => {
     <>
       <StyledContainer ref={voucherRef}>
         <ItemHeader margin="56px 0 127px 0">
-          <NavigationItem fontSize="24px" id={id}>karty podarunkowe</NavigationItem>
-          <Text inView={voucherIsVisible}>Certyfikat podarunkowy na wycieczkę w góry to wspaniały sposób, aby obdarować kogoś niezapomnianymi wrażeniami i relaksem na łonie natury.</Text>
+          <NavigationItem width="350px" fontSize="24px" id={id}>karty podarunkowe</NavigationItem>
+          <Text inView={voucherIsVisible}>
+            Certyfikat podarunkowy na wycieczkę w góry to wspaniały sposób, aby obdarować kogoś niezapomnianymi wrażeniami i relaksem na łonie natury.
+          </Text>
         </ItemHeader>
         <VoucherList>
           {array.map((voucher, index) => 

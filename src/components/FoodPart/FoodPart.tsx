@@ -59,7 +59,7 @@ const FoodPart = ({ id }: { id: string }) => {
   return (
       <StyledFoodContainer ref={foodRef}>
         <ItemHeader margin="73px 0 64px 0">
-          <NavigationItem fontSize="24px" id={id}>jedzenie</NavigationItem>
+          <NavigationItem width="249px" fontSize="24px" id={id}>jedzenie</NavigationItem>
           <Text inView={foodIsVisible}>Gotowanie potraw na łonie natury to nie tylko wspaniała okazja do delektowania się lokalnymi smakami, ale również część niezapomnianego doświadczenia podczas wędrówek w Tatry.</Text>
         </ItemHeader>
         <FoodList>

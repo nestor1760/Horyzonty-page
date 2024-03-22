@@ -183,12 +183,15 @@ export interface IGallerySliderProps {
 export interface IGalleryProps {
   item: IGalleryItem,
   index: number,
-  inView: boolean;
+  inView: boolean,
+  setSelectedIndex: (index: number) => void,
 }
 
 //for GalleryNavigation.tsx
 export interface IGalleryNavProps {
   item: IGalleryItem,
+  index: number,
+  setSelectedIndex: (index: number) => void,
 }
 
 //for Modal.tsx

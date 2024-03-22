@@ -77,13 +77,14 @@ const Button = styled.button`
   }
 `
 
-const GalleryItem:FC<IGalleryProps> = ({item, index, inView}) => {
+const GalleryItem:FC<IGalleryProps> = ({item, index, inView, setSelectedIndex}) => {
   const dispatch = useAppDispatch()
-  const {date, image, name, } = item
+  const {date, image, name,} = item
   const isEven = useEvenItem(index)  
 
   const showModal = (): void => {
     dispatch(setShowGallery({showGallery: true, scroll: true}))
+    setSelectedIndex(index)
   } 
   
   return (

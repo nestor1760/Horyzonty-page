@@ -42,6 +42,14 @@ const Text = styled.p<{ inView: boolean}>`
   `};
 `
 
+const TextContainer = styled.div`
+  width: 540px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+`
+
 const SliderContainer = styled.div`
   width: 100%;
   display: flex;
@@ -89,11 +97,11 @@ const GuidesPart= ({ id }: { id: string }) => {
     <>
       <StyledContainer ref={guidesRef}>
         <ItemHeader margin="0 0 50px 0">
-          <NavigationItem fontSize="24px" id={id}>przewodnicy</NavigationItem>
-          <Container direction="column">
+          <NavigationItem width="140px" fontSize="24px" id={id}>przewodnicy</NavigationItem>
+          <TextContainer>
               <Text inView={guidesIsVisible}>Przewodnicy wspólnie stworzą unikalną wycieczkę na Rysy, gdzie bezpieczeństwo, doświadczenie i wrażenia będą głównym priorytetem.</Text>
               <StyledButton onClick={() => showModal()}>rezerwacja</StyledButton>
-          </Container>
+          </TextContainer>
         </ItemHeader>
         {(array.length > 0)
           ?

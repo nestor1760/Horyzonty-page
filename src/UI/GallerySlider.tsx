@@ -4,6 +4,8 @@ import { FC, useState } from "react";
 import { IGallerySliderProps } from "../types/types";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import { RiCloseCircleLine } from "react-icons/ri";
+import { TbArrowsMaximize } from "react-icons/tb";
+import { TbArrowsMinimize } from "react-icons/tb";
 import { setShowGallery } from "../store/modalSlice";
 import { useAppDispatch } from "../hook";
 
@@ -24,13 +26,34 @@ const Counter = styled.div`
   justify-content: center;
 `
 
+const ImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`
+
 const Image = styled.img`
   min-width: 675px;
   width: 100%;
   height: 406px;
   margin-bottom: 30px;
   object-fit: cover;
+  &.biggerPhoto {
+    width: 800px;
+    height: 500px;
+  }
 `
+
+const ChangeButton = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent;
+  border: none;
+  margin: 10px 10px 0 0;
+  cursor: pointer;
+`
+
 const CloseButton = styled.button`
     align-self: flex-end;
     width: 35px;
@@ -59,12 +82,10 @@ const Button = styled.button`
 `
 const GallerySlider: FC<IGallerySliderProps> = ({item}) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
+  const [enlarge, setEnlarge] = useState<boolean>(false)
   const dispatch = useAppDispatch()
   
-  const {images} = item 
-  
-  console.log(item);
-  
+  const {images} = item   
 
   const Increment = () => {
     setCurrentIndex(currentIndex + 1)
@@ -76,12 +97,33 @@ const GallerySlider: FC<IGallerySliderProps> = ({item}) => {
 
   const closeModal = () => {
     dispatch(setShowGallery({showGallery: false, scroll: false}))
+    setCurrentIndex(0)
+    setEnlarge(false)
+  }
+
+  const changePhoto = () => {
+    setEnlarge(prev => !prev)
   }
 
   return (
       <StyledContainer>
         <CloseButton onClick={closeModal}><RiCloseCircleLine size={25}/></CloseButton>
-        <Image src={`${images[currentIndex].image}`} alt={images[currentIndex].title}/>
+        <ImageContainer>
+          <Image 
+            className={enlarge ? 'biggerPhoto' : ''}
+            src={`${images[currentIndex].image}`} 
+            alt={images[currentIndex].title}
+          />
+          <ChangeButton onClick={changePhoto}>
+            {enlarge
+              ?
+                <TbArrowsMinimize color="white" size={35}/>
+              :
+                <TbArrowsMaximize color="white" size={35}/>
+            }
+          </ChangeButton>
+        </ImageContainer>
+
         <Counter>
           {(currentIndex <= 0)
             ? <Button><HiOutlineArrowLongLeft size={35} color="gray"/></Button>

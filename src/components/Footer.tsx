@@ -9,7 +9,7 @@ import { useInView } from 'react-intersection-observer';
 const StyledFooter = styled.div`
   width: 1110px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   flex-direction: column;
   z-index: 1;
@@ -46,11 +46,20 @@ const fadeIn = keyframes`
 `
 
 const FooterImg = styled.img<{ inView: boolean}>`
-  width: 100%;
+  width: 100vw;
   object-fit: cover;
   ${({ inView }) => inView && css`
     animation: ${fadeIn} 0.5s ease-in-out forwards;
   `};
+`
+
+const ContactContainer = styled.div`
+  width: 1110px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin: 78px 0 0 0;
 `
 
 const ContactItem = styled.div`
@@ -106,12 +115,12 @@ const Footer = (props: FooterProps) => {
 
   return (
     <StyledFooter ref={footerRef}>
-      <ItemHeader padding='58px 0 63px 0' width='1110px'>
-        <NavigationItem width='570px' fontSize='24px' id={props.id}>kontakty</NavigationItem>
+      <ItemHeader margin='58px 0 63px 0' width='1110px'>
+        <NavigationItem width='126px' fontSize='24px' id={props.id}>kontakty</NavigationItem>
         <Text inView={footerIsVisible}>Jeśli masz pytania dotyczące naszych wycieczek górskich, bonów podarunkowych lub chciałbyś dowiedzieć się więcej o trasach, wrażeniach i możliwościach, skontaktuj się z nami.</Text>
       </ItemHeader>
       <FooterImg inView={footerIsVisible} src='/media/footer.png' alt='forest landscape'/>
-      <Container direction='column' margin='78px 0 0 0'>
+      <ContactContainer>
         <ContactItem>
           <ItemTitle>numer telefonu</ItemTitle>
           <ItemText inView={footerIsVisible}>+48123456789</ItemText>
@@ -134,7 +143,7 @@ const Footer = (props: FooterProps) => {
             <SocialLink href='https://www.facebook.com/' target='_blank'>facebook</SocialLink>
           </SocialItem>
         </ContactItem>
-      </Container>
+      </ContactContainer>
     </StyledFooter>
   )
 }

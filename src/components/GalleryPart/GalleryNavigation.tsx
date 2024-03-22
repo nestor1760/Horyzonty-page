@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import { IGalleryNavProps } from '../../types/types'
 import styled from 'styled-components'
+import { setShowGallery } from '../../store/modalSlice'
+import { useAppDispatch } from '../../hook'
 
 const ButtonNavigation = styled.button`
   font-size: 16px;
@@ -20,12 +22,18 @@ const ButtonNavigation = styled.button`
   }
 `
 
-const GalleryNavItem:FC<IGalleryNavProps> = ({item}) => {
+const GalleryNavItem:FC<IGalleryNavProps> = ({item, setSelectedIndex, index}) => {
+  const dispatch = useAppDispatch()
   const {date} = item
+
+  const showModal = (): void => {
+    dispatch(setShowGallery({showGallery: true, scroll: true}))
+    setSelectedIndex(index)
+  } 
 
   return (
     <div>
-      <ButtonNavigation>{date}</ButtonNavigation>
+      <ButtonNavigation onClick={showModal}>{date}</ButtonNavigation>
     </div>
   )
 }

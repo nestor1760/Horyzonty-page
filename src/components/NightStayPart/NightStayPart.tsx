@@ -40,7 +40,7 @@ to {
 `
 
 const Text = styled.p<{ inView: boolean}>`
-  width: 100%;
+  width: 540px;
   font-size: 32px;
   text-transform: uppercase;
   font-weight: 400;
@@ -113,7 +113,7 @@ const NightStayPart = ({ id }: { id: string }) => {
   return (
     <StyledContainer ref={nightStayRef}>
       <ItemHeader margin="100px 0 157px 0">
-        <NavigationItem fontSize="24px" id={id}>nocleg pod gołym niebem</NavigationItem>
+        <NavigationItem width="411px" fontSize="24px" id={id}>nocleg pod gołym niebem</NavigationItem>
         <Text inView={nightStayIsVisible}>Wyruszając na trzydniową wycieczkę na Rysy, nocowanie w namiotach stanowi niezapomniany element zbliżenia się do natury i poczucia prawdziwej przygody.</Text>
       </ItemHeader>
         <Container width="1110px" display="flex" justify="flex-start">

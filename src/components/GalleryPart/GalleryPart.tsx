@@ -3,13 +3,13 @@ import { ItemHeader } from "../../styled-components/ItemHeader"
 import { NavigationItem } from "../../styled-components/NavigationItem"
 import GalleryItem from "./GalleryItem"
 import { useAppDispatch, useAppSelector } from "../../hook"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { dataGallery } from "../../data/dataGallery"
 import { galleryDataRest } from "../../dataAPI/galleryRest"
 import GalleryNavItem from "./GalleryNavigation"
 import { useInView } from "react-intersection-observer"
 import Modal from "../../UI/Modal"
-// import GallerySlider from "../../UI/GallerySlider"
+import GallerySlider from "../../UI/GallerySlider"
 
 const StyledContainer = styled.div`
   width: 1110px;
@@ -33,7 +33,7 @@ const slideLeftAnimation = keyframes`
 `
 
 const Text = styled.p<{ inView: boolean}>`
-  width: 100%;
+  width: 540px;
   font-size: 32px;
   text-transform: uppercase;
   font-weight: 400;
@@ -62,24 +62,6 @@ const GalleryNavigation = styled.div`
   width: 200px;
 `
 
-const ShowAllButton = styled.button`
-  font-size: 16px;
-  font-weight: 500;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  align-text: start;
-  background: transparent;
-  border: none;
-  color: rgba(0, 0, 0, 0.6);
-  cursor: pointer;
-  transition: 0.3s;
-  &:hover {
-    font-weight: 600;
-    text-decoration: underline;
-    color: black;
-  }
-`
-
 const Loader = styled.div`
   width: 100%;
   font-size: 32px;
@@ -91,6 +73,7 @@ const GalleryPart = ({ id }: { id: string }) => {
   const {array, loading} = useAppSelector(state => state.gallery)
   const {ref: galleryRef, inView: galleryIsVisible} = useInView()
   const {showGallery} = useAppSelector(state => state.modal)
+  const [selectedIndex, setSelectedIndex] = useState<number>(0)
 
   useEffect(() => {
       dispatch(galleryDataRest(dataGallery))
@@ -100,7 +83,7 @@ const GalleryPart = ({ id }: { id: string }) => {
     <>
       <StyledContainer ref={galleryRef}>
         <ItemHeader margin="64px 0 80px 0">
-          <NavigationItem fontSize="24px" id={id}>galeria podróży</NavigationItem>
+          <NavigationItem width="263px" fontSize="24px" id={id}>galeria podróży</NavigationItem>
           <Text inView={galleryIsVisible}>Galeria podróży firmy Horyzonty - wiodącego touroperatora specjalizującego się w organizacji wycieczek na najwyższy szczyt Polski, górę Rysy!</Text>
         </ItemHeader>
         {(loading)
@@ -109,19 +92,18 @@ const GalleryPart = ({ id }: { id: string }) => {
           :
             <GridContainer>
               <GalleryNavigation>
-                {array.map(item => 
-                  <GalleryNavItem item={item} key={item.id}/>
+                {array.map((item, index) => 
+                  <GalleryNavItem item={item} key={item.id} setSelectedIndex={setSelectedIndex} index={index}/>
                 )}
-                <ShowAllButton>zobaczyć wszystkie</ShowAllButton>
               </GalleryNavigation>
               {array.map((item, index) => 
-                <GalleryItem index={index} item={item} key={item.id} inView={galleryIsVisible}/>
+                <GalleryItem index={index} item={item} key={item.id} inView={galleryIsVisible} setSelectedIndex={setSelectedIndex}/>
               )}
             </GridContainer>
         } 
       </StyledContainer>
       <Modal show={showGallery}>
-        asdsad
+        {(array.length > 0) ? <GallerySlider item={array[selectedIndex]}/> : null}
       </Modal>
     </>
   )
