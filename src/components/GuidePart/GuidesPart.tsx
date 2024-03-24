@@ -13,11 +13,36 @@ import ReservationForm from "../ReservationForm"
 import Modal from "../../UI/Modal"
 import { setShow } from "../../store/modalSlice"
 import { useInView } from "react-intersection-observer"
+import { useWindowWidth } from "../../hooks/useWindowWidth"
 
 
 const StyledContainer = styled.div`
   width: 1110px;
   z-index: 1;
+
+  @media (min-width: 769px) and (max-width: 1109px) {
+    width: 769px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  @media (max-width: 480px) {
+    width: 375px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
 `
 
 const slideLeftAnimation = keyframes`
@@ -40,6 +65,24 @@ const Text = styled.p<{ inView: boolean}>`
   ${({ inView }) => inView && css`
     animation: ${slideLeftAnimation} 0.5s ease-in-out forwards;
   `};
+
+  @media (min-width: 769px) and (max-width: 1109px) {
+    width: 500px;
+    font-size: 22px;
+    margin-bottom: 21px;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 450px;
+    font-size: 22px;
+    margin-bottom: 21px;
+  }
+
+  @media (max-width: 480px) {
+    width: 343px;
+    font-size: 20px;
+    margin-bottom: 21px;
+  }
 `
 
 const TextContainer = styled.div`
@@ -48,6 +91,21 @@ const TextContainer = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+
+  @media (min-width: 769px) and (max-width: 1109px) {
+    width: 500px;
+    margin-bottom: 30px;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 450px;
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 480px) {
+    width: 343px;
+    margin-bottom: 30px;
+  }
 `
 
 const SliderContainer = styled.div`
@@ -57,6 +115,25 @@ const SliderContainer = styled.div`
   overflow: hidden;
   justify-content: flex-start;
   margin-bottom: 25px;
+
+  @media (min-width: 769px) and (max-width: 1109px) {
+    width: 769px;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 13px;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 450px;
+    flex-direction: column;
+    margin-bottom: 13px;
+  }
+
+  @media (max-width: 480px) {
+    width: 343px;
+    flex-direction: column;
+    margin-bottom: 13px;
+  }
 `
 
 const Button = styled.button`
@@ -74,7 +151,7 @@ const GuidesPart= ({ id }: { id: string }) => {
   const {array} = useAppSelector(state => state.guide)  
   const {show} = useAppSelector(state => state.modal)
   const dispatch = useAppDispatch()
-
+  const {windowWidth} = useWindowWidth()
   const {ref: guidesRef, inView: guidesIsVisible} = useInView()
 
   const showModal = (): void => {
@@ -103,25 +180,34 @@ const GuidesPart= ({ id }: { id: string }) => {
               <StyledButton onClick={() => showModal()}>rezerwacja</StyledButton>
           </TextContainer>
         </ItemHeader>
-        {(array.length > 0)
+        {(array.length > 0 && windowWidth > 1109)
           ?
             <SliderContainer>
-                <GuideItem guide={array[currentIndex]}/>
-                <GuideItem guide={array[currentIndex + 1]}/>
+              <GuideItem guide={array[currentIndex]}/>
+              <GuideItem guide={array[currentIndex + 1]}/>
             </SliderContainer>
+          :
+            <SliderContainer>
+              {array.map(guide => 
+                <GuideItem guide={guide} key={guide.id}/>
+              )}
+            </SliderContainer>
+        }
+        {(windowWidth > 1109)
+          ?
+            <Container width="100%" justify="flex-end">
+              {(currentIndex <= 0)
+                ? <Button><HiOutlineArrowLongLeft size={35} color="gray"/></Button>
+                : <Button onClick={Decrement}><HiOutlineArrowLongLeft size={35}/></Button>
+              }
+              {(currentIndex < array.length - 2)
+                ? <Button onClick={Increment}><HiOutlineArrowLongRight size={35}/></Button>
+                : <Button><HiOutlineArrowLongRight size={35} color="gray"/></Button>
+              }
+            </Container>
           :
             null
         }
-        <Container width="100%" justify="flex-end">
-          {(currentIndex <= 0)
-            ? <Button><HiOutlineArrowLongLeft size={35} color="gray"/></Button>
-            : <Button onClick={Decrement}><HiOutlineArrowLongLeft size={35}/></Button>
-          }
-          {(currentIndex < array.length - 2)
-            ? <Button onClick={Increment}><HiOutlineArrowLongRight size={35}/></Button>
-            : <Button><HiOutlineArrowLongRight size={35} color="gray"/></Button>
-          }
-        </Container>
       </StyledContainer>
       <Modal show={show}>
         <ReservationForm />

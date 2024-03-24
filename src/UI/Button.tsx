@@ -29,6 +29,10 @@ const Button = styled.button<IButtonProps>`
   &:active {
     box-shadow:inset 3px 10px 26px -11px rgba(0,0,0,0.78);
   }
+
+  @media (max-width: 1109px) {
+    width: 100%;
+  }
 `
 
 const CustomIcon = styled(GoArrowUpRight)`

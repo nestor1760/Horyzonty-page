@@ -15,6 +15,24 @@ const ItemContainer = styled.div<{ element: boolean | undefined, inView: boolean
   ${({ inView, element }) => inView && css`
     animation: ${(element ? slideLeft : slideRight)} 0.5s ease-in-out forwards;
   `};
+
+  @media (min-width: 769px) and (max-width: 1109px) {
+    width: 500px;
+    height: 410px;
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 450px;
+    height: 375px;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 480px) {
+    width: 343px;
+    height: 284px;
+    margin-bottom: 40px;
+  }
 `
 
 const slideLeft = keyframes`
@@ -43,12 +61,35 @@ const Image = styled.img`
   width: 540px;
   object-fit: cover;
   margin-bottom: 15px;
+
+  @media (min-width: 769px) and (max-width: 1109px) {
+    width: 500px;
+    height: 365px;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 450px;
+    height: 340px;
+  }
+
+  @media (max-width: 480px) {
+    width: 343px;
+    height: 260px;
+  }
 `
 
 const Name = styled.p`
   font-size: 16px;
   font-weight: 400;
   text-transform: uppercase;
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 `
 
 const InfoContainer = styled.div`
@@ -56,6 +97,18 @@ const InfoContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (min-width: 769px) and (max-width: 1109px) {
+    width: 500px;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 450px;
+  }
+
+  @media (max-width: 480px) {
+    width: 343px;
+  }
 `
 
 const Button = styled.button`

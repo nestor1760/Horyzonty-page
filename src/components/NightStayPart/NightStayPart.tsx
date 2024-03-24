@@ -208,7 +208,7 @@ const Title = styled.p<{ inView: boolean}>`
 
   @media (max-width: 480px) {
     width: 343px;
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
     font-size: 20px;
   }
 `
