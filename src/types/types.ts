@@ -222,3 +222,18 @@ export interface ISelectProps {
   options: IOptionItem[],
   defaultValue: string,
 }
+
+//for Footer.tsx
+export type FooterProps = {
+  id: string,
+}
+
+//for NightStayPart.tsx
+export type TImage = {
+  top?: string,
+  right?: string,
+  left?: string,
+  bottom?: string,
+  margin?: string,
+  inView: boolean,
+}

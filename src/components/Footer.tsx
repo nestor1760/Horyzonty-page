@@ -5,6 +5,8 @@ import { FaSquareFacebook } from "react-icons/fa6";
 import { ItemHeader } from '../styled-components/ItemHeader';
 import { NavigationItem } from '../styled-components/NavigationItem';
 import { useInView } from 'react-intersection-observer';
+import { useWindowWidth } from '../hooks/useWindowWidth';
+import { FooterProps } from '../types/types';
 
 const StyledFooter = styled.div`
   width: 1110px;
@@ -13,6 +15,20 @@ const StyledFooter = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   z-index: 1;
+
+  @media (min-width: 769px) and (max-width: 1109px) {
+    width: 769px;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 500px;
+    padding: 0 16px;
+  }
+
+  @media (max-width: 480px) {
+    width: 375px;
+    padding: 0 16px;
+  }
 `
 
 const slideLeftAnimation = keyframes`
@@ -34,6 +50,16 @@ const Text = styled.p<{ inView: boolean}>`
   ${({ inView }) => inView && css`
     animation: ${slideLeftAnimation} 0.5s ease-in-out forwards;
   `};
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 500px;
+    font-size: 24px;
+  }
+
+  @media (max-width: 480px) {
+    width: 343px;
+    font-size: 20px;
+  }
 `
 
 const fadeIn = keyframes`
@@ -60,6 +86,22 @@ const ContactContainer = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   margin: 78px 0 0 0;
+
+  @media (min-width: 769px) and (max-width: 1109px) {
+    width: 769px;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 500px;
+    margin: 20px 0 0 0;
+    padding: 0 16px;
+  }
+
+  @media (max-width: 480px) {
+    width: 375px;
+    margin: 20px 0 0 0;
+    padding: 0 16px;
+  }
 `
 
 const ContactItem = styled.div`
@@ -75,6 +117,10 @@ const ItemTitle = styled.p`
   color: #B1B1B1;
   text-transform: uppercase;
   margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 15px;
+  }
 `
 const ItemText = styled.p<{ inView: boolean}>`
   font-size: 24px;
@@ -83,6 +129,11 @@ const ItemText = styled.p<{ inView: boolean}>`
   ${({ inView }) => inView && css`
     animation: ${slideLeftAnimation} 0.5s ease-in-out forwards;
   `};
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    font-weight: 500;
+  }
 `
 
 const SocialItem = styled.div<{ inView: boolean}>`
@@ -93,6 +144,10 @@ const SocialItem = styled.div<{ inView: boolean}>`
   ${({ inView }) => inView && css`
     animation: ${slideLeftAnimation} 0.5s ease-in-out forwards;
   `};
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
 `
 
 const SocialLink = styled.a`
@@ -104,14 +159,16 @@ const SocialLink = styled.a`
   &:hover {
     font-weight: 600;
   }
-`
 
-type FooterProps = {
-  id: string,
-}
+  @media (max-width: 768px) {
+    font-size: 16px;
+    font-weight: 500;
+  }
+`
 
 const Footer = (props: FooterProps) => {    
   const {ref: footerRef, inView: footerIsVisible} = useInView()
+  const {windowWidth} = useWindowWidth()
 
   return (
     <StyledFooter ref={footerRef}>
@@ -135,11 +192,11 @@ const Footer = (props: FooterProps) => {
         <ContactItem>
           <ItemTitle>sieci społecznościowe</ItemTitle>
           <SocialItem inView={footerIsVisible}>
-            <IoLogoInstagram size={30} style={{marginRight: '49px'}}/>
+            <IoLogoInstagram size={30} style={{marginRight: windowWidth > 1109 ? '49px' : '23px'}}/>
             <SocialLink href='https://www.instagram.com/' target='_blank'>instagram</SocialLink>
           </SocialItem>
           <SocialItem inView={footerIsVisible}>
-            <FaSquareFacebook size={30} style={{marginRight: '49px'}}/>
+            <FaSquareFacebook size={30} style={{marginRight: windowWidth > 1109 ? '49px' : '23px'}}/>
             <SocialLink href='https://www.facebook.com/' target='_blank'>facebook</SocialLink>
           </SocialItem>
         </ContactItem>

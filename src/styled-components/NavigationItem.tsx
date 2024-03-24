@@ -9,6 +9,10 @@ const StyledNavItem = styled.p<INavItemProps>`
   font-size: ${props => props.fontSize || '16'};
   color: ${props => props.color || '#B1B1B1'};
   text-transform: ${props => props.textTransform || 'uppercase'};
+
+  @media (max-width: 768px) {
+    margin: 14px 0 30px 0;
+  }
 `
 
 export const NavigationItem = ({children, ...props}: INavItemProps) => <StyledNavItem {...props}>{children}</StyledNavItem>

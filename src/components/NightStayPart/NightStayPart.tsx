@@ -8,6 +8,8 @@ import { useAppDispatch, useAppSelector } from "../../hook"
 import { useEffect } from "react"
 import { nightStayDataRest } from "../../dataAPI/nightStayRest"
 import { useInView } from "react-intersection-observer"
+import { TImage } from "../../types/types"
+import { useWindowWidth } from "../../hooks/useWindowWidth"
 
 const StyledContainer = styled.div`
   width: 1110px;
@@ -17,6 +19,26 @@ const StyledContainer = styled.div`
   flex-direction: column;
   margin: 0 0 126px 0;
   z-index: 1;
+
+  @media (min-width: 769px) and (max-width: 1109px) {
+    width: 769px;
+    align-items: center;
+    margin: 0;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    align-items: center;
+    width: 500px;
+    padding: 0 16px;
+    margin: 0;
+  }
+
+  @media (max-width: 480px) {
+    align-items: center;
+    width: 375px;
+    padding: 0 16px;
+    margin: 0;
+  }
 `
 
 const slideLeftAnimation = keyframes`
@@ -47,16 +69,17 @@ const Text = styled.p<{ inView: boolean}>`
   ${({ inView }) => inView && css`
     animation: ${slideLeftAnimation} 0.5s ease-in-out forwards;
   `};
-`
 
-type TImage = {
-  top?: string,
-  right?: string,
-  left?: string,
-  bottom?: string,
-  margin?: string,
-  inView: boolean,
-}
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 500px;
+    font-size: 24px;
+  }
+
+  @media (max-width: 480px) {
+    width: 343px;
+    font-size: 20px;
+  }
+`
 
 const Image = styled.img<TImage>`
   display: inline-block;
@@ -73,6 +96,49 @@ const Image = styled.img<TImage>`
   right: ${props => props.right || ''};
   bottom: ${props => props.bottom || ''};
   left: ${props => props.left || ''};
+
+  @media (min-width: 769px) and (max-width: 1109px) {
+    width: 100%;
+    min-width: 705px;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) { 
+    min-width: 481px;
+    left: 0;
+  }
+
+  @media (max-width: 480px) {
+    min-width: 375px;
+    left: -17px;
+  }
+`
+
+const ItemContainer = styled.div`
+  width: 1110px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  
+  @media (min-width: 769px) and (max-width: 1109px) {
+    width: 769px;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin: 15px 0 0 0;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 500px;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin: 15px 0 0 0;
+  }
+
+  @media (max-width: 480px) {
+    width: 343px;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin: 15px 0 0 0;
+  }
 `
 
 const StyledItem = styled.div`
@@ -83,10 +149,41 @@ const StyledItem = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   position: relative;
+  &.reverseItem {
+    flex-direction: column-reverse;
+  }
   &:first-child {
     justify-content: flex-end;
     margin-right: 30px;
   }
+
+  @media (min-width: 769px) and (max-width: 1109px) {
+    width: 769px;
+    &:first-child {
+      justify-content: flex-end;
+      margin-right: 0;
+    }
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 500px;
+    height: 780px;
+    padding: 0 16px;
+    &:first-child {
+      justify-content: flex-end;
+      margin-right: 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 343px;
+    height: 780px;
+    &:first-child {
+      justify-content: flex-end;
+      margin-right: 0;
+    }
+  }
+  
 `
 
 const Title = styled.p<{ inView: boolean}>`
@@ -94,15 +191,33 @@ const Title = styled.p<{ inView: boolean}>`
   font-size: 24px;
   font-weight: 400;
   text-transform: uppercase;
-  margin-bottom: 68px;
+  margin-bottom: 35px;
   ${({ inView }) => inView && css`
     animation: ${slideLeftAnimation} 0.5s ease-in-out forwards;
   `};
+
+  @media (min-width: 769px) and (max-width: 1109px) {
+    width: 500px;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 450px;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+
+  @media (max-width: 480px) {
+    width: 343px;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
 `
 
 const NightStayPart = ({ id }: { id: string }) => {
   const dispatch = useAppDispatch()
-  const {array} = useAppSelector(state => state.guide)  
+  const {windowWidth} = useWindowWidth()
+
+  const {array} = useAppSelector(state => state.night)  
 
   const {ref: nightStayRef, inView: nightStayIsVisible} = useInView()
 
@@ -112,16 +227,28 @@ const NightStayPart = ({ id }: { id: string }) => {
 
   return (
     <StyledContainer ref={nightStayRef}>
-      <ItemHeader margin="100px 0 157px 0">
+      <ItemHeader margin={windowWidth > 1109 ? "100px 0 157px 0" : '46px 0 30px 0'}>
         <NavigationItem width="411px" fontSize="24px" id={id}>nocleg pod gołym niebem</NavigationItem>
         <Text inView={nightStayIsVisible}>Wyruszając na trzydniową wycieczkę na Rysy, nocowanie w namiotach stanowi niezapomniany element zbliżenia się do natury i poczucia prawdziwej przygody.</Text>
       </ItemHeader>
-        <Container width="1110px" display="flex" justify="flex-start">
+        <ItemContainer>
           <StyledItem>
-            <Image inView={nightStayIsVisible} src="/media/stay1image.png" alt="adad" top='0' right="0"/>
+            <Image 
+              inView={nightStayIsVisible} 
+              src="/media/stay1image.png" 
+              alt="girl and river" 
+              top='0' 
+              right={windowWidth > 1109 ? '0' : ''} 
+            />
             {(array.length > 0)
               ?
-                <Container width="100%" justify="space-between" align="flex-start" margin="0">
+                <Container 
+                  width="100%" 
+                  justify={windowWidth > 769 ? 'space-between' : "flex-start"} 
+                  align="flex-start" 
+                  margin="0 0 60px 0" 
+                  direction={windowWidth > 1109 ? '' : "column"}
+                >
                   <NightItem inView={nightStayIsVisible} item={array[2]}/>              
                   <NightItem inView={nightStayIsVisible} item={array[3]}/>              
                 </Container>
@@ -129,20 +256,35 @@ const NightStayPart = ({ id }: { id: string }) => {
                 null
             }
           </StyledItem>
-          <StyledItem>
-            <Title inView={nightStayIsVisible}>Podczas noclegu w namiotach otrzymasz:</Title>
+          <StyledItem className={windowWidth > 1109 ? '' : 'reverseItem'}>
             {(array.length > 0)
               ?
-                <Container width="100%" justify="space-between" align="flex-start" margin="0">
-                  <NightItem inView={nightStayIsVisible} item={array[0]}/>              
-                  <NightItem inView={nightStayIsVisible} item={array[1]}/>              
-                </Container>
+                <>
+                  <Container 
+                    width="100%" 
+                    justify={windowWidth > 769 ? 'space-between' : "flex-start"} 
+                    align="flex-start" 
+                    margin="0" 
+                    direction="column"
+                  >
+                    <Title inView={nightStayIsVisible}>Podczas noclegu w namiotach otrzymasz:</Title>
+                    <NightItem inView={nightStayIsVisible} item={array[0]}/>              
+                    <NightItem inView={nightStayIsVisible} item={array[1]}/>              
+                  </Container>
+                </>
               :
                 null
             }
-            <Image inView={nightStayIsVisible} src="/media/stay2image.png" alt="adad" bottom='0' left="0" />
+            <Image 
+              inView={nightStayIsVisible} 
+              src="/media/stay2image.png" 
+              alt="tent" 
+              bottom={windowWidth > 1109 ? '0' : ''} 
+              left={windowWidth > 1109 ? '0' : ''} 
+              top={windowWidth > 1109 ? '' : '0'} 
+            />
           </StyledItem>
-        </Container>
+        </ItemContainer>
     </StyledContainer>
   )
 }

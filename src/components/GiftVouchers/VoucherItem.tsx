@@ -5,16 +5,31 @@ import { StyledButton } from "../../UI/Button"
 import { useEvenItem } from "../../hooks/useEvenItem"
 import { useAppDispatch } from "../../hook"
 import { setShow } from "../../store/modalSlice"
+import { useWindowWidth } from "../../hooks/useWindowWidth"
 
-const VoucherItemContainer = styled.div<{ element: boolean | undefined, inView: boolean}>`
+const VoucherItemContainer = styled.div<{ element: boolean | undefined, inView: boolean, windowWidth: number}>`
   width: 350px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
   flex-direction: column;
-  ${({ inView, element }) => inView && css`
-    animation: ${(element ? slideUp : slideDown)} 0.5s ease-in-out forwards;
+  ${({ inView, element, windowWidth }) => inView && css`
+    animation: ${(windowWidth < 1109 ? slideLeftAnimation : element ? slideUp : slideDown)} 0.5s ease-in-out forwards;
   `};
+
+  @media (max-width: 1109px) {
+    margin-bottom: 40px;
+  }
+`
+const slideLeftAnimation = keyframes`
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 `
 
 const slideUp = keyframes`
@@ -61,17 +76,18 @@ const Title = styled.p`
 `
 
 const VouchersItem:FC<IVoucherItemProps> = ({voucher, index, inView}) => {
-  const {description, image, title} = voucher
-  const isEven = useEvenItem(index)  
-
   const dispatch = useAppDispatch()
+  const isEven = useEvenItem(index)  
+  const {windowWidth} = useWindowWidth()
+
+  const {description, image, title} = voucher
 
   const showModal = (): void => {
     dispatch(setShow({show: true, scroll: true}))
   }  
 
   return (
-    <VoucherItemContainer element={isEven} inView={inView}>
+    <VoucherItemContainer element={isEven} inView={inView} windowWidth={windowWidth}>
       <Description>{description}</Description>
       <Image src={image} alt={title}/>
       <Title>{title}</Title>
