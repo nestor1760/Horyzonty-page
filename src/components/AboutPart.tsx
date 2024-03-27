@@ -270,7 +270,11 @@ const AboutPart = ({ id }: { id: string }) => {
 
   return (
     <StyledContainer ref={aboutRef}>
-      <ItemHeader width='1110px' padding='107px 0 26px 0' margin='0 auto'>
+      <ItemHeader 
+        width='1110px' 
+        padding='107px 0 26px 0' 
+        margin='0 auto'
+      >
         <NavigationItem width='108px' fontSize='24px' margin='0' id={id}>o nas</NavigationItem>
         <TitleTextContainer>
           <TitleHeader inView={aboutIsVisible}>Witamy w firmie Horyzonty - wiodącym touroperatorem specjalizującym się w organizowaniu wycieczek na najwyższy szczyt Polski, górę Rysy!</TitleHeader>

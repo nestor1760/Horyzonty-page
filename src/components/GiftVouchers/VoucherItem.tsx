@@ -87,7 +87,11 @@ const VouchersItem:FC<IVoucherItemProps> = ({voucher, index, inView}) => {
   }  
 
   return (
-    <VoucherItemContainer element={isEven} inView={inView} windowWidth={windowWidth}>
+    <VoucherItemContainer 
+      element={isEven} 
+      inView={inView} 
+      windowWidth={windowWidth}
+    >
       <Description>{description}</Description>
       <Image src={image} alt={title}/>
       <Title>{title}</Title>

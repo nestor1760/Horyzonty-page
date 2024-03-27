@@ -211,6 +211,11 @@ export interface IModalGalleryState {
   showGallery: boolean,
 }
 
+export interface ISidebarState {
+  sidebar: boolean,
+  scroll: boolean,
+}
+
 //for Select.tsx
 export interface IOptionItem {
   value: string;
