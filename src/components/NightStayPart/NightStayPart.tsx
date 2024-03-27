@@ -240,41 +240,33 @@ const NightStayPart = ({ id }: { id: string }) => {
               top='0' 
               right={windowWidth > 1109 ? '0' : ''} 
             />
-            {(array.length > 0)
-              ?
+            {(array.length > 0) && (
+              <Container 
+                width="100%" 
+                justify={windowWidth > 769 ? 'space-between' : "flex-start"} 
+                align="flex-start" 
+                margin="0 0 60px 0" 
+                direction={windowWidth > 1109 ? '' : "column"}
+              >
+                <NightItem inView={nightStayIsVisible} item={array[2]}/>              
+                <NightItem inView={nightStayIsVisible} item={array[3]}/>              
+              </Container>
+            )}
+          </StyledItem>
+          <StyledItem className={windowWidth > 1109 ? '' : 'reverseItem'}>
+            {(array.length > 0) && (
                 <Container 
                   width="100%" 
                   justify={windowWidth > 769 ? 'space-between' : "flex-start"} 
                   align="flex-start" 
-                  margin="0 0 60px 0" 
-                  direction={windowWidth > 1109 ? '' : "column"}
+                  margin="0" 
+                  direction="column"
                 >
-                  <NightItem inView={nightStayIsVisible} item={array[2]}/>              
-                  <NightItem inView={nightStayIsVisible} item={array[3]}/>              
+                  <Title inView={nightStayIsVisible}>Podczas noclegu w namiotach otrzymasz:</Title>
+                  <NightItem inView={nightStayIsVisible} item={array[0]}/>              
+                  <NightItem inView={nightStayIsVisible} item={array[1]}/>              
                 </Container>
-              :
-                null
-            }
-          </StyledItem>
-          <StyledItem className={windowWidth > 1109 ? '' : 'reverseItem'}>
-            {(array.length > 0)
-              ?
-                <>
-                  <Container 
-                    width="100%" 
-                    justify={windowWidth > 769 ? 'space-between' : "flex-start"} 
-                    align="flex-start" 
-                    margin="0" 
-                    direction="column"
-                  >
-                    <Title inView={nightStayIsVisible}>Podczas noclegu w namiotach otrzymasz:</Title>
-                    <NightItem inView={nightStayIsVisible} item={array[0]}/>              
-                    <NightItem inView={nightStayIsVisible} item={array[1]}/>              
-                  </Container>
-                </>
-              :
-                null
-            }
+            )}
             <Image 
               inView={nightStayIsVisible} 
               src="/media/stay2image.png" 

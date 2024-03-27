@@ -2,7 +2,7 @@ import { FC, useEffect } from "react"
 import styled, { keyframes } from "styled-components"
 import { IModal } from "../types/types"
 import { useAppDispatch, useAppSelector } from "../hook"
-import { setShow, setShowGallery } from "../store/modalSlice"
+import { setShow, setShowGallery, setTest } from "../store/modalSlice"
 import { setResponce } from "../store/formSlice"
 
 const slideDown = keyframes`
@@ -29,15 +29,15 @@ const slideUp = keyframes`
 
 const ModalOverlay = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  justify-content: center;
-  align-items: center;
   z-index: -1;
-  transition: 0.2s;
+  transition: 0.3s;
   opacity: 0;
   background-color: transparent;
   backdrop-filter: blur(0);
@@ -66,6 +66,9 @@ const Modal:FC<IModal> = ({children, show}) => {
   const dispatch = useAppDispatch()
 
   const closeModal = () => {
+    dispatch(setTest({test: false, scroll: false}))
+    
+    
     dispatch(setShow({show: false, scroll: false}))
     dispatch(setShowGallery({showGallery: false, scroll: false}))
     setTimeout(() => {

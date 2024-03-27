@@ -4,15 +4,15 @@ import { FC, useEffect } from 'react'
 import { useScroll } from '../hooks/useScroll'
 import { useWindowWidth } from '../hooks/useWindowWidth'
 import { IoMenu } from "react-icons/io5"
-import { HiOutlineArrowLongLeft } from "react-icons/hi2";
-import { GrGallery } from "react-icons/gr";
-import { FaAddressBook } from "react-icons/fa";
-import { MdOutlineTour } from "react-icons/md";
-import { FaPeopleGroup } from "react-icons/fa6";
-import { MdFastfood } from "react-icons/md";
-import { FaTent } from "react-icons/fa6";
-import { SlPresent } from "react-icons/sl";
-import { MdContactMail } from "react-icons/md";
+import { GrGallery } from "react-icons/gr"
+import { FaAddressBook } from "react-icons/fa"
+import { MdOutlineTour } from "react-icons/md"
+import { FaPeopleGroup } from "react-icons/fa6"
+import { MdFastfood } from "react-icons/md"
+import { FaTent } from "react-icons/fa6"
+import { SlPresent } from "react-icons/sl"
+import { MdContactMail } from "react-icons/md"
+import { IoCloseSharp } from "react-icons/io5"
 import { useAppDispatch, useAppSelector } from '../hook'
 import { setSidebar, setToggleSidebar } from '../store/modalSlice'
 
@@ -88,7 +88,7 @@ const NavItem = styled.a`
 
 const MenuButton = styled.button`
   width: 24px;
-  height: 24px;
+  height: 28px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -98,14 +98,37 @@ const MenuButton = styled.button`
   }
 `
 
+const openAnimation = keyframes`
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`
+
+const closeAnimation = keyframes`
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+`
+
 const SidebarOverlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
   position: fixed;
+  top: 0;
   right: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: -1;
   transition: 0.3s;
   opacity: 0;
@@ -116,50 +139,46 @@ const SidebarOverlay = styled.div`
     z-index: 10;
     background-color: rgba(0, 0, 0, 0.12);
     backdrop-filter: blur(3px);
-    transition: 0.3s;
-  }
-`
-
-const slideLeftAnimation = keyframes`
-  from {
-    width: 0;
-    opacity: 0;
-  }
-  to {
-    width: 300px;
-    opacity: 1;
-  }
-`
-
-const slideRightAnimation = keyframes`
-  from {
-    width: 300px;
-    opacity: 1;
-  }
-  to {
-    width: 0;
-    opacity: 0;
   }
 `
 
 const SidebarMenu = styled.div`
+  height: 95%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 200px;
-  height: 100vh;
-  background: white;
-  animation: ${slideRightAnimation} 0.3s ease-in-out forwards;
   opacity: 0;
+  background-color: white;
+  border-radius: 15px 0 0 15px;
+  width: 0;
+  overflow: hidden;
+  transition: opacity 0.3s, width 0.3s;  
   &.active {
-    animation: ${slideLeftAnimation} 0.3s ease-in-out forwards;
+    width: 300px;
     opacity: 1;
   }
 `
 
+// const SidebarMenu = styled.div`
+//   height: 95%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: flex-start;
+//   opacity: 0;
+//   background-color: white;
+//   border-radius: 15px 0 0 15px;
+//   transition: opacity 0.3s ease-in-out, width 0.3s ease-in-out;
+//   animation: ${closeAnimation} 0.3s ease-in-out forwards;
+//   &.active {
+//     opacity: 1;
+//     animation: ${openAnimation} 0.3s ease-in-out forwards;
+//   }
+// `
+
 const SidebarHeader = styled.div`
-  width: 100%;
+  width: 300px;
   height: 50px;
   display: flex;
   align-items: center;
@@ -168,8 +187,15 @@ const SidebarHeader = styled.div`
   border-bottom: 1px solid #B1B1B1;
 `
 
+const SidebarTitle = styled.p`
+  font-size: 28px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-left: 20px;
+`
+
 const SidebarMain = styled.div`
-  width: 100%;
+  width: 300px;
   height: 50%;
   margin-top: 50px;
   padding-left: 30px;
@@ -259,26 +285,34 @@ const Header: FC = () => {
             </MenuButton>
         }
       </StyledHeader>
-      {sidebar && <SidebarOverlay className={sidebar ? 'open' : ''} onClick={() => dispatch(setSidebar({sidebar: false, scroll: false}))}>
-                    <SidebarMenu className={sidebar ? 'active' : ''} onClick={e => e.stopPropagation()}>
-                      <SidebarHeader>
-                        <MenuButton onClick={toogleMenu}>
-                          <HiOutlineArrowLongLeft size={28}/>
-                        </MenuButton>
-                      </SidebarHeader>
-                      <SidebarMain>
-                        <SidebarItem onClick={() => scrollToPart('about')}><FaAddressBook size={24}/><Span>o nas</Span></SidebarItem>
-                        <SidebarItem onClick={() => scrollToPart('gallery')}><GrGallery size={24}/><Span>galeria</Span></SidebarItem>
-                        <SidebarItem onClick={() => scrollToPart('tour')}><MdOutlineTour size={24}/><Span>tury</Span></SidebarItem>
-                        <SidebarItem onClick={() => scrollToPart('guides')}><FaPeopleGroup size={24}/><Span>przewodnicy</Span></SidebarItem>
-                        <SidebarItem onClick={() => scrollToPart('food')}><MdFastfood size={24}/><Span>jedzenie</Span></SidebarItem>
-                        <SidebarItem onClick={() => scrollToPart('nightstay')}><FaTent size={24}/><Span>nocleg</Span></SidebarItem>
-                        <SidebarItem onClick={() => scrollToPart('vouchers')}><SlPresent size={24}/><Span>karty podarunkowe</Span></SidebarItem>
-                        <SidebarItem onClick={() => scrollToPart('contact')}><MdContactMail size={24}/><Span>kontakty</Span></SidebarItem>
-                      </SidebarMain>
-                    </SidebarMenu>
-                  </SidebarOverlay>
-      }
+      {sidebar && (
+        <SidebarOverlay 
+          className={sidebar ? 'open' : ''} 
+          onClick={() => dispatch(setSidebar({sidebar: false, scroll: false}))}
+        >
+          <SidebarMenu 
+            className={sidebar ? 'active' : ''} 
+            onClick={e => e.stopPropagation()} 
+          >
+            <SidebarHeader>
+              <MenuButton onClick={toogleMenu}>
+                <IoCloseSharp size={28}/>
+              </MenuButton>
+              <SidebarTitle>Horyzonty</SidebarTitle>
+            </SidebarHeader>
+            <SidebarMain>
+              <SidebarItem onClick={() => scrollToPart('about')}><FaAddressBook size={24}/><Span>o nas</Span></SidebarItem>
+              <SidebarItem onClick={() => scrollToPart('gallery')}><GrGallery size={24}/><Span>galeria</Span></SidebarItem>
+              <SidebarItem onClick={() => scrollToPart('tour')}><MdOutlineTour size={24}/><Span>tury</Span></SidebarItem>
+              <SidebarItem onClick={() => scrollToPart('guides')}><FaPeopleGroup size={24}/><Span>przewodnicy</Span></SidebarItem>
+              <SidebarItem onClick={() => scrollToPart('food')}><MdFastfood size={24}/><Span>jedzenie</Span></SidebarItem>
+              <SidebarItem onClick={() => scrollToPart('nightstay')}><FaTent size={24}/><Span>nocleg</Span></SidebarItem>
+              <SidebarItem onClick={() => scrollToPart('vouchers')}><SlPresent size={24}/><Span>karty podarunkowe</Span></SidebarItem>
+              <SidebarItem onClick={() => scrollToPart('contact')}><MdContactMail size={24}/><Span>kontakty</Span></SidebarItem>
+            </SidebarMain>
+          </SidebarMenu>
+      </SidebarOverlay>
+      )}
     </>
   )
 }

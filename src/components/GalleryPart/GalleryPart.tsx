@@ -154,14 +154,12 @@ const GalleryPart = ({ id }: { id: string }) => {
             <Loader>Loading...</Loader>
           :
             <ItemContainer>
-              {(windowWidth > 1109)
-                ?
-                  <GalleryNavigation>
-                    {array.map((item, index) => 
-                      <GalleryNavItem item={item} key={item.id} setSelectedIndex={setSelectedIndex} index={index}/>
-                    )}
-                  </GalleryNavigation>
-                : null
+              {(windowWidth > 1109) && (
+                <GalleryNavigation>
+                  {array.map((item, index) => 
+                    <GalleryNavItem item={item} key={item.id} setSelectedIndex={setSelectedIndex} index={index}/>
+                  )}
+                </GalleryNavigation>)
               }
               {array.map((item, index) => 
                 <GalleryItem index={index} item={item} key={item.id} inView={galleryIsVisible} setSelectedIndex={setSelectedIndex}/>
@@ -170,7 +168,7 @@ const GalleryPart = ({ id }: { id: string }) => {
         } 
       </StyledContainer>
       <Modal show={showGallery}>
-        {(array.length > 0) ? <GallerySlider item={array[selectedIndex]}/> : null}
+        {(array.length > 0) && <GallerySlider item={array[selectedIndex]}/>}
       </Modal>
     </>
   )

@@ -193,20 +193,19 @@ const GuidesPart= ({ id }: { id: string }) => {
               )}
             </SliderContainer>
         }
-        {(windowWidth > 1109)
-          ?
-            <Container width="100%" justify="flex-end">
-              {(currentIndex <= 0)
-                ? <Button><HiOutlineArrowLongLeft size={35} color="gray"/></Button>
-                : <Button onClick={Decrement}><HiOutlineArrowLongLeft size={35}/></Button>
-              }
-              {(currentIndex < array.length - 2)
-                ? <Button onClick={Increment}><HiOutlineArrowLongRight size={35}/></Button>
-                : <Button><HiOutlineArrowLongRight size={35} color="gray"/></Button>
-              }
-            </Container>
-          :
-            null
+        {(windowWidth > 1109) && (
+          <Container width="100%" justify="flex-end">
+            {(currentIndex <= 0)
+              ? <Button><HiOutlineArrowLongLeft size={35} color="gray"/></Button>
+              : <Button onClick={Decrement}><HiOutlineArrowLongLeft size={35}/></Button>
+            }
+            {(currentIndex < array.length - 2)
+              ? <Button onClick={Increment}><HiOutlineArrowLongRight size={35}/></Button>
+              : <Button><HiOutlineArrowLongRight size={35} color="gray"/></Button>
+            }
+          </Container>
+        )
+          
         }
       </StyledContainer>
       <Modal show={show}>
