@@ -5,8 +5,8 @@ import { dataIntro } from "../data/dataIntro";
 import { StyledButton } from "../UI/Button";
 import Modal from "../UI/Modal";
 import { useAppDispatch, useAppSelector } from "../hook";
-import { setTest } from "../store/modalSlice";
-// import ReservationForm from "./ReservationForm";
+import { setShow } from "../store/modalSlice";
+import ReservationForm from "./ReservationForm";
 import { useInView } from "react-intersection-observer";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 
@@ -121,12 +121,12 @@ const Text = styled.p<{ inView: boolean}>`
 `
 
 const IntroPart = ({ id }: { id: string }) => {
-  const {test} = useAppSelector(state => state.modal)
+  const {show} = useAppSelector(state => state.modal)
   const dispatch = useAppDispatch()
   const {windowWidth} = useWindowWidth()
 
   const showModal = (): void => {
-    dispatch(setTest({test: true, scroll: true}))
+    dispatch(setShow({show: true, scroll: true}))
   }  
 
   const {ref: introRef, inView: introIsVisible} = useInView()
@@ -155,9 +155,8 @@ const IntroPart = ({ id }: { id: string }) => {
           </Container>
         </Container>
       </StyledIntro>
-      <Modal show={test}>
-        {/* <ReservationForm /> */}
-        Hello world
+      <Modal show={show}>
+        <ReservationForm />
       </Modal>
     </>
   )

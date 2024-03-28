@@ -2,28 +2,28 @@ import { FC, useEffect } from "react"
 import styled, { keyframes } from "styled-components"
 import { IModal } from "../types/types"
 import { useAppDispatch, useAppSelector } from "../hook"
-import { setShow, setShowGallery, setTest } from "../store/modalSlice"
+import { setShow, setShowGallery } from "../store/modalSlice"
 import { setResponce } from "../store/formSlice"
 
 const slideDown = keyframes`
   from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
     opacity: 1;
     transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%);
   }
 `
 
 const slideUp = keyframes`
   from {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 0;
+    transform: translateY(100%);
   }
   to {
-    opacity: 0;
-    transform: translateY(-30px);
+    opacity: 1;
+    transform: translateY(0);
   }
 `
 
@@ -47,17 +47,26 @@ const ModalOverlay = styled.div`
     background-color: rgba(0, 0, 0, 0.12);
     backdrop-filter: blur(3px);
   }
+
+  @media (max-width: 1109px) {
+    align-items: flex-end;
+  }
 `
 
 const ModalContent = styled.div`
   background-color: #fff;
-  animation: ${slideUp} 0.3s ease-in-out forwards;
+  animation: ${slideDown} 0.3s ease-in-out forwards;
   opacity: 0;
   pointer-events: none;
   &.active {
-    animation: ${slideDown} 0.3s ease-in-out forwards;
+    animation: ${slideUp} 0.3s ease-in-out forwards;
     opacity: 1;
     pointer-events: auto;
+  }
+
+  @media (max-width: 1109px) {
+    border-radius: 15px;
+    max-height: 90vh;
   }
 `
 
@@ -66,7 +75,7 @@ const Modal:FC<IModal> = ({children, show}) => {
   const dispatch = useAppDispatch()
 
   const closeModal = () => {
-    dispatch(setTest({test: false, scroll: false}))
+    dispatch(setShow({show: false, scroll: false}))
     
     
     dispatch(setShow({show: false, scroll: false}))

@@ -216,11 +216,6 @@ export interface ISidebarState {
   scroll: boolean,
 }
 
-export interface ITestState {
-  test: boolean,
-  scroll: boolean,
-}
-
 //for Select.tsx
 export interface IOptionItem {
   value: string;

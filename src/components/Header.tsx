@@ -55,7 +55,7 @@ const StyledHeader = styled.div<{ scrolled: number, windowWidth: number}>`
     padding: 15px 16px;
     border-bottom: 1px solid #B1B1B1;
   }
-  `
+`
 
 const HeaderTitle = styled.button`
   text-transform: uppercase;
@@ -143,7 +143,7 @@ const SidebarOverlay = styled.div`
 `
 
 const SidebarMenu = styled.div`
-  height: 95%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -151,34 +151,16 @@ const SidebarMenu = styled.div`
   opacity: 0;
   background-color: white;
   border-radius: 15px 0 0 15px;
-  width: 0;
-  overflow: hidden;
-  transition: opacity 0.3s, width 0.3s;  
+  transition: opacity 0.3s ease-in-out, width 0.3s ease-in-out;
+  animation: ${closeAnimation} 0.3s ease-in-out forwards;
   &.active {
-    width: 300px;
     opacity: 1;
+    animation: ${openAnimation} 0.3s ease-in-out forwards;
   }
 `
 
-// const SidebarMenu = styled.div`
-//   height: 95%;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: flex-start;
-//   opacity: 0;
-//   background-color: white;
-//   border-radius: 15px 0 0 15px;
-//   transition: opacity 0.3s ease-in-out, width 0.3s ease-in-out;
-//   animation: ${closeAnimation} 0.3s ease-in-out forwards;
-//   &.active {
-//     opacity: 1;
-//     animation: ${openAnimation} 0.3s ease-in-out forwards;
-//   }
-// `
-
 const SidebarHeader = styled.div`
-  width: 300px;
+  width: 250px;
   height: 50px;
   display: flex;
   align-items: center;
@@ -195,7 +177,7 @@ const SidebarTitle = styled.p`
 `
 
 const SidebarMain = styled.div`
-  width: 300px;
+  width: 250px;
   height: 50%;
   margin-top: 50px;
   padding-left: 30px;
