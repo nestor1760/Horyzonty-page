@@ -54,6 +54,10 @@ const ModalOverlay = styled.div`
 `
 
 const ModalContent = styled.div`
+  max-width: 1110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #fff;
   animation: ${slideDown} 0.3s ease-in-out forwards;
   opacity: 0;
@@ -65,7 +69,14 @@ const ModalContent = styled.div`
   }
 
   @media (max-width: 1109px) {
-    border-radius: 15px;
+    border-radius: 15px 15px 0 0;
+    width: 100%;
+    max-height: 90vh;
+  }
+
+  @media (max-width: 480) {
+    border-radius: 15px 15px 0 0;
+    width: 375px;
     max-height: 90vh;
   }
 `

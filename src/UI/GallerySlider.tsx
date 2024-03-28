@@ -8,12 +8,13 @@ import { TbArrowsMaximize } from "react-icons/tb";
 import { TbArrowsMinimize } from "react-icons/tb";
 import { setShowGallery } from "../store/modalSlice";
 import { useAppDispatch } from "../hook";
+import { useWindowWidth } from "../hooks/useWindowWidth";
 
 const StyledContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
   padding: 20px;
   z-index: 10;
@@ -28,12 +29,15 @@ const Counter = styled.div`
 
 const ImageContainer = styled.div`
   position: relative;
-  width: 100%;
+  min-width: 675px;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const Image = styled.img`
-  min-width: 675px;
+  width: 675px;
   width: 100%;
   height: 406px;
   margin-bottom: 30px;
@@ -41,6 +45,14 @@ const Image = styled.img`
   &.biggerPhoto {
     width: 800px;
     height: 500px;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 500px;
+  }
+
+  @media (max-width: 480px) {
+    width: 343px;
   }
 `
 
@@ -84,6 +96,8 @@ const GallerySlider: FC<IGallerySliderProps> = ({item}) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [enlarge, setEnlarge] = useState<boolean>(false)
   const dispatch = useAppDispatch()
+  const {windowWidth} = useWindowWidth()
+
   
   const {images} = item   
 
@@ -115,12 +129,11 @@ const GallerySlider: FC<IGallerySliderProps> = ({item}) => {
             alt={images[currentIndex].title}
           />
           <ChangeButton onClick={changePhoto}>
-            {enlarge
-              ?
-                <TbArrowsMinimize color="white" size={35}/>
-              :
-                <TbArrowsMaximize color="white" size={35}/>
-            }
+            {(windowWidth > 1109) && (
+              enlarge
+                ? <TbArrowsMinimize color="white" size={35}/>
+                : <TbArrowsMaximize color="white" size={35}/>
+            )}
           </ChangeButton>
         </ImageContainer>
 

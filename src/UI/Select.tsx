@@ -13,12 +13,39 @@ const StyledSelect = styled.select`
   color: #1E382B;
   font-size: 16px;
   font-weight: 400;
+
+  @media (min-width: 769px) and (max-width: 1109px) {
+    min-width: 0;
+    width: 505px;    
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    min-width: 0;
+    width: 450px;
+  }
+
+  @media (max-width: 480px) {
+    min-width: 0;
+    width: 343px;
+  }
 `
 
 const StyledOption = styled.option`
-  min-width: 505px;
+  width: 505px;
   height: 65px;
   color: black;
+
+  @media (min-width: 769px) and (max-width: 1109px) {
+    width: 505px;    
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 450px;
+  }
+
+  @media (max-width: 480px) {
+    width: 343px;
+  }
 `
 
 const Select:FC<ISelectProps> = ({options, defaultValue}) => {

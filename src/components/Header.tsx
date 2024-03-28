@@ -130,7 +130,7 @@ const SidebarOverlay = styled.div`
   width: 100%;
   height: 100%;
   z-index: -1;
-  transition: 0.3s;
+  transition: 250ms;
   opacity: 0;
   background-color: transparent;
   backdrop-filter: blur(0);
@@ -143,24 +143,24 @@ const SidebarOverlay = styled.div`
 `
 
 const SidebarMenu = styled.div`
+  width: 300px;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  opacity: 0;
   background-color: white;
   border-radius: 15px 0 0 15px;
-  transition: opacity 0.3s ease-in-out, width 0.3s ease-in-out;
-  animation: ${closeAnimation} 0.3s ease-in-out forwards;
+  animation: ${closeAnimation} 250ms ease-in-out forwards;
+  opacity: 0;
   &.active {
     opacity: 1;
-    animation: ${openAnimation} 0.3s ease-in-out forwards;
+    animation: ${openAnimation} 250ms ease-in-out forwards;
   }
 `
 
 const SidebarHeader = styled.div`
-  width: 250px;
+  width: 100%;
   height: 50px;
   display: flex;
   align-items: center;
@@ -176,8 +176,8 @@ const SidebarTitle = styled.p`
   margin-left: 20px;
 `
 
-const SidebarMain = styled.div`
-  width: 250px;
+const SidebarBody = styled.div`
+  width: 100%;
   height: 50%;
   margin-top: 50px;
   padding-left: 30px;
@@ -282,7 +282,7 @@ const Header: FC = () => {
               </MenuButton>
               <SidebarTitle>Horyzonty</SidebarTitle>
             </SidebarHeader>
-            <SidebarMain>
+            <SidebarBody>
               <SidebarItem onClick={() => scrollToPart('about')}><FaAddressBook size={24}/><Span>o nas</Span></SidebarItem>
               <SidebarItem onClick={() => scrollToPart('gallery')}><GrGallery size={24}/><Span>galeria</Span></SidebarItem>
               <SidebarItem onClick={() => scrollToPart('tour')}><MdOutlineTour size={24}/><Span>tury</Span></SidebarItem>
@@ -291,7 +291,7 @@ const Header: FC = () => {
               <SidebarItem onClick={() => scrollToPart('nightstay')}><FaTent size={24}/><Span>nocleg</Span></SidebarItem>
               <SidebarItem onClick={() => scrollToPart('vouchers')}><SlPresent size={24}/><Span>karty podarunkowe</Span></SidebarItem>
               <SidebarItem onClick={() => scrollToPart('contact')}><MdContactMail size={24}/><Span>kontakty</Span></SidebarItem>
-            </SidebarMain>
+            </SidebarBody>
           </SidebarMenu>
       </SidebarOverlay>
       )}
