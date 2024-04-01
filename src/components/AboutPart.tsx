@@ -284,7 +284,7 @@ const AboutPart = ({ id }: { id: string }) => {
           </Container>
         </TitleTextContainer>
       </ItemHeader>
-      <StyledImage inView={aboutIsVisible} src='media/about-us-photo.png' alt='the girl looks at the landscape'/>
+      <StyledImage inView={aboutIsVisible} src='/media/about-us-photo.png' alt='the girl looks at the landscape'/>
       <Container width='1110px' display='flex' justify='space-between' wrap={windowWidth > 1109 ? "" : 'wrap'}>
         {array.map(item => 
           <StyledItem inView={aboutIsVisible} key={item.id}>
