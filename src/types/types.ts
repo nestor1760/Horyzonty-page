@@ -44,19 +44,6 @@ export interface INavItemProps {
   id?: string,
 }
 
-//for dataNightStay.ts
-export interface IDataNightStayItem {
-  id: number,
-  title: string,
-  description: string,
-}
-
-//for NightItem.tsx
-export interface INightStayProps {
-  item: IDataNightStayItem,
-  inView: boolean,
-}
-
 //for dataIntro.ts
 export interface IDataIntroItem {
   id: number;
@@ -69,45 +56,9 @@ export interface ISliderProps {
   data: IDataIntroItem[],
 }
 
-//for dataGuides.ts
-export interface IDataGuides {
-  id: number,
-  name: string,
-  title: string,
-  description: string,
-  image: string,
-}
-
 //for GuidesPart.tsx
 export interface IGuideSliderProps {
   data: IDataGuides[]
-}
-
-//for GuideItem.tsx
-export interface IGuideItemProps {
-  guide: IDataGuides,
-}
-
-//for dataVouchers.ts
-export interface IVoucherItem {
-  id: number;
-  image: string;
-  title: string;
-  description: string;
-}
-
-//for VoucherItem.tsx
-export interface IVoucherItemProps {
-  voucher: IVoucherItem;
-  index: number;
-  inView: boolean;
-}
-
-//for dataAbout.ts
-export interface IAboutItem {
-  id: number;
-  data: number;
-  title: string;
 }
 
 //for Button.jsx
@@ -123,75 +74,6 @@ export interface IButtonProps {
   transform?: string,
   size?: string,
   onClick?: () => void;
-}
-
-//for dataTours.ts
-export interface ITourItem {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  duration: number;
-  distance: number;
-  people: number;
-}
-
-//for TourItem.tsx
-export interface ITourItemProps {
-  tour: ITourItem;
-  index: number;
-  inView: boolean;
-}
-
-//for dataFood.ts
-export interface IFoodItem {
-  id: number;
-  image: string;
-  title: string;
-  description: string;
-}
-
-//for FoodItem.tsx
-export interface IFoodItemProps {
-  food: IFoodItem;
-  index: number;
-  inView: boolean;
-}
-
-
-//for dataGalleryItem 
-export interface IGalleryImages {
-  id: number,
-  title: string,
-  image: string,
-}
-
-export interface IGalleryItem {
-  id: number,
-  name: string,
-  image: string,
-  date: string,
-  images: IGalleryImages[];
-}
-
-//for gallerySlider.tsx
-export interface IGallerySliderProps {
-  item: IGalleryItem,
-}
-
-//for GalleryItem.tsx
-export interface IGalleryProps {
-  item: IGalleryItem,
-  index: number,
-  inView: boolean,
-  setSelectedIndex: (index: number) => void,
-}
-
-//for GalleryNavigation.tsx
-export interface IGalleryNavProps {
-  item: IGalleryItem,
-  index: number,
-  setSelectedIndex: (index: number) => void,
 }
 
 //for Modal.tsx
@@ -228,17 +110,61 @@ export interface ISelectProps {
   defaultValue: string,
 }
 
-//for Footer.tsx
-export type FooterProps = {
-  id: string,
+/////////////////////////
+
+//for dataFood.ts
+export interface IFoodItem {
+  id: number;
+  image: string;
+  title: string;
+  description: string;
 }
 
-//for NightStayPart.tsx
-export type TImage = {
-  top?: string,
-  right?: string,
-  left?: string,
-  bottom?: string,
-  margin?: string,
-  inView: boolean,
+//for dataGalleryItem 
+export interface IGalleryImages {
+  id: number,
+  title: string,
+  image: string,
+}
+
+//for dataVouchers.ts
+export interface IVoucherItem {
+  id: number;
+  image: string;
+  title: string;
+  description: string;
+}
+
+//for dataGuides.ts
+export interface IDataGuides {
+  id: number,
+  name: string,
+  title: string,
+  description: string,
+  image: string,
+}
+
+//for dataNightStay.ts
+export interface IDataNightStayItem {
+  id: number,
+  title: string,
+  description: string,
+}
+
+//for dataTours.ts
+export interface ITourItem {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  duration: number;
+  distance: number;
+  people: number;
+}
+
+//for dataAbout.ts
+export interface IAboutItem {
+  id: number;
+  data: number;
+  title: string;
 }
