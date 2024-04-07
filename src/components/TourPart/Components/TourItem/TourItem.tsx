@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { StyledButton } from "../../../../UI/Button"
+import { StyledButton } from "../../../../UI/Button/Button"
 import { useEvenItem } from "../../../../hooks/useEvenItem"
 import { useAppDispatch } from "../../../../hook"
 import { setShow } from "../../../../store/modalSlice"

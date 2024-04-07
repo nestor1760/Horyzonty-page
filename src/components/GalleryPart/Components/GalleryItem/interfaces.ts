@@ -1,15 +1,13 @@
-import { IGalleryImages } from "../../../../types/types";
+import { IGalleryItem } from "../../../../data/interfaces";
 
 export interface IGallerySliderProps {
   item: IGalleryItem,
 }
 
-export interface IGalleryItem {
+export interface IGalleryImages {
   id: number,
-  name: string,
+  title: string,
   image: string,
-  date: string,
-  images: IGalleryImages[];
 }
 
 export interface IGalleryProps {

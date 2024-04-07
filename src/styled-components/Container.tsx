@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { IContainerProps } from '../types/types'
+import { IContainerProps } from './interfaces'
 
 
 const StyledContainer = styled.div<IContainerProps>`

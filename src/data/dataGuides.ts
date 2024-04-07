@@ -1,4 +1,4 @@
-import { IDataGuides } from "../types/types";
+import { IDataGuides } from "./interfaces";
 
 export const dataGuides:IDataGuides[] = [
   {

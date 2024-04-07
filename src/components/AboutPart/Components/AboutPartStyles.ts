@@ -1,26 +1,5 @@
-import styled, { css, keyframes } from "styled-components"
-
-const slideRightAnimation = keyframes`
-  from {
-    transform: translateX(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`
-
-const slideLeftAnimation = keyframes`
-  from {
-    transform: translateX(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`
+import styled, { css } from "styled-components"
+import { black_color, fadeIn, first_color, mobile_screen, second_color, slideDown, slideLeftAnimation, slideRightAnimation, small_tablet_screen, tablet_screen } from "../../../GlobalStyles"
 
 export const StyledContainer = styled.div`
   width: 1110px;
@@ -30,19 +9,19 @@ export const StyledContainer = styled.div`
   flex-direction: column;
   z-index: 1;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 769px;
     align-items: center;
     padding: 0 16px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 500px;
     align-items: center;
     padding: 0 16px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 375px;
     align-items: center;
     padding: 0 16px;
@@ -53,28 +32,28 @@ export const TitleHeader = styled.h1<{ inView: boolean}>`
   font-weight: 400;
   width: 539px;
   height: 186px;
-  color: black;
+  color: ${black_color};
   margin-bottom: 27px;
   text-transform: uppercase;
   ${({ inView }) => inView && css`
     animation: ${slideRightAnimation} 0.6s ease-in-out forwards;
   `};
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 500px;
     height: 140px;
     font-size: 22px;
     margin-bottom: 0;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
     height: 120px;
     font-size: 22px;
     margin-bottom: 20px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     height: 120px;
     font-size: 20px;
@@ -89,15 +68,15 @@ export const TitleTextContainer = styled.div`
   justify-content: flex-start;
   flex-direction: column;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 500px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
   }
 `
@@ -106,7 +85,7 @@ export const TitleText = styled.p<{ inView: boolean}>`
   width: 255px;
   font-size: 14px;
   font-weight: 400;
-  color: #5A5A5A;
+  color: ${first_color};
   ${({ inView }) => inView && css`
     animation: ${slideLeftAnimation} 0.6s ease-in-out forwards;
   `};
@@ -114,27 +93,18 @@ export const TitleText = styled.p<{ inView: boolean}>`
     margin-right: 30px;
   }
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 100%;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
-    width: 100%;
-    margin: 0 0 15px 0;
-  }
-
-  @media (max-width: 480px) {
+  @media ${small_tablet_screen} {
     width: 100%;
     margin: 0 0 15px 0;
   }
-`
 
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
+  @media ${mobile_screen} {
+    width: 100%;
+    margin: 0 0 15px 0;
   }
 `
 
@@ -146,31 +116,20 @@ export const StyledImage = styled.img<{ inView: boolean}>`
   animation: ${fadeIn} 0.6s ease-in-out forwards;
   `};
   
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     margin: 0 0 15px 0;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     height: 155px;
     margin: 0 0 15px 0;
-  }
-`
-
-const slideDownAnimation = keyframes`
-  from {
-    transform: translateY(-30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
   }
 `
 
 export const StyledItem = styled.div<{ inView: boolean}>`
   width: 255px;
   height: 255px;
-  border: 2px solid black;
+  border: 2px solid ${black_color};
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -179,29 +138,29 @@ export const StyledItem = styled.div<{ inView: boolean}>`
   margin-right: 30px;
   margin-bottom: 47px;
   ${({ inView }) => inView && css`
-    animation: ${slideDownAnimation} 0.6s ease-in-out forwards;
+    animation: ${slideDown} 0.6s ease-in-out forwards;
   `};
   &:last-child {
     margin-right: 0px;
   }
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 368px;
     height: 368px;
     margin: 0;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 234px;
     height: 234px;
-    border: 1px solid #B1B1B1;
+    border: 1px solid ${second_color};
     margin: 0;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 171px;
     height: 171px;
-    border: 1px solid #B1B1B1;
+    border: 1px solid ${second_color};
     margin: 0;
   }
 `
@@ -211,18 +170,18 @@ export const ItemText = styled.p`
   text-align: center;
   font-size: 14px;
   font-weight: 600;
-  color: #B1B1B1;
+  color: ${second_color};
   text-transform: uppercase;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     font-size: 18px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     font-size: 12px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 100%;
     font-size: 10px;
   }
@@ -231,18 +190,18 @@ export const ItemText = styled.p`
 export const StrongText = styled.p`
   font-size: 80px;
   font-weight: 400;
-  color: black;
+  color: ${black_color};
   text-transform: uppercase;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     font-size: 70px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     font-size: 58px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     font-size: 48px;
   }
 `

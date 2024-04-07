@@ -1,13 +1,5 @@
-import styled, { keyframes } from "styled-components";
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`
+import styled from "styled-components";
+import { closeGuideInfo, fadeIn, mobile_screen, openGuideInfo, small_tablet_screen, tablet_screen } from "../../../../GlobalStyles";
 
 export const SliderItem = styled.div`
   width: 50%;
@@ -16,20 +8,20 @@ export const SliderItem = styled.div`
   cursor: pointer;
   animation: ${fadeIn} 0.5s ease-in-out forwards;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 500px;
     margin-bottom: 13px;
     overflow: hidden;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
     height: 470px;
     margin-bottom: 37px;
     overflow: hidden;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     height: 370px;
     margin-bottom: 37px;
@@ -43,46 +35,24 @@ export const Image = styled.img`
   object-fit: cover;
   z-index: 1;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 500px;
     margin-bottom: 13px;
     overflow: hidden;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
     height: 470px;
     margin-bottom: 37px;
     overflow: hidden;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     height: 370px;
     margin-bottom: 37px;
     overflow: hidden;
-  }
-`
-
-const slideUp = keyframes`
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-`
-
-const slideDown = keyframes`
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(100%);
-    opacity: 0;
   }
 `
 
@@ -95,22 +65,22 @@ export const InfoContainer = styled.div`
   background: rgba(0, 0, 0, 0.6);
   z-index: 3;
   opacity: 0;
-  animation: ${slideDown} 250ms ease-in-out forwards;
+  animation: ${closeGuideInfo} 0.3s ease-in-out forwards;
   &.active {
     opacity: 1;
-    animation: ${slideUp} 250ms ease-in-out forwards;
+    animation: ${openGuideInfo} 0.3s ease-in-out forwards;
   }
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 500px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
     height: 470px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     height: 370px;
   }
@@ -123,12 +93,12 @@ export const Name = styled.p`
   text-transform: uppercase;
   margin: 41px 0 266px 30px;
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     font-size: 24px;
     margin: 20px 0 224px 20px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     font-size: 20px;
     margin: 20px 0 184px 20px;
   }
@@ -142,17 +112,17 @@ export const Description = styled.p`
   text-transform: uppercase;
   margin: 0 0 33px 30px;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 460px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 420px;
     font-size: 16px;
     margin: 0 0 20px 20px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 314px;
     font-size: 14px;
     margin: 0 0 20px 20px;
@@ -166,12 +136,12 @@ export const Title = styled.p`
   text-transform: uppercase;
   margin: 0 0 28px 30px;
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     font-size: 16px;
     margin: 0 0 20px 20px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     font-size: 14px;
     margin: 0 0 10px 20px;
   }

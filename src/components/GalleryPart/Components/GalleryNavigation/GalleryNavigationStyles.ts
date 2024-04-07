@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { black_color } from "../../../../GlobalStyles";
 
 export const ButtonNavigation = styled.button`
   font-size: 16px;
@@ -14,6 +15,6 @@ export const ButtonNavigation = styled.button`
   &:hover {
     font-weight: 600;
     text-decoration: underline;
-    color: black;
+    color: ${black_color};
   }
 `

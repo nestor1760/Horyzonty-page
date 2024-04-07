@@ -1,5 +1,5 @@
-import { IAboutItem } from './../types/types';
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { IAboutItem } from "../data/interfaces";
 
 type AboutState = {
   array: IAboutItem[],

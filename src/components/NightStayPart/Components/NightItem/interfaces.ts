@@ -1,4 +1,4 @@
-import { IDataNightStayItem } from "../../../../types/types";
+import { IDataNightStayItem } from "../../../../data/interfaces";
 
 export interface INightStayProps {
   item: IDataNightStayItem,

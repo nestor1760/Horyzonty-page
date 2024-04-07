@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { mobile_screen, small_tablet_screen, tablet_screen } from "../../../../GlobalStyles"
 
 export const StyledContainer = styled.div`
   width: 1110px;
@@ -8,17 +9,17 @@ export const StyledContainer = styled.div`
   flex-direction: column;
   z-index: 1;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 769px;
     padding: 0 16px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 500px;
     padding: 0 16px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 375px;
     padding: 0 16px;
   }
@@ -27,15 +28,15 @@ export const StyledContainer = styled.div`
 export const TourListBlock = styled.div`
   width: 1110px;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 769px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 375px;
   }
 `

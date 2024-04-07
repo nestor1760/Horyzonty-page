@@ -1,4 +1,4 @@
-import { ITourItem } from "../../../../types/types";
+import { ITourItem } from "../../../../data/interfaces";
 
 export interface ITourItemProps {
   tour: ITourItem;

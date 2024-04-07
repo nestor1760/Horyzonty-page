@@ -1,4 +1,5 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
+import { mobile_screen, second_color, slideLeftAnimation, slideRightAnimation, small_tablet_screen, tablet_screen } from "../../../../GlobalStyles";
 
 export const ItemContainer = styled.div<{ element: boolean | undefined, inView: boolean}>`
   width: 100%;
@@ -6,43 +7,21 @@ export const ItemContainer = styled.div<{ element: boolean | undefined, inView: 
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  border-top: 1px solid #B1B1B1;
-  border-bottom: 1px solid #B1B1B1;
+  border-top: 1px solid ${second_color};
+  border-bottom: 1px solid ${second_color};
   ${({ inView, element }) => inView && css`
-    animation: ${(element ? slideLeft : slideRight)} 0.5s ease-in-out forwards;
+    animation: ${(element ? slideLeftAnimation : slideRightAnimation)} 0.5s ease-in-out forwards;
   `};
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     flex-direction: column;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     flex-direction: column;
   }
-  `
-
-const slideLeft = keyframes`
-  from {
-    transform: translateX(-10%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`;
-
-const slideRight = keyframes`
-  from {
-    transform: translateX(10%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`;
+`
 
 export const Image = styled.img`
   width: 350px;
@@ -50,19 +29,19 @@ export const Image = styled.img`
   object-fit: contain;
   margin-right: 220px;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 468px;
     margin-right: 60px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 468px;
     height: 200px;
     object-fit: cover;
     margin: 0 0 15px 0;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     height: 140px;
     object-fit: cover;
@@ -89,14 +68,14 @@ export const Title = styled.p`
   font-weight: 400;
   margin-bottom: 30px;
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 80px;
     font-size: 18px;
     font-weight: 500;
     margin: 0;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 80px;
     font-size: 16px;
     font-weight: 500;
@@ -108,12 +87,12 @@ export const Text = styled.p`
   font-size: 16px;
   font-weight: 400;
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     font-size: 14px;
     width: 255px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     font-size: 14px;
     width: 255px;
   }

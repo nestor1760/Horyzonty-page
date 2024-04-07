@@ -1,4 +1,4 @@
-import { IAboutItem } from "../types/types";
+import { IAboutItem } from "./interfaces";
 
 export const dataAbout:IAboutItem[] = [
   {

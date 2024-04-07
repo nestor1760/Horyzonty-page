@@ -1,5 +1,5 @@
-import { IDataNightStayItem } from './../types/types';
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { IDataNightStayItem } from "../data/interfaces";
 
 type NightState = {
   array: IDataNightStayItem[],

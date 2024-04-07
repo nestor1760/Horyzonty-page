@@ -1,4 +1,4 @@
-import { ITourItem } from "../types/types";
+import { ITourItem } from "./interfaces";
 
 export const dataTours:ITourItem[] = [
   {

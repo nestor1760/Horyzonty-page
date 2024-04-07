@@ -1,5 +1,5 @@
-import { IFoodItem } from './../types/types';
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { IFoodItem } from "../data/interfaces";
 
 type FoodState = {
   array: IFoodItem[],

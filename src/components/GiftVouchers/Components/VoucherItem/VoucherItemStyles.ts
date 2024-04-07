@@ -1,4 +1,5 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
+import { slideDown, slideLeftAnimation, slideUp } from "../../../../GlobalStyles";
 
 export const VoucherItemContainer = styled.div<{ element: boolean | undefined, inView: boolean, windowWidth: number}>`
   width: 350px;
@@ -14,38 +15,6 @@ export const VoucherItemContainer = styled.div<{ element: boolean | undefined, i
     margin-bottom: 40px;
   }
 `
-const slideLeftAnimation = keyframes`
-  from {
-    transform: translateX(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`
-
-const slideUp = keyframes`
-  from {
-    transform: translateY(-20%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-`;
-
-const slideDown = keyframes`
-  from {
-    transform: translateY(20%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-`;
 
 export const Description = styled.p`
   width: 100%;

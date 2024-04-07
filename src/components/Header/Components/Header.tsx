@@ -3,21 +3,12 @@ import { FC, useEffect } from 'react'
 import { useScroll } from '../../../hooks/useScroll'
 import { useWindowWidth } from '../../../hooks/useWindowWidth'
 import { IoMenu } from "react-icons/io5"
-import { GrGallery } from "react-icons/gr"
-import { FaAddressBook } from "react-icons/fa"
-import { MdOutlineTour } from "react-icons/md"
-import { FaPeopleGroup } from "react-icons/fa6"
-import { MdFastfood } from "react-icons/md"
-import { FaTent } from "react-icons/fa6"
-import { SlPresent } from "react-icons/sl"
-import { MdContactMail } from "react-icons/md"
-import { IoCloseSharp } from "react-icons/io5"
-import { useAppDispatch, useAppSelector } from '../../../hook'
+import { useAppDispatch } from '../../../hook'
 import { setSidebar, setToggleSidebar } from '../../../store/modalSlice'
-import { HeaderTitle, MenuButton, NavItem, SidebarBody, SidebarHeader, SidebarItem, SidebarMenu, SidebarOverlay, SidebarTitle, Span, StyledHeader } from './HeaderStyles'
+import { HeaderTitle, MenuButton, NavItem, StyledHeader } from './HeaderStyles'
+import Sidebar from '../../../UI/Sidebar/Sidebar'
 
 const Header: FC = () => {
-  const {sidebar} = useAppSelector(state => state.modal)
   const dispatch = useAppDispatch()
   const {windowWidth} = useWindowWidth()
   const scrollPosition = useScroll()
@@ -72,32 +63,7 @@ const Header: FC = () => {
             </MenuButton>
         }
       </StyledHeader>
-      <SidebarOverlay 
-          className={sidebar ? 'open' : ''} 
-          onClick={() => dispatch(setSidebar({sidebar: false, scroll: false}))}
-        >
-          <SidebarMenu 
-            className={sidebar ? 'active' : ''} 
-            onClick={e => e.stopPropagation()} 
-          >
-            <SidebarHeader>
-              <MenuButton onClick={toogleMenu}>
-                <IoCloseSharp size={28}/>
-              </MenuButton>
-              <SidebarTitle>Horyzonty</SidebarTitle>
-            </SidebarHeader>
-            <SidebarBody>
-              <SidebarItem onClick={() => scrollToPart('about')}><FaAddressBook size={24}/><Span>o nas</Span></SidebarItem>
-              <SidebarItem onClick={() => scrollToPart('gallery')}><GrGallery size={24}/><Span>galeria</Span></SidebarItem>
-              <SidebarItem onClick={() => scrollToPart('tour')}><MdOutlineTour size={24}/><Span>tury</Span></SidebarItem>
-              <SidebarItem onClick={() => scrollToPart('guides')}><FaPeopleGroup size={24}/><Span>przewodnicy</Span></SidebarItem>
-              <SidebarItem onClick={() => scrollToPart('food')}><MdFastfood size={24}/><Span>jedzenie</Span></SidebarItem>
-              <SidebarItem onClick={() => scrollToPart('nightstay')}><FaTent size={24}/><Span>nocleg</Span></SidebarItem>
-              <SidebarItem onClick={() => scrollToPart('vouchers')}><SlPresent size={24}/><Span>karty podarunkowe</Span></SidebarItem>
-              <SidebarItem onClick={() => scrollToPart('contact')}><MdContactMail size={24}/><Span>kontakty</Span></SidebarItem>
-            </SidebarBody>
-          </SidebarMenu>
-      </SidebarOverlay>
+      <Sidebar />
     </>
   )
 }

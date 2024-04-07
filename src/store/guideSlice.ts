@@ -1,5 +1,5 @@
-import { IDataGuides } from './../types/types';
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { IDataGuides } from "../data/interfaces";
 
 type GuideState = {
   array: IDataGuides[],

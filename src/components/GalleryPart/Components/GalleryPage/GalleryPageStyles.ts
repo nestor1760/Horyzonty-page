@@ -1,4 +1,5 @@
-import styled, { css, keyframes } from "styled-components"
+import styled, { css } from "styled-components"
+import { mobile_screen, slideLeftAnimation, small_tablet_screen, tablet_screen } from "../../../../GlobalStyles"
 
 export const StyledContainer = styled.div`
   width: 1110px;
@@ -9,33 +10,22 @@ export const StyledContainer = styled.div`
   margin: 63px 0 46px 0;
   z-index: 1;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 769px;
     align-items: center;
     padding: 0 16px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 500px;
     align-items: center;
     padding: 0 16px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 375px;
     align-items: center;
     padding: 0 16px;
-  }
-`
-
-const slideLeftAnimation = keyframes`
-  from {
-    transform: translateX(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
   }
 `
 
@@ -48,19 +38,19 @@ export const Text = styled.p<{ inView: boolean}>`
     animation: ${slideLeftAnimation} 0.5s ease-in-out forwards;
   `};
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 500px;
     font-size: 22px;
     margin-bottom: 21px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
     font-size: 22px;
     margin-bottom: 21px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     font-size: 20px;
     margin-bottom: 21px;
@@ -76,7 +66,7 @@ export const ItemContainer = styled.div`
   grid-row-gap: 28px;
   align-items: end;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 769px;
     display: flex;
     align-items: center;
@@ -84,7 +74,7 @@ export const ItemContainer = styled.div`
     flex-direction: column;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 500px;
     display: flex;
     align-items: center;
@@ -92,7 +82,7 @@ export const ItemContainer = styled.div`
     flex-direction: column;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 375px;
     display: flex;
     align-items: center;

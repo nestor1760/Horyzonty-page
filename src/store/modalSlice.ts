@@ -1,5 +1,19 @@
-import { IModalGalleryState, IModalState, ISidebarState } from './../types/types';
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+
+interface IModalState {
+  show: boolean,
+  scroll: boolean,
+}
+
+interface IModalGalleryState {
+  scroll: boolean,
+  showGallery: boolean,
+}
+
+interface ISidebarState {
+  sidebar: boolean,
+  scroll: boolean,
+}
 
 type ModalState = {
   show: boolean,

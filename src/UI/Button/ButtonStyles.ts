@@ -1,10 +1,9 @@
-import styled from 'styled-components';
-import { GoArrowUpRight } from "react-icons/go";
-import { FC } from 'react';
-import { IButtonProps } from '../types/types';
+import { GoArrowUpRight } from "react-icons/go"
+import styled from "styled-components"
+import { IButtonProps } from "./interfaces"
+import { black_color, mobile_screen } from "../../GlobalStyles"
 
-
-const Button = styled.button<IButtonProps>`
+export const Button = styled.button<IButtonProps>`
   width: ${props => props.width || '255px'};
   height: ${props => props.height || '54px'};
   display: flex;
@@ -13,7 +12,7 @@ const Button = styled.button<IButtonProps>`
   border-radius: ${props => props.radius || '50px'};
   border: 1px solid rgba(0, 0, 0, 0.6);
   background: ${props => props.background || 'transparent'};
-  color: ${props => props.color || 'black'};
+  color: ${props => props.color || `${black_color}`};
   text-transform: ${props => props.transform || 'uppercase'};
   font-size: ${props => props.size || '16px'};
   font-weight: 600;
@@ -34,17 +33,13 @@ const Button = styled.button<IButtonProps>`
     width: 100%;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
   }
 `
 
-const CustomIcon = styled(GoArrowUpRight)`
+export const CustomIcon = styled(GoArrowUpRight)`
   font-size: 20px;
   font-weight: 400;
   margin: 0 0 0 10px; 
 `
-
-
-export const StyledButton: FC<IButtonProps> = ({children, ...props}) => <Button {...props}>{children} <CustomIcon color={props.color}/></Button>
-

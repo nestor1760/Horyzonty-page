@@ -1,5 +1,6 @@
-import styled, { css, keyframes } from "styled-components"
+import styled, { css } from "styled-components"
 import { TImage } from "./interfaces"
+import { fadeIn, mobile_screen, slideLeftAnimation, small_tablet_screen, tablet_screen } from "../../../../GlobalStyles"
 
 export const StyledContainer = styled.div`
   width: 1110px;
@@ -10,45 +11,25 @@ export const StyledContainer = styled.div`
   margin: 0 0 126px 0;
   z-index: 1;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 769px;
     align-items: center;
     margin: 0;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     align-items: center;
     width: 500px;
     padding: 0 16px;
     margin: 0;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     align-items: center;
     width: 375px;
     padding: 0 16px;
     margin: 0;
   }
-`
-
-const slideLeftAnimation = keyframes`
-  from {
-    transform: translateX(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`
-
-const fadeIn = keyframes`
-from {
-  opacity: 0;
-}
-to {
-  opacity: 1;
-}
 `
 
 export const Text = styled.p<{ inView: boolean}>`
@@ -60,12 +41,12 @@ export const Text = styled.p<{ inView: boolean}>`
     animation: ${slideLeftAnimation} 0.5s ease-in-out forwards;
   `};
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 500px;
     font-size: 24px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     font-size: 20px;
   }
@@ -87,17 +68,17 @@ export const Image = styled.img<TImage>`
   bottom: ${props => props.bottom || ''};
   left: ${props => props.left || ''};
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 100%;
     min-width: 705px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) { 
+  @media ${small_tablet_screen} { 
     min-width: 481px;
     left: 0;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     min-width: 375px;
     left: -17px;
   }
@@ -109,21 +90,21 @@ export const ItemContainer = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 769px;
     flex-direction: column-reverse;
     align-items: center;
     margin: 15px 0 0 0;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 500px;
     flex-direction: column-reverse;
     align-items: center;
     margin: 15px 0 0 0;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     flex-direction: column-reverse;
     align-items: center;
@@ -147,7 +128,7 @@ export const StyledItem = styled.div`
     margin-right: 30px;
   }
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 769px;
     &:first-child {
       justify-content: flex-end;
@@ -155,7 +136,7 @@ export const StyledItem = styled.div`
     }
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 500px;
     height: 780px;
     padding: 0 16px;
@@ -165,7 +146,7 @@ export const StyledItem = styled.div`
     }
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     height: 780px;
     &:first-child {
@@ -185,17 +166,17 @@ export const Title = styled.p<{ inView: boolean}>`
     animation: ${slideLeftAnimation} 0.5s ease-in-out forwards;
   `};
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 500px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
     margin-bottom: 20px;
     font-size: 20px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     margin: 0 0 20px 0;
     font-size: 20px;

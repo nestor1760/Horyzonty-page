@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { IHeaderProps } from '../types/types'
-
+import { IHeaderProps } from './interfaces'
+import { mobile_screen, small_tablet_screen, tablet_screen } from '../GlobalStyles'
 
 const StyledHeader = styled.div<IHeaderProps>`
   width: ${props => props.width || '100%'};
@@ -10,18 +10,18 @@ const StyledHeader = styled.div<IHeaderProps>`
   margin: ${props => props.margin || '0px'};
   padding: ${props => props.padding || '0px'};
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 769px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 500px;
     flex-direction: column;
     padding: 0 16px;
     margin: 14px 0 9px 0;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 375px;
     flex-direction: column;
     padding: 0 16px;

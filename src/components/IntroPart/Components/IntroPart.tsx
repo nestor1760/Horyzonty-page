@@ -1,8 +1,8 @@
 import { Container } from "../../../styled-components/Container";
-import IntroImageSlider from "../../../UI/IntroImageSlider";
+import IntroImageSlider from "../../../UI/IntroImageSlider/IntroImageSlider";
 import { dataIntro } from "../../../data/dataIntro";
-import { StyledButton } from "../../../UI/Button";
-import Modal from "../../../UI/Modal";
+import { StyledButton } from "../../../UI/Button/Button";
+import Modal from "../../../UI/Modal/Modal";
 import { useAppDispatch, useAppSelector } from "../../../hook";
 import { setShow } from "../../../store/modalSlice";
 import ReservationForm from "../../ReservationForm/Components/ReservationForm";

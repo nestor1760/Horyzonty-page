@@ -1,6 +1,6 @@
+import { IDataNightStayItem } from "../data/interfaces"
 import { AppDispatch } from "../store"
 import { nightError, nightLoading, nightSuccess } from "../store/nightStaySlice"
-import { IDataNightStayItem } from "../types/types"
 
 
 export const nightStayDataRest = (data: IDataNightStayItem[]) => async (dispatch: AppDispatch) => {

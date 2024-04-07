@@ -1,4 +1,5 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
+import { mobile_screen, slideLeftAnimation, slideRightAnimation, small_tablet_screen, tablet_screen } from "../../../../GlobalStyles";
 
 export const ItemContainer = styled.div<{ element: boolean | undefined, inView: boolean}>`
   width: 540px;
@@ -8,66 +9,44 @@ export const ItemContainer = styled.div<{ element: boolean | undefined, inView: 
   flex-direction: column;
   z-index: 1;
   ${({ inView, element }) => inView && css`
-    animation: ${(element ? slideLeft : slideRight)} 0.5s ease-in-out forwards;
+    animation: ${(element ? slideLeftAnimation : slideRightAnimation)} 0.5s ease-in-out forwards;
   `};
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 500px;
     height: 410px;
     margin-bottom: 40px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
     height: 375px;
     margin-bottom: 40px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     height: 284px;
     margin-bottom: 40px;
   }
 `
 
-const slideLeft = keyframes`
-  from {
-    transform: translateX(-10%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`;
-
-const slideRight = keyframes`
-  from {
-    transform: translateX(10%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`;
-
 export const Image = styled.img`
   width: 540px;
   object-fit: cover;
   margin-bottom: 15px;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 500px;
     height: 365px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
     height: 340px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     height: 260px;
   }
@@ -78,11 +57,11 @@ export const Name = styled.p`
   font-weight: 400;
   text-transform: uppercase;
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     font-size: 14px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     font-size: 12px;
   }
 `
@@ -93,15 +72,15 @@ export const InfoContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 500px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
   }
 `

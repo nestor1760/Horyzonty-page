@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { IWrapperProps } from '../types/types'
+import { IWrapperProps } from './interfaces'
 
 const StyledWrapper = styled.div<IWrapperProps>`
   width: 100%;

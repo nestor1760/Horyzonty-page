@@ -1,4 +1,4 @@
-import { IVoucherItem } from "../types/types";
+import { IVoucherItem } from "./interfaces";
 
 export const dataVoucher:IVoucherItem[] = [
   {

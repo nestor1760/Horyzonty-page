@@ -1,4 +1,4 @@
-import { IGalleryItem } from "../types/types";
+import { IGalleryItem } from "./interfaces";
 
 export const dataGallery:IGalleryItem[] = [
   {

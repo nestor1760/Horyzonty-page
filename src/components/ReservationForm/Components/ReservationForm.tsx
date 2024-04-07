@@ -1,11 +1,12 @@
-import { StyledButton } from "../../../UI/Button"
+import { StyledButton } from "../../../UI/Button/Button"
 import { setShow } from "../../../store/modalSlice"
 import { useAppDispatch, useAppSelector } from "../../../hook"
 import { ChangeEvent, useState } from "react"
 import { setComment, setEmail, setFirstName, setLastName, setResponce } from "../../../store/formSlice"
-import Select from "../../../UI/Select"
+import Select from "../../../UI/Select/Select"
 import { setSelectValue } from "../../../store/selectSlice"
 import { FormContainer, GridContainer, Header, Input, Responce, TextResponce, Title, TitleResponce } from "./ReservationFormStyles"
+import { white_color } from "../../../GlobalStyles"
 
 const ReservationForm = () => {
   const dispatch = useAppDispatch()
@@ -104,7 +105,7 @@ const ReservationForm = () => {
             margin="45px 0" 
             width="240px" 
             height="60px" 
-            color="white" 
+            color={white_color}
             radius="10px" 
             background="rgba(30, 56, 43)" 
             transform="none"
@@ -122,12 +123,12 @@ const ReservationForm = () => {
             margin="45px 0" 
             width="240px" 
             height="60px" 
-            color="white" 
+            color={white_color} 
             radius="10px" 
             background="rgba(30, 56, 43)" 
             transform="none"
             size="18px"
-            onClick={() => closeModal()}
+            onClick={closeModal}
           >
             Wróć na stronę
           </StyledButton>

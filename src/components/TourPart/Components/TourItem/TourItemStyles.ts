@@ -1,4 +1,5 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
+import { black_color, mobile_screen, second_color, slideLeftAnimation, slideRightAnimation, small_tablet_screen, tablet_screen } from "../../../../GlobalStyles";
 
 export const StyledItemBlock = styled.div<{ element: boolean | undefined, inView: boolean}>`
   width: 100%:
@@ -15,13 +16,13 @@ export const StyledItemBlock = styled.div<{ element: boolean | undefined, inView
     margin-top: 56px;
   }
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 769px;
     flex-direction: column;
     align-items: center;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
     flex-direction: column;
     &:last-child {
@@ -29,7 +30,7 @@ export const StyledItemBlock = styled.div<{ element: boolean | undefined, inView
     }
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 375px;
     flex-direction: column;
     &:last-child {
@@ -38,28 +39,6 @@ export const StyledItemBlock = styled.div<{ element: boolean | undefined, inView
   }
 `
 
-const slideLeftAnimation = keyframes`
-  from {
-    transform: translateX(-10%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`
-
-const slideRightAnimation = keyframes`
-  from {
-    transform: translateX(10%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`;
-
 export const InfoPart = styled.div`
   width: 445px;
   display: flex;
@@ -67,15 +46,15 @@ export const InfoPart = styled.div`
   justify-content: flex-start;
   flex-direction: column;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 500px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     paddinf: 0 16px;
   }
@@ -84,15 +63,15 @@ export const InfoPart = styled.div`
 export const Title = styled.p`
   font-size: 24px;
   font-weight: 400;
-  color: black;
+  color: ${black_color};
   text-decoration: uppercase;
   margin-bottom: 19px;
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     font-size: 22px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     font-size: 20px;
   }
 `
@@ -100,14 +79,14 @@ export const Title = styled.p`
 export const Description = styled.p`
   font-size: 16px;
   font-weight: 400;
-  border-bottom: 1px solid #B1B1B1;
+  border-bottom: 1px solid ${second_color};
   padding: 15px 0;
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     font-size: 15px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     font-size: 14px;
   }
 `
@@ -118,30 +97,30 @@ export const InfoPartItem = styled.p`
   align-items: center;
   justify-content: space-between;
   padding: 15px 0;
-  border-bottom: 1px solid #B1B1B1;
+  border-bottom: 1px solid ${second_color};
   font-size: 16px
   font-weight: 400;
-  color: #B1B1B1;
+  color: ${second_color};
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 500px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
     font-size: 16px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     font-size: 14px;
   }
 `
 
 export const Span = styled.span`
-  color: black;
+  color: ${black_color};
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     font-size: 14px;
   }
 `
@@ -152,19 +131,19 @@ export const Image = styled.img<{ element: boolean | undefined}>`
   object-fit: cover;
   margin: ${({ element }) => element ? '0 0 0 30px' : '0 30px 0 0'};
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 500px;
     margin: 50px 0 0 0;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
     height: 100%;
     font-size: 16px;
     margin: 50px 0 0 0;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     height: 100%;
     font-size: 14px;

@@ -1,7 +1,7 @@
 import { Container } from "../../../../styled-components/Container"
 import { ItemHeader } from "../../../../styled-components/ItemHeader"
 import { NavigationItem } from "../../../../styled-components/NavigationItem"
-import { StyledButton } from "../../../../UI/Button"
+import { StyledButton } from "../../../../UI/Button/Button"
 import { dataGuides } from "../../../../data/dataGuides"
 import GuideItem from "../GuideItem/GuideItem"
 import { useEffect, useState } from "react"
@@ -9,12 +9,13 @@ import { HiOutlineArrowLongLeft, HiOutlineArrowLongRight } from "react-icons/hi2
 import { useAppDispatch, useAppSelector } from "../../../../hook"
 import { guideDataRest } from "../../../../dataAPI/guideRest"
 import ReservationForm from "../../../ReservationForm/Components/ReservationForm"
-import Modal from "../../../../UI/Modal"
+import Modal from "../../../../UI/Modal/Modal"
 import { setShow } from "../../../../store/modalSlice"
 import { useInView } from "react-intersection-observer"
 import { useWindowWidth } from "../../../../hooks/useWindowWidth"
 import { Button, SliderContainer, StyledContainer, Text, TextContainer } from "./GuidesPartStyles"
 import { IGuidesPartProps } from "./interfaces"
+import { gray_color } from "../../../../GlobalStyles"
 
 const GuidesPart= ({ id }: IGuidesPartProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -64,12 +65,12 @@ const GuidesPart= ({ id }: IGuidesPartProps) => {
         {(windowWidth > 1109) && (
           <Container width="100%" justify="flex-end">
             {(currentIndex <= 0)
-              ? <Button><HiOutlineArrowLongLeft size={35} color="gray"/></Button>
+              ? <Button><HiOutlineArrowLongLeft size={35} color={gray_color}/></Button>
               : <Button onClick={Decrement}><HiOutlineArrowLongLeft size={35}/></Button>
             }
             {(currentIndex < array.length - 2)
               ? <Button onClick={Increment}><HiOutlineArrowLongRight size={35}/></Button>
-              : <Button><HiOutlineArrowLongRight size={35} color="gray"/></Button>
+              : <Button><HiOutlineArrowLongRight size={35} color={gray_color}/></Button>
             }
           </Container>
         )}

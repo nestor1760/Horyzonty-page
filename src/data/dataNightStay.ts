@@ -1,4 +1,4 @@
-import { IDataNightStayItem } from "../types/types";
+import { IDataNightStayItem } from "./interfaces";
 
 export const dataNightStay:IDataNightStayItem[] = [
   {

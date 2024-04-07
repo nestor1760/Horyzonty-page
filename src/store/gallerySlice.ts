@@ -1,5 +1,5 @@
-import { IGalleryItem } from './../types/types';
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { IGalleryItem } from "../data/interfaces";
 
 type GalleryState = {
   array: IGalleryItem[],

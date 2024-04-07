@@ -1,5 +1,5 @@
-import { ITourItem } from './../types/types';
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { ITourItem } from "../data/interfaces";
 
 type TourState = {
   array: ITourItem[],

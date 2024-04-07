@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { fourth_color, mobile_screen, small_tablet_screen, tablet_screen } from "../../../GlobalStyles"
 
 export const FormContainer = styled.div`
   min-width: 500px;
@@ -8,17 +9,17 @@ export const FormContainer = styled.div`
   flex-direction: column;
   margin: 30px 30px 0 30px;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     min-width: 0;
     width: 769px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     min-width: 0;
     width: 500px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     min-width: 0;
     width: 343px;
   }
@@ -29,17 +30,17 @@ export const Header = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     min-width: 0;
     width: 769px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     min-width: 0;
     width: 450px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     min-width: 0;
     width: 343px;
   }
@@ -65,7 +66,7 @@ export const GridContainer = styled.div`
   grid-template-rows: repeat(3, auto);
   gap: 40px 30px;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 769px;
     dislay: flex;
     align-items: center; 
@@ -76,7 +77,7 @@ export const GridContainer = styled.div`
     gap: unset;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
     dislay: flex;
     align-items: center; 
@@ -87,7 +88,7 @@ export const GridContainer = styled.div`
     gap: unset;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     dislay: flex;
     align-items: center; 
@@ -105,7 +106,7 @@ export const Input = styled.input`
   padding: 21px 0 22px 20px;
   border: 2px solid rgba(30, 56, 43, 0.2);
   border-radius: 10px;
-  color: #1E382B;
+  color: ${fourth_color};
   font-size: 16px;
   font-weight: 400;
   &:last-child {
@@ -116,7 +117,7 @@ export const Input = styled.input`
     flex-wrap: wrap;
   }
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     min-width: 0;
     width: 505px;
     margin-bottom: 15px;
@@ -126,7 +127,7 @@ export const Input = styled.input`
     }
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     min-width: 0;
     width: 450px;
     margin-bottom: 10px;
@@ -136,7 +137,7 @@ export const Input = styled.input`
     }
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     min-width: 0;
     width: 343px;
     margin-bottom: 10px;
@@ -155,15 +156,15 @@ export const Responce = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 505px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 450px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 375px;
   }
 `
@@ -173,15 +174,15 @@ export const TitleResponce = styled.p`
   font-weight: 400;
   margin-bottom: 10px;
   
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     font-size: 26px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     font-size: 24px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     font-size: 20px;
   }
 `
@@ -190,11 +191,11 @@ export const TextResponce = styled.p`
   font-size: 18px;
   font-weight: 400;
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     font-size: 16px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     font-size: 14px;
   }
 `

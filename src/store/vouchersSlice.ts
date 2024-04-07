@@ -1,5 +1,5 @@
-import { IVoucherItem } from './../types/types';
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { IVoucherItem } from "../data/interfaces";
 
 type VouchersState = {
   array: IVoucherItem[],

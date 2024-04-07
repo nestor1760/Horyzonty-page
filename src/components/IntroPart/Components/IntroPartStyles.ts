@@ -1,4 +1,5 @@
-import styled, { css, keyframes } from "styled-components"
+import styled, { css } from "styled-components"
+import { mobile_screen, second_color, slideDown, slideRightAnimation, small_tablet_screen, tablet_screen, third_color } from "../../../GlobalStyles"
 
 export const StyledIntro = styled.div`
   width: 1110px;
@@ -9,48 +10,28 @@ export const StyledIntro = styled.div`
   margin-top: 105px;
   z-index: 1;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 769px;
     align-items: center;
     padding: 0 16px 40px 16px;
     margin-top: 56px;
-    border-bottom: 1px solid #B1B1B1;
+    border-bottom: 1px solid ${second_color};
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 500px;
     align-items: center;
     padding: 0 16px;
     margin-top: 56px;
-    border-bottom: 1px solid #B1B1B1;
+    border-bottom: 1px solid ${second_color};
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 375px;
     align-items: center;
     margin-top: 56px;
     padding: 0 16px;
-    border-bottom: 1px solid #B1B1B1;
-  }
-`
-const slideDownAnimation = keyframes`
-  from {
-    transform: translateY(-30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-`
-const slideRightAnimation = keyframes`
-  from {
-    transform: translateX(-30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
+    border-bottom: 1px solid ${second_color};
   }
 `
 
@@ -61,22 +42,22 @@ export const Title = styled.p<{ inView: boolean}>`
   text-transform: uppercase;
   margin: 65px 0 41px 0;
   ${({ inView }) => inView && css`
-    animation: ${slideDownAnimation} 0.5s ease-in-out forwards;
+    animation: ${slideDown} 0.5s ease-in-out forwards;
   `};
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     font-size: 32px;
     margin: 24px 0 30px 0;
     width: 100%;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     font-size: 30px;
     width: 100%;
     margin: 24px 0 30px 0;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     font-size: 28px;
     width: 100%;
     margin: 24px 0 30px 0;
@@ -87,24 +68,24 @@ export const Text = styled.p<{ inView: boolean}>`
   width: 350px;
   font-size: 16px;
   font-weight: 400;
-  color: #2D2C2C;
+  color: ${third_color};
   margin: 61px 0 54px 0;
   text-align: start;
   ${({ inView }) => inView && css`
     animation: ${slideRightAnimation} 0.5s ease-in-out forwards;
   `};
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     margin: 47px 0 64px 0;
     width: 100%;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 100%;
     margin: 47px 0 64px 0;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 100%;
     margin: 47px 0 64px 0;
   }

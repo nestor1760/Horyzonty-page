@@ -1,4 +1,4 @@
-import { IFoodItem } from "../../../../types/types";
+import { IFoodItem } from "../../../../data/interfaces";
 
 export interface IFoodItemProps {
   food: IFoodItem;

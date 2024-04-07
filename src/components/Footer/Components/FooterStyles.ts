@@ -1,4 +1,5 @@
-import styled, { css, keyframes } from "styled-components"
+import styled, { css } from "styled-components"
+import { black_color, fadeIn, mobile_screen, second_color, slideLeftAnimation, small_tablet_screen, tablet_screen } from "../../../GlobalStyles"
 
 export const StyledFooter = styled.div`
   width: 1110px;
@@ -8,29 +9,18 @@ export const StyledFooter = styled.div`
   flex-direction: column;
   z-index: 1;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 769px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 500px;
     padding: 0 16px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 375px;
     padding: 0 16px;
-  }
-`
-
-const slideLeftAnimation = keyframes`
-  from {
-    transform: translateX(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
   }
 `
 
@@ -43,23 +33,14 @@ export const Text = styled.p<{ inView: boolean}>`
     animation: ${slideLeftAnimation} 0.5s ease-in-out forwards;
   `};
 
-  @media (min-width: 481px) and (max-width: 768px) {
-    width: 500px;
+  @media ${small_tablet_screen} {
+    width: 450px;
     font-size: 24px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 343px;
     font-size: 20px;
-  }
-`
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 `
 
@@ -79,17 +60,17 @@ export const ContactContainer = styled.div`
   flex-direction: column;
   margin: 78px 0 0 0;
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 769px;
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 500px;
     margin: 20px 0 0 0;
     padding: 0 16px;
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 375px;
     margin: 20px 0 0 0;
     padding: 0 16px;
@@ -106,7 +87,7 @@ export const ContactItem = styled.div`
 export const ItemTitle = styled.p`
   font-size: 16px;
   font-weight: 400;
-  color: #B1B1B1;
+  color: ${second_color};
   text-transform: uppercase;
   margin-bottom: 30px;
 
@@ -145,7 +126,7 @@ export const SocialItem = styled.div<{ inView: boolean}>`
 export const SocialLink = styled.a`
   font-size: 24px;
   font-weight: 400;
-  color: black;
+  color: ${black_color};
   text-decoration: none;
   transition: 0.3s;
   &:hover {

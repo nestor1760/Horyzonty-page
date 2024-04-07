@@ -1,4 +1,4 @@
-import { IDataIntroItem } from "../types/types";
+import { IDataIntroItem } from "./interfaces";
 
 export const dataIntro:IDataIntroItem[] = [
   {

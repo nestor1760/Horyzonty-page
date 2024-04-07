@@ -1,4 +1,4 @@
-import { IVoucherItem } from "../../../../types/types";
+import { IVoucherItem } from "../../../../data/interfaces";
 
 export interface IVoucherItemProps {
   voucher: IVoucherItem;

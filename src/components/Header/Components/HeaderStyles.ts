@@ -1,4 +1,5 @@
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
+import { black_color, gray_color, mobile_screen, second_color, small_tablet_screen, tablet_screen } from "../../../GlobalStyles"
 
 export const StyledHeader = styled.div<{ scrolled: number, windowWidth: number}>`
   width: ${({ scrolled, windowWidth }) => (windowWidth > 959) ? (scrolled > 95 ? '100%' : '1112px') : '100%'};
@@ -12,7 +13,7 @@ export const StyledHeader = styled.div<{ scrolled: number, windowWidth: number}>
   background: rgba(255, 255, 255, 0.9);
   overflow: hidden;
   z-index: 2;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${black_color};
   padding-top: 41px;
   padding-bottom: 41px;
   transition: 0.2s;
@@ -22,22 +23,22 @@ export const StyledHeader = styled.div<{ scrolled: number, windowWidth: number}>
     padding-right: 10%;
   };
 
-  @media (min-width: 769px) and (max-width: 1109px) {
+  @media ${tablet_screen} {
     width: 100%;
     padding: 20px 10%;
-    border-bottom: 1px solid #B1B1B1;
+    border-bottom: 1px solid ${second_color};
   }
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media ${small_tablet_screen} {
     width: 100%;
     padding: 15px 16px;
-    border-bottom: 1px solid #B1B1B1;
+    border-bottom: 1px solid ${second_color};
   }
 
-  @media (max-width: 480px) {
+  @media ${mobile_screen} {
     width: 100%;
     padding: 15px 16px;
-    border-bottom: 1px solid #B1B1B1;
+    border-bottom: 1px solid ${second_color};
   }
 `
 
@@ -78,119 +79,6 @@ export const MenuButton = styled.button`
   cursor: pointer;
   transition: 0.2s;
   &:hover {
-    color: gray;
+    color: ${gray_color};
   }
-`
-
-const openAnimation = keyframes`
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`
-
-const closeAnimation = keyframes`
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-`
-
-export const SidebarOverlay = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  transition: 250ms;
-  opacity: 0;
-  background-color: transparent;
-  backdrop-filter: blur(0);
-  &.open {
-    opacity: 1;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.12);
-    backdrop-filter: blur(3px);
-  }
-`
-
-export const SidebarMenu = styled.div`
-  width: 300px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: white;
-  border-radius: 15px 0 0 15px;
-  animation: ${closeAnimation} 250ms ease-in-out forwards;
-  opacity: 0;
-  &.active {
-    opacity: 1;
-    animation: ${openAnimation} 250ms ease-in-out forwards;
-  }
-`
-
-export const SidebarHeader = styled.div`
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-left: 10px;
-  border-bottom: 1px solid #B1B1B1;
-`
-
-export const SidebarTitle = styled.p`
-  font-size: 28px;
-  font-weight: 900;
-  text-transform: uppercase;
-  margin-left: 20px;
-`
-
-export const SidebarBody = styled.div`
-  width: 100%;
-  height: 50%;
-  margin-top: 50px;
-  padding-left: 30px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-direction: column;
-`
-
-export const SidebarItem = styled.div`
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  border: 1px solid black;
-  text-transform: uppercase;
-  font-weight: 600;
-  padding: 0 10px;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  color: black;
-  transition: 0.3s;
-  &:hover {
-    color: white;
-    background: #5079A9;
-  }
-`
-
-export const Span = styled.span`
-  margin-left: 10px;
 `
