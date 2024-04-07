@@ -1,4 +1,4 @@
-import { IGalleryItem } from "../GalleryItem/interfaces";
+import { IGalleryItem } from "../../../../data/interfaces";
 
 export interface IGalleryNavProps {
   item: IGalleryItem,
