@@ -11,7 +11,6 @@ const Modal:FC<IModal> = ({children, show}) => {
 
   const closeModal = () => {
     dispatch(setShow({show: false, scroll: false}))
-    dispatch(setShow({show: false, scroll: false}))
     dispatch(setShowGallery({showGallery: false, scroll: false}))
     setTimeout(() => {
       dispatch(setResponce(false))
